@@ -43,7 +43,7 @@ const AboutPage = ({ data }) => {
         <p>
           <iframe
             title="github"
-            src="https://ghbtns.com/github-btn.html?user=ryanwiemer&repo=gatsby-starter-gcn&type=star&count=true&size=large"
+            src="https://ghbtns.com/github-btn.html?user=ryanwiemer&repo=gatsby-theme-amsterdam&type=star&count=true&size=large"
             frameBorder="0"
             scrolling="0"
             width="160px"

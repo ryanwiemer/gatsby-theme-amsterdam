@@ -19,7 +19,7 @@ const DocsPage = ({ data }) => {
         <p>
           <iframe
             title="github"
-            src="https://ghbtns.com/github-btn.html?user=ryanwiemer&repo=gatsby-starter-gcn&type=star&count=true&size=large"
+            src="https://ghbtns.com/github-btn.html?user=ryanwiemer&repo=gatsby-theme-amsterdam&type=star&count=true&size=large"
             frameBorder="0"
             scrolling="0"
             width="160px"
@@ -228,7 +228,7 @@ const DocsPage = ({ data }) => {
               <br />
               {'      '}iconPath<span className="token punctuation">:</span>{' '}
               <span className="token template-string">
-                <span className="token string">`.src/icon/favicon.png`</span>
+                <span className="token string">`src/images/favicon.png`</span>
               </span>
               <span className="token punctuation">,</span>
               <br />

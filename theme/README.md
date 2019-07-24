@@ -12,7 +12,7 @@ This will generate a new site pre-configured to use Gatsby Theme Amsterdam.
 gatsby new your-themed-site https://github.com/ryanwiemer/gatsby-starter-amsterdam
 ```
 
-### Manually add To Your Site
+### Manually Add To Your Site
 
 1. Install the theme
 
@@ -44,7 +44,7 @@ module.exports = {
 
 ## Usage
 
-### Theme options
+### Theme Options
 
 | Key           | Default value | Description                                                                                                                                      |
 | ------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -66,7 +66,7 @@ module.exports = {
         // basePath defaults to `/`
         basePath: `/photography`,
         // the path to your icon file
-        iconPath: `.src/icon/favicon.png`,
+        iconPath: `src/images/favicon.png`,
         // grid defaults to `basic`
         grid: `organic`,
       },
