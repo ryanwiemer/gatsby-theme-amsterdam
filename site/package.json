@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "site",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
@@ -15,8 +15,8 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "gatsby": "^2.13.38",
-    "gatsby-theme-amsterdam": "^0.0.1",
+    "gatsby": "^2.13.39",
+    "gatsby-theme-amsterdam": "*",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   }

@@ -35,9 +35,9 @@ const List = styled(motion.ul)`
   padding: 6rem 0 0 0;
   @media screen and (min-width: ${props => props.theme.responsive.medium}) {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
     padding: 0;
-    line-height: 60px;
   }
 `
 
@@ -45,23 +45,25 @@ const Item = styled(motion.li)`
   display: block;
   margin-bottom: 1.5rem;
   @media screen and (min-width: ${props => props.theme.responsive.medium}) {
+    line-height: 60px;
     display: inline-block;
-    margin-left: 1rem;
+    margin: 0 0 0 1rem;
     opacity: 1 !important;
     visibility: visible !important;
   }
   &:first-child {
+    line-height: 60px;
     opacity: 1 !important;
     visibility: visible !important;
     font-weight: ${props => props.theme.fonts.boldWeight};
-    line-height: 60px;
     position: absolute;
     left: 0;
     top: 0;
     margin: 0;
     @media screen and (min-width: ${props => props.theme.responsive.medium}) {
       position: relative;
-      flex-basis: 100%;
+      flex: 1;
+      margin: 0;
     }
   }
   a {
