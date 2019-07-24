@@ -1,0 +1,23 @@
+{
+  "private": true,
+  "name": "site",
+  "version": "0.0.1",
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "serve": "gatsby serve",
+    "lint:js": "eslint --ext .js,.jsx .",
+    "lint:css": "stylelint 'src/**/*.js'",
+    "check-pretty": "prettier -l {,src/**/}*.{js,jsx,json,css,scss}",
+    "format": "prettier --write \"src/**/*.js\"",
+    "test": "yarn run lint:css && yarn run lint:js && yarn run check-pretty",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "gatsby": "^2.13.38",
+    "gatsby-theme-amsterdam": "*",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}
