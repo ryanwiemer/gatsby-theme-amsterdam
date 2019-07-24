@@ -97,7 +97,7 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
   // Create posts list page and paginate
   const basePath = themeOptions.basePath || `/`
   const postsPerPage = themeOptions.postsPerPage || 6
-  const grid = themeOptions.grid || `organic`
+  const grid = themeOptions.grid || `basic`
   paginate({
     createPage,
     items: posts,
