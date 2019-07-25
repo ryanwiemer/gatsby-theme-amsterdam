@@ -12,6 +12,7 @@
     "type": "git",
     "url": "https://github.com/ryanwiemer/gatsby-theme-amsterdam.git"
   },
+  "homepage": "https://amsterdam.netlify.com/",
   "license": "MIT",
   "main": "index.js",
   "dependencies": {
