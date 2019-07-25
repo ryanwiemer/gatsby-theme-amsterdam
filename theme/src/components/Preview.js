@@ -48,12 +48,12 @@ const Box = styled(Link)`
     }
   }
   @media (hover: none) {
-    color: ${props => props.theme.colors.text};
+    color: ${props => props.theme.colors.text} !important;
     .gatsby-image-wrapper {
-      opacity: 0;
+      opacity: 0 !important;
     }
     &::after {
-      background: rgba(0, 0, 0, 0.05);
+      background: rgba(0, 0, 0, 0.05) !important;
     }
   }
 `

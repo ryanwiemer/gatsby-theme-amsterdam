@@ -16,8 +16,8 @@ const Wrapper = styled(Link)`
     color: white;
   }
   @media (hover: none) {
-    background: ${props => props.theme.colors.button};
-    color: ${props => props.theme.colors.secondary};
+    background: ${props => props.theme.colors.button} !important;
+    color: ${props => props.theme.colors.secondary} !important;
   }
 `
 

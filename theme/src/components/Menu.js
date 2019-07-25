@@ -75,7 +75,7 @@ const Item = styled(motion.li)`
       color: ${props => props.theme.colors.highlight};
     }
     @media (hover: none) {
-      color: ${props => props.theme.colors.text};
+      color: ${props => props.theme.colors.text} !important;
     }
   }
 `

@@ -53,7 +53,7 @@ const Item = styled.li`
       color: ${props => props.theme.colors.highlight};
     }
     @media (hover: none) {
-      color: white;
+      color: white !important;
     }
   }
 `

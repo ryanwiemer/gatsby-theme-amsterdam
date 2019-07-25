@@ -31,7 +31,7 @@ const Item = styled(motion.li)`
       color: ${props => props.theme.colors.highlight};
     }
     @media (hover: none) {
-      color: ${props => props.theme.colors.secondary};
+      color: ${props => props.theme.colors.secondary} !important;
     }
   }
 `
