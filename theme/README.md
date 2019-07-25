@@ -4,7 +4,7 @@ A Gatsby theme for artists, photographers and other creative folks.
 
 ## Installation
 
-### Use Gatsby Theme Amsterdam Starter
+### Use [Gatsby Starter Amsterdam](https://github.com/ryanwiemer/gatsby-starter-amsterdam)
 
 This will generate a new site pre-configured to use Gatsby Theme Amsterdam.
 

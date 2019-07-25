@@ -27,7 +27,16 @@ const DocsPage = ({ data }) => {
           ></iframe>
         </p>
         <h2>Installation</h2>
-        <h3>Install Via Gatsby CLI</h3>
+        <h3>
+          Use{' '}
+          <a
+            href="https://github.com/ryanwiemer/gatsby-starter-amsterdam"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Gatsby Starter Amsterdam
+          </a>
+        </h3>
         <p>
           This will generate a new site pre-configured to use Gatsby Theme
           Amsterdam.
