@@ -66,9 +66,10 @@ const AboutPage = ({ data }) => {
         <ul>
           <li>Minimal responsive design</li>
           <li>Optional page transitions</li>
-          <li>Mobile menu</li>
+          <li>Multiple grid options to display posts</li>
+          <li>Customizable theme colors and typography</li>
           <li>SEO friendly component</li>
-          <li>Customizable theme</li>
+          <li>Mobile menu</li>
           <li>Styled components</li>
           <li>Tags</li>
           <li>Pagination</li>
