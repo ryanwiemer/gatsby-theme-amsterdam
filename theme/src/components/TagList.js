@@ -20,11 +20,14 @@ const Tag = styled.li`
   margin: 0 0.5rem 0.25rem 0;
   a {
     float: left;
-    transition: 0.2s;
+    transition: 0.3s;
     text-transform: capitalize;
     color: ${props => props.theme.colors.secondary};
     &:hover {
       color: ${props => props.theme.colors.highlight};
+    }
+    @media (hover: none) {
+      color: ${props => props.theme.colors.secondary};
     }
   }
 `

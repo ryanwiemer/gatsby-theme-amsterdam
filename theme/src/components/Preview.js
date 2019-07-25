@@ -47,6 +47,15 @@ const Box = styled(Link)`
       background: rgba(0, 0, 0, 0.4);
     }
   }
+  @media (hover: none) {
+    color: ${props => props.theme.colors.text};
+    .gatsby-image-wrapper {
+      opacity: 0;
+    }
+    &::after {
+      background: rgba(0, 0, 0, 0.05);
+    }
+  }
 `
 
 const TextContainer = styled.div`

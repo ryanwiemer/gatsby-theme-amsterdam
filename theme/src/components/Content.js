@@ -192,6 +192,9 @@ const Wrapper = styled.div`
     &:hover {
       color: ${props => props.theme.colors.highlight};
     }
+    @media (hover: none) {
+      color: ${props => props.theme.colors.secondary};
+    }
   }
 `
 

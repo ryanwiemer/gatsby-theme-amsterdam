@@ -52,6 +52,9 @@ const Item = styled.li`
     &:hover {
       color: ${props => props.theme.colors.highlight};
     }
+    @media (hover: none) {
+      color: white;
+    }
   }
 `
 
