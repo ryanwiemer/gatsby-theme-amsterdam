@@ -94,56 +94,61 @@ const Line = styled.div`
 `
 
 const Preview = props => {
+  const hasPreviewContent = props.next || props.previous
   return (
-    <Wrapper>
-      {props.previous && (
-        <Box
-          to={props.previous.fields.slug}
-          style={{ order: 1, marginRight: 'auto' }}
-        >
-          <TextContainer>
-            <div>
-              <SubTitle>Previous Post</SubTitle>
-              <Title>{props.previous.frontmatter.title}</Title>
-            </div>
-          </TextContainer>
-          <Img
-            fluid={props.previous.frontmatter.cover.childImageSharp.fluid}
-            style={{
-              position: 'absolute',
-              left: 0,
-              top: 0,
-              width: '100%',
-              height: '100%',
-            }}
-          />
-        </Box>
+    <>
+      {hasPreviewContent && (
+        <Wrapper>
+          {props.previous && (
+            <Box
+              to={props.previous.fields.slug}
+              style={{ order: 1, marginRight: 'auto' }}
+            >
+              <TextContainer>
+                <div>
+                  <SubTitle>Previous Post</SubTitle>
+                  <Title>{props.previous.frontmatter.title}</Title>
+                </div>
+              </TextContainer>
+              <Img
+                fluid={props.previous.frontmatter.cover.childImageSharp.fluid}
+                style={{
+                  position: 'absolute',
+                  left: 0,
+                  top: 0,
+                  width: '100%',
+                  height: '100%',
+                }}
+              />
+            </Box>
+          )}
+          <Line />
+          {props.next && (
+            <Box
+              to={props.next.fields.slug}
+              style={{ order: 3, marginLeft: 'auto' }}
+            >
+              <TextContainer>
+                <div>
+                  <SubTitle>Next Post</SubTitle>
+                  <Title>{props.next.frontmatter.title}</Title>
+                </div>
+              </TextContainer>
+              <Img
+                fluid={props.next.frontmatter.cover.childImageSharp.fluid}
+                style={{
+                  position: 'absolute',
+                  left: 0,
+                  top: 0,
+                  width: '100%',
+                  height: '100%',
+                }}
+              />
+            </Box>
+          )}
+        </Wrapper>
       )}
-      <Line />
-      {props.next && (
-        <Box
-          to={props.next.fields.slug}
-          style={{ order: 3, marginLeft: 'auto' }}
-        >
-          <TextContainer>
-            <div>
-              <SubTitle>Next Post</SubTitle>
-              <Title>{props.next.frontmatter.title}</Title>
-            </div>
-          </TextContainer>
-          <Img
-            fluid={props.next.frontmatter.cover.childImageSharp.fluid}
-            style={{
-              position: 'absolute',
-              left: 0,
-              top: 0,
-              width: '100%',
-              height: '100%',
-            }}
-          />
-        </Box>
-      )}
-    </Wrapper>
+    </>
   )
 }
 
