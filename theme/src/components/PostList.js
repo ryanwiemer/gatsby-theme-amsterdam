@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 
 // Basic Grid Styling
 const List = styled.ul`
-  margin: 3rem auto 0;
+  margin: 3rem auto 1rem;
   max-width: ${props => props.theme.sizes.maxWidth};
   padding: 0 1.5rem;
   display: flex;
