@@ -1,7 +1,7 @@
 export default {
   colors: {
     base: '#292929',
-    secondary: '#8b8682',
+    secondary: '#686461',
     highlight: '#C29967',
     background: '#f5f0eb',
     border: '#dcd8d3',
