@@ -11,7 +11,6 @@ const Wrapper = styled.div`
 const Title = styled.h2`
   line-height: 1.25;
   text-align: left;
-  text-transform: capitalize;
   font-size: 2em;
   @media screen and (min-width: ${props => props.theme.responsive.small}) {
     font-size: 2.5em;
