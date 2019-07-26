@@ -30,10 +30,12 @@ const Nav = styled.nav`
   padding: 0 1.5rem;
 `
 
-const List = styled(motion.ul)`
+const List = styled.ul`
   position: relative;
   padding: 6rem 0 0 0;
+  pointer-events: ${props => (props.open ? 'auto' : 'none')};
   @media screen and (min-width: ${props => props.theme.responsive.medium}) {
+    pointer-events: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
@@ -52,6 +54,7 @@ const Item = styled(motion.li)`
     visibility: visible !important;
   }
   &:first-child {
+    pointer-events: auto;
     line-height: 60px;
     opacity: 1 !important;
     visibility: visible !important;
@@ -154,7 +157,7 @@ const Menu = () => {
           <span />
           <span />
         </Toggle>
-        <List>
+        <List open={isOpen}>
           {menuLinks.map(link => (
             <Item
               initial={false}
