@@ -27,7 +27,7 @@ exports.sourceNodes = ({ actions, schema }) => {
       cover: File @fileByRelativePath
       tags: [String]
     }
-    type Fields implements Node @infer{
+    type Fields @infer {
       slug: String
     }
     type MarkdownRemark implements Node @infer {
