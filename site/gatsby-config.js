@@ -43,5 +43,13 @@ module.exports = {
         grid: 'organic',
       },
     },
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: process.env.GOOGLE_ANALYTICS,
+        head: true,
+        pageTransitionDelay: 350,
+      },
+    },
   ],
 }
