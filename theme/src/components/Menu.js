@@ -18,6 +18,7 @@ const Header = styled.header`
   display: flex;
   border-bottom: 1px solid ${props => props.theme.colors.border};
   border-width: ${props => (props.open ? '0' : '1px')};
+  overflow-y: scroll;
   @media screen and (min-width: ${props => props.theme.responsive.medium}) {
     max-height: 60px;
     border-width: 1px;
@@ -32,7 +33,7 @@ const Nav = styled.nav`
 
 const List = styled.ul`
   position: relative;
-  padding: 6rem 0 0 0;
+  padding: 4rem 0 0 0;
   pointer-events: ${props => (props.open ? 'auto' : 'none')};
   @media screen and (min-width: ${props => props.theme.responsive.medium}) {
     pointer-events: auto;
@@ -45,8 +46,9 @@ const List = styled.ul`
 
 const Item = styled(motion.li)`
   display: block;
-  margin-bottom: 1.5rem;
+  padding: 0.5rem 0;
   @media screen and (min-width: ${props => props.theme.responsive.medium}) {
+    padding: 0;
     line-height: 60px;
     display: inline-block;
     margin: 0 0 0 1rem;
@@ -54,6 +56,7 @@ const Item = styled(motion.li)`
     visibility: visible !important;
   }
   &:first-child {
+    padding: 0;
     pointer-events: auto;
     line-height: 60px;
     opacity: 1 !important;
