@@ -4,7 +4,7 @@ import Button from './Button'
 
 const Wrapper = styled.div`
   width: 100%;
-  margin: 0 auto 3rem;
+  margin: -2.5rem auto 2.5rem;
   max-width: ${props => props.theme.sizes.maxWidth};
   padding: 0 1.5rem;
   display: flex;

@@ -62,9 +62,6 @@ const Wrapper = styled.div`
   p {
     line-height: 1.5;
     margin: 0 0 1.75rem;
-    &:last-child {
-      margin: 0;
-    }
   }
 
   ul,

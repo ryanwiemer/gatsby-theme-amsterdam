@@ -6,7 +6,7 @@ const Wrapper = styled.section`
   max-width: ${props => props.theme.sizes.maxWidth};
   margin: 0 auto;
   width: 100%;
-  padding: 2.5rem 1.5rem 3rem;
+  padding: 2.5rem 1.5rem;
   ${props =>
     props.fullWidth &&
     css`

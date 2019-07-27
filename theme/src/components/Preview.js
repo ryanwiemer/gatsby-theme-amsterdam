@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   position: relative;
   display: flex;
   justify-content: space-between;
-  margin: 3rem auto 0;
+  margin: 3rem auto 1rem;
   border: 1px solid ${props => props.theme.colors.border};
   border-radius: 2px;
   max-width: ${props => props.theme.sizes.maxWidthCentered};

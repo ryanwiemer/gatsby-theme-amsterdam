@@ -14,7 +14,7 @@ gatsby new your-themed-site https://github.com/ryanwiemer/gatsby-starter-amsterd
 
 ### Manually Add To Your Site
 
-1. Install the theme
+Install the theme
 
 ```sh
 npm install --save gatsby-theme-amsterdam
@@ -26,7 +26,7 @@ or
 yarn add gatsby-theme-amsterdam
 ```
 
-2. Add the theme to your `gatsby-config.js`
+Add the theme to your `gatsby-config.js`
 
 ```javascript
 // gatsby-config.js

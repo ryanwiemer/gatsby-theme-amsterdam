@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 
 // Basic Grid Styling
 const List = styled.ul`
-  margin: 3rem auto 1rem;
+  margin: 3rem auto;
   max-width: ${props => props.theme.sizes.maxWidth};
   padding: 0 1.5rem;
   display: flex;
@@ -47,6 +47,7 @@ const Title = styled.h2`
   text-align: left;
   padding: 0.75rem 0 0 0;
   display: inline-block;
+  font-weight: ${props => props.theme.fonts.boldWeight};
 `
 
 // Organic Grid Styling
