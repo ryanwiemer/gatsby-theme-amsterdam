@@ -17,7 +17,7 @@ const AboutPage = ({ data }) => {
           <span
             style={{
               display: 'inline-block',
-              color: 'gray',
+              color: '#686461',
               padding: '.5rem 0 0 0',
             }}
           >

@@ -128,7 +128,8 @@ Gatsby Theme Amsterdam uses [styled-components](https://github.com/styled-compon
 export default {
   colors: {
     base: '#292929',
-    secondary: '#8b8682',
+    secondary: '#686461',
+    tertiary: '#958E8E',
     highlight: '#C29967',
     background: '#f5f0eb',
     border: '#dcd8d3',
@@ -142,7 +143,7 @@ export default {
     heading:
       '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
     normalWeight: '400',
-    boldWeight: '500',
+    boldWeight: '600',
   },
   sizes: {
     maxWidth: '1050px',

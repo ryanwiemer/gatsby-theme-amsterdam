@@ -7,7 +7,7 @@ const Wrapper = styled.footer`
 `
 
 const Container = styled.div`
-  color: ${props => props.theme.colors.secondary};
+  color: ${props => props.theme.colors.tertiary};
   font-size: 0.9em;
   max-width: ${props => props.theme.sizes.maxWidth};
   width: 100%;

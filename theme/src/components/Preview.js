@@ -77,7 +77,7 @@ const SubTitle = styled.div`
 `
 
 const Title = styled.h3`
-  line-height: 1.15;
+  line-height: 1.25;
 `
 
 const Line = styled.div`

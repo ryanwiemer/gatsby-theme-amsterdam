@@ -469,7 +469,11 @@ const DocsPage = ({ data }) => {
               <span className="token punctuation">,</span>
               <br />
               {'    '}secondary<span className="token punctuation">:</span>{' '}
-              <span className="token string">'#8b8682'</span>
+              <span className="token string">'#686461'</span>
+              <span className="token punctuation">,</span>
+              <br />
+              {'    '}tertiary<span className="token punctuation">:</span>{' '}
+              <span className="token string">'#958E8E'</span>
               <span className="token punctuation">,</span>
               <br />
               {'    '}highlight<span className="token punctuation">:</span>{' '}
@@ -528,7 +532,7 @@ const DocsPage = ({ data }) => {
               <span className="token punctuation">,</span>
               <br />
               {'    '}boldWeight<span className="token punctuation">:</span>{' '}
-              <span className="token string">'500'</span>
+              <span className="token string">'600'</span>
               <span className="token punctuation">,</span>
               <br />
               {'  '}
