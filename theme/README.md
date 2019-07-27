@@ -48,7 +48,7 @@ module.exports = {
 
 | Key           | Default value | Description                                                                                                                                      |
 | ------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `basePath`    | `/`           | Root URL for all posts. posts                                                                                                                    |
+| `basePath`    | `/`           | Root URL for all posts.                                                                                                                          |
 | `contentPath` | `/content`    | Location of markdown files used for the posts.                                                                                                   |  |
 | `transitions` | `true`        | Include simple page transitions powered with [framer-motion](https://github.com/framer/motion)                                                   |
 | `iconPath`    | default icon  | Path to the icon to be used for the favicon and web manifest. For example `'src/images/favicon.png'`. For best results provide a 512x512 square. |
