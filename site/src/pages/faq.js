@@ -25,14 +25,14 @@ const FAQPage = ({ data }) => {
           is a free and open source framework based on React that helps
           developers build blazing fast websites and apps.
         </p>
-        <h3>What are Gatsby Themes?</h3>
+        <h3>What are Gatsby themes?</h3>
         <p>
           <a
             href="https://www.gatsbyjs.org/docs/themes/what-are-gatsby-themes"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Gatsby Themes
+            Gatsby themes
           </a>{' '}
           are pre-built, installable packages for setting up a site’s default
           styling, components, plugins, and overall configuration. This allows

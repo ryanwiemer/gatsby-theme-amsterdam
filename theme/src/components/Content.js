@@ -117,6 +117,9 @@ const Wrapper = styled.div`
     margin: 0 0 1.75rem;
     padding: 0.5rem;
     font-style: italic;
+    p {
+      margin: 0;
+    }
   }
 
   strong {
