@@ -1,6 +1,6 @@
 # Gatsby Theme Amsterdam
 
-<p align="center">
+<p>
   <a href="https://github.com/ryanwiemer/gatsby-theme-amsterdam/blob/master/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="Gatsby Theme Amsterdam is released under the MIT license." />
   </a>

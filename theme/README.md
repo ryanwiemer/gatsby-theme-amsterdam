@@ -1,6 +1,6 @@
 # Gatsby Theme Amsterdam
 
-<p align="center">
+<p>
   <a href="https://github.com/ryanwiemer/gatsby-theme-amsterdam/blob/master/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="Gatsby Theme Amsterdam is released under the MIT license." />
   </a>
@@ -80,7 +80,7 @@ module.exports = {
 
 ### Theme Options
 
-| Key           | Default value | Description                                                                                                                                      |
+| Key           | Default Value | Description                                                                                                                                      |
 | ------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `basePath`    | `/`           | Root URL for all posts.                                                                                                                          |
 | `contentPath` | `/content`    | Location of markdown files used for the posts.                                                                                                   |  |
