@@ -121,7 +121,11 @@ module.exports = {
     title: `My Site Title`,
     // Used for SEO
     description: `My site description...`,
-    // Used for an optional intro section at the top of the posts template
+    // Used for SEO. Do not include a trailing slash
+    url: 'https://www.example.com',
+    // Used for SEO
+    author: 'John Doe',
+    // Used for the links in the menu
     intro: 'John Doe is a photographer....',
     // Used for the links in the menu
     menuLinks: [
@@ -167,7 +171,7 @@ export default {
     highlight: '#C29967',
     background: '#f5f0eb',
     border: '#dcd8d3',
-    button: '#dcd8d3',
+    button: '#E5E3E1',
     text: '#292929',
     code: '#e9e5e0',
   },

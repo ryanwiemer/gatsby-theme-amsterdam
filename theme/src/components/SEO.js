@@ -11,6 +11,7 @@ function SEO({ description, lang, meta, keywords, title, image }) {
         site {
           siteMetadata {
             title
+            url
             description
             author
           }
@@ -44,7 +45,7 @@ function SEO({ description, lang, meta, keywords, title, image }) {
         },
         {
           property: `og:image`,
-          content: metaImage,
+          content: `${site.siteMetadata.url}${metaImage}`,
         },
         {
           property: `og:type`,
@@ -68,7 +69,7 @@ function SEO({ description, lang, meta, keywords, title, image }) {
         },
         {
           name: `twitter:image`,
-          content: metaImage,
+          content: `${site.siteMetadata.url}${metaImage}`,
         },
       ]
         .concat(
@@ -94,6 +95,7 @@ SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.array,
+  image: PropTypes.string,
   keywords: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
 }

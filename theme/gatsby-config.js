@@ -6,9 +6,9 @@ module.exports = options => {
   return {
     siteMetadata: {
       title: 'Gatsby Theme Amsterdam',
+      description: '',
+      url: '',
       author: '',
-      description:
-        'A Gatsby theme for artists, designers and other creative folks.',
       intro: '',
       menuLinks: [
         {
@@ -19,7 +19,7 @@ module.exports = options => {
     },
     plugins: [
       {
-        resolve: `gatsby-plugin-page-creator`,
+        resolve: 'gatsby-plugin-page-creator',
         options: {
           path: `${__dirname}/src/pages`,
         },

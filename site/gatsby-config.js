@@ -1,9 +1,10 @@
 module.exports = {
   siteMetadata: {
     title: 'Gatsby Theme Amsterdam',
-    author: 'Ryan Wiemer',
     description:
       'A Gatsby theme for artists, photographers and other creative folks.',
+    url: 'https://amsterdam.netlify.com',
+    author: 'Ryan Wiemer',
     intro:
       'A Gatsby theme for artists, photographers and other creative folks.',
     menuLinks: [

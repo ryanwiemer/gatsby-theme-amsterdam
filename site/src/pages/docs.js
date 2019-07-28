@@ -87,7 +87,7 @@ const DocsPage = ({ data }) => {
                 <br />
                 {'      '}resolve<span className="token punctuation">:</span>{' '}
                 <span className="token template-string">
-                  <span className="token string">`gatsby-theme-amsterdam`</span>
+                  <span className="token string">'gatsby-theme-amsterdam'</span>
                 </span>
                 <span className="token punctuation">,</span>
                 <br />
@@ -212,7 +212,7 @@ const DocsPage = ({ data }) => {
               <br />
               {'      '}resolve<span className="token punctuation">:</span>{' '}
               <span className="token template-string">
-                <span className="token string">`gatsby-theme-amsterdam`</span>
+                <span className="token string">'gatsby-theme-amsterdam'</span>
               </span>
               <span className="token punctuation">,</span>
               <br />
@@ -221,34 +221,34 @@ const DocsPage = ({ data }) => {
               <br />
               {'      '}
               <span className="token comment">
-                {'//'} basePath defaults to `/`
+                {'//'} basePath defaults to '/'
               </span>
               <br />
               {'      '}basePath<span className="token punctuation">:</span>{' '}
               <span className="token template-string">
-                <span className="token string">`/photography`</span>
+                <span className="token string">'/photography'</span>
               </span>
               <span className="token punctuation">,</span>
               <br />
               {'      '}
               <span className="token comment">
-                {'//'} the path to your icon file`
+                {'//'} the path to your icon file'
               </span>
               <br />
               {'      '}iconPath<span className="token punctuation">:</span>{' '}
               <span className="token template-string">
-                <span className="token string">`src/images/favicon.png`</span>
+                <span className="token string">'src/images/favicon.png'</span>
               </span>
               <span className="token punctuation">,</span>
               <br />
               {'      '}
               <span className="token comment">
-                {'//'} grid defaults to `basic`
+                {'//'} grid defaults to 'basic'
               </span>
               <br />
               {'      '}grid<span className="token punctuation">:</span>{' '}
               <span className="token template-string">
-                <span className="token string">`organic`</span>
+                <span className="token string">'organic'</span>
               </span>
               <br />
               {'      '}
@@ -292,7 +292,7 @@ const DocsPage = ({ data }) => {
               <br />
               {'    '}title<span className="token punctuation">:</span>{' '}
               <span className="token template-string">
-                <span className="token string">`My Site Title`</span>
+                <span className="token string">'My Site Title'</span>
               </span>
               <span className="token punctuation">,</span>
               <br />
@@ -301,7 +301,27 @@ const DocsPage = ({ data }) => {
               <br />
               {'    '}description<span className="token punctuation">:</span>{' '}
               <span className="token template-string">
-                <span className="token string">`My site description...`</span>
+                <span className="token string">'My site description...'</span>
+              </span>
+              <span className="token punctuation">,</span>
+              <br />
+              {'    '}
+              <span className="token comment">
+                {'//'} Used for SEO. Do not include a trailing slash
+              </span>
+              <br />
+              {'    '}url<span className="token punctuation">:</span>{' '}
+              <span className="token template-string">
+                <span className="token string">'https://www.example.com'</span>
+              </span>
+              <span className="token punctuation">,</span>
+              <br />
+              {'    '}
+              <span className="token comment">{'//'} Used for SEO</span>
+              <br />
+              {'    '}author<span className="token punctuation">:</span>{' '}
+              <span className="token template-string">
+                <span className="token string">'John Doe'</span>
               </span>
               <span className="token punctuation">,</span>
               <br />
@@ -489,7 +509,7 @@ const DocsPage = ({ data }) => {
               <span className="token punctuation">,</span>
               <br />
               {'    '}button<span className="token punctuation">:</span>{' '}
-              <span className="token string">'#dcd8d3'</span>
+              <span className="token string">'#E5E3E1'</span>
               <span className="token punctuation">,</span>
               <br />
               {'    '}text<span className="token punctuation">:</span>{' '}
