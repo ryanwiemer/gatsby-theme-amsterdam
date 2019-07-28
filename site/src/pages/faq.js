@@ -9,7 +9,7 @@ const FAQPage = ({ data }) => {
     <Container>
       <SEO
         title="FAQ"
-        description="Frequently Asked Questions for Gatsby Theme Amsterdam"
+        description="Frequently Asked Questions About Gatsby Theme Amsterdam"
       />
       <Content>
         <h1>Frequently Asked Questions</h1>

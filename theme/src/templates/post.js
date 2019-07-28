@@ -13,7 +13,11 @@ const PostTemplate = ({ data, pageContext }) => {
 
   return (
     <>
-      <SEO title={post.frontmatter.title} description={post.excerpt} />
+      <SEO
+        title={post.frontmatter.title}
+        description={post.excerpt}
+        image={post.frontmatter.cover.childImageSharp.ogimg.src}
+      />
       <Container fullWidth>
         <Hero
           title={post.frontmatter.title}
@@ -43,6 +47,9 @@ export const pageQuery = graphql`
           childImageSharp {
             fluid(maxWidth: 1000) {
               ...GatsbyImageSharpFluid_withWebp
+            }
+            ogimg: resize(width: 1000) {
+              src
             }
           }
         }

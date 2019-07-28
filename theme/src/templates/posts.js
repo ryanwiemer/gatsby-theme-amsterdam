@@ -13,7 +13,10 @@ const PostsPage = ({ data, pageContext }) => {
 
   return (
     <>
-      <SEO title="Home" />
+      <SEO
+        title="Home"
+        image={posts[0].node.frontmatter.cover.childImageSharp.ogimg.src}
+      />
       <Container fullWidth noPadding>
         {intro && <Intro title={intro} context={pageContext} />}
         <PostList posts={posts} grid={pageContext.grid} />
@@ -43,6 +46,9 @@ export const postsQuery = graphql`
               childImageSharp {
                 fluid(maxWidth: 1000) {
                   ...GatsbyImageSharpFluid_withWebp
+                }
+                ogimg: resize(width: 1000) {
+                  src
                 }
               }
             }

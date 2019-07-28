@@ -45,9 +45,9 @@ const ImageContainer = styled(motion.div)`
 
 const Title = styled.h2`
   text-align: left;
-  padding: 0.75rem 0 0 0;
+  padding: 0.5rem 0 0 0;
   display: inline-block;
-  font-weight: ${props => props.theme.fonts.boldWeight};
+  line-height: 1.25;
 `
 
 // Organic Grid Styling

@@ -11,7 +11,10 @@ const TagPage = ({ data, pageContext }) => {
 
   return (
     <>
-      <SEO title={`Tag: ${pageContext.tag}`} />
+      <SEO
+        title={`Tag: ${pageContext.tag}`}
+        image={posts[0].node.frontmatter.cover.childImageSharp.ogimg.src}
+      />
       <Container fullWidth noPadding>
         <Intro title={`Tagged: ${pageContext.tag}`} context={pageContext} />
         <PostList posts={posts} grid={pageContext.grid} />
@@ -42,6 +45,9 @@ export const tagQuery = graphql`
               childImageSharp {
                 fluid(maxWidth: 1000) {
                   ...GatsbyImageSharpFluid_withWebp
+                }
+                ogimg: resize(width: 1000) {
+                  src
                 }
               }
             }

@@ -39,7 +39,7 @@ module.exports = options => {
             {
               resolve: `gatsby-remark-images`,
               options: {
-                maxWidth: 800,
+                maxWidth: 1000,
                 linkImagesToOriginal: false,
                 withWebp: true,
               },
@@ -50,6 +50,10 @@ module.exports = options => {
       {
         resolve: `gatsby-plugin-manifest`,
         options: {
+          name: `Gatsby Theme Amsterdam`,
+          short_name: `Amsterdam`,
+          background_color: `#f5f0eb`,
+          theme_color: `#292929`,
           start_url: basePath || `/`,
           display: `browser`,
           icon: iconPath
