@@ -55,7 +55,7 @@ module.exports = options => {
           background_color: `#f5f0eb`,
           theme_color: `#292929`,
           start_url: basePath || `/`,
-          display: `browser`,
+          display: `standalone`,
           icon: iconPath
             ? path.resolve(iconPath)
             : require.resolve('./src/images/favicon.png'),

@@ -6,7 +6,7 @@ export default {
     highlight: '#C29967',
     background: '#f5f0eb',
     border: '#dcd8d3',
-    button: '#dcd8d3',
+    button: '#E5E3E1',
     text: '#292929',
     code: '#e9e5e0',
   },
