@@ -41,7 +41,7 @@ module.exports = {
       resolve: 'gatsby-theme-amsterdam',
       options: {
         postsPerPage: 6,
-        grid: 'organic',
+        grid: 'basic',
       },
     },
     {
