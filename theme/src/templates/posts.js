@@ -11,15 +11,19 @@ const PostsPage = ({ data, pageContext }) => {
   const { intro } = useSiteMetadata()
   const posts = data.allMarkdownRemark.edges
 
+  let ogImage
+  try {
+    ogImage = posts[0].node.frontmatter.cover.childImageSharp.ogimg.src
+  } catch (error) {
+    ogImage = null
+  }
+
   return (
     <>
-      <SEO
-        title="Home"
-        image={posts[0].node.frontmatter.cover.childImageSharp.ogimg.src}
-      />
+      <SEO title="Home" image={ogImage} />
       <Container fullWidth noPadding>
         {intro && <Intro title={intro} context={pageContext} />}
-        <PostList posts={posts} grid={pageContext.grid} />
+        {posts.length > 0 && <PostList posts={posts} grid={pageContext.grid} />}
       </Container>
       <Pagination context={pageContext} />
     </>

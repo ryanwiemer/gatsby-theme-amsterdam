@@ -9,15 +9,19 @@ import Container from '../components/Container'
 const TagPage = ({ data, pageContext }) => {
   const posts = data.allMarkdownRemark.edges
 
+  let ogImage
+  try {
+    ogImage = posts[0].node.frontmatter.cover.childImageSharp.ogimg.src
+  } catch (error) {
+    ogImage = null
+  }
+
   return (
     <>
-      <SEO
-        title={`Tag: ${pageContext.tag}`}
-        image={posts[0].node.frontmatter.cover.childImageSharp.ogimg.src}
-      />
+      <SEO title={`Tag: ${pageContext.tag}`} image={ogImage} />
       <Container fullWidth noPadding>
         <Intro title={`Tagged: ${pageContext.tag}`} context={pageContext} />
-        <PostList posts={posts} grid={pageContext.grid} />
+        {posts.length > 0 && <PostList posts={posts} grid={pageContext.grid} />}
       </Container>
       <Pagination context={pageContext} />
     </>
