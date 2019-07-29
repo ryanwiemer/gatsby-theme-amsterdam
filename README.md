@@ -67,7 +67,7 @@ Add the theme to your `gatsby-config.js`
 module.exports = {
   plugins: [
     {
-      resolve: `gatsby-theme-amsterdam`,
+      resolve: 'gatsby-theme-amsterdam',
       options: {
         // See theme options section for more information
       },
@@ -95,14 +95,14 @@ module.exports = {
 module.exports = {
   plugins: [
     {
-      resolve: `gatsby-theme-amsterdam`,
+      resolve: 'gatsby-theme-amsterdam',
       options: {
-        // basePath defaults to `/`
-        basePath: `/photography`,
+        // basePath defaults to '/'
+        basePath: '/photography',
         // the path to your icon file
-        iconPath: `src/images/favicon.png`,
-        // grid defaults to `basic`
-        grid: `organic`,
+        iconPath: 'src/images/favicon.png',
+        // grid defaults to 'basic'
+        grid: 'organic',
       },
     },
   ],
@@ -118,14 +118,14 @@ In addition to the theme options, there are a handful of items you can customize
 module.exports = {
   siteMetadata: {
     // Used for the site title and SEO
-    title: `My Site Title`,
+    title: 'My Site Title',
     // Used for SEO
-    description: `My site description...`,
+    description: 'My site description...',
     // Used for SEO. Do not include a trailing slash
     url: 'https://www.example.com',
     // Used for SEO
     author: 'John Doe',
-    // Used for the links in the menu
+    // Used for an optional intro section at the top of the posts template
     intro: 'John Doe is a photographer....',
     // Used for the links in the menu
     menuLinks: [
@@ -169,11 +169,11 @@ export default {
     secondary: '#686461',
     tertiary: '#958E8E',
     highlight: '#C29967',
-    background: '#f5f0eb',
-    border: '#dcd8d3',
+    background: '#F5F0EB',
+    border: '#DCD8D3',
     button: '#E5E3E1',
     text: '#292929',
-    code: '#e9e5e0',
+    code: '#E9E5E0',
   },
   fonts: {
     body:
