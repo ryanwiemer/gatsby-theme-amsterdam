@@ -501,11 +501,11 @@ const DocsPage = ({ data }) => {
               <span className="token punctuation">,</span>
               <br />
               {'    '}background<span className="token punctuation">:</span>{' '}
-              <span className="token string">'#f5f0eb'</span>
+              <span className="token string">'#F5F0EB'</span>
               <span className="token punctuation">,</span>
               <br />
               {'    '}border<span className="token punctuation">:</span>{' '}
-              <span className="token string">'#dcd8d3'</span>
+              <span className="token string">'#DCD8D3'</span>
               <span className="token punctuation">,</span>
               <br />
               {'    '}button<span className="token punctuation">:</span>{' '}
@@ -517,7 +517,7 @@ const DocsPage = ({ data }) => {
               <span className="token punctuation">,</span>
               <br />
               {'    '}code<span className="token punctuation">:</span>{' '}
-              <span className="token string">'#e9e5e0'</span>
+              <span className="token string">'#E9E5E0'</span>
               <span className="token punctuation">,</span>
               <br />
               {'  '}
