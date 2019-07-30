@@ -18,7 +18,6 @@ const Header = styled.header`
   display: flex;
   border-bottom: 1px solid ${props => props.theme.colors.border};
   border-width: ${props => (props.open ? '0' : '1px')};
-  overflow-y: scroll;
   @media screen and (min-width: ${props => props.theme.responsive.medium}) {
     max-height: 60px;
     border-width: 1px;
