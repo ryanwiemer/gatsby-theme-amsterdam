@@ -11,12 +11,19 @@ const PostTemplate = ({ data, pageContext }) => {
   const next = pageContext.previous
   const previous = pageContext.next
 
+  let ogImage
+  try {
+    ogImage = post.frontmatter.cover.childImageSharp.ogimg.src
+  } catch (error) {
+    ogImage = null
+  }
+
   return (
     <>
       <SEO
         title={post.frontmatter.title}
         description={post.excerpt}
-        image={post.frontmatter.cover.childImageSharp.ogimg.src}
+        image={ogImage}
       />
       <Container fullWidth>
         <Hero

@@ -107,19 +107,23 @@ const Preview = props => {
               <TextContainer>
                 <div>
                   <SubTitle>Previous Post</SubTitle>
-                  <Title>{props.previous.frontmatter.title}</Title>
+                  {props.previous.frontmatter.title && (
+                    <Title>{props.previous.frontmatter.title}</Title>
+                  )}
                 </div>
               </TextContainer>
-              <Img
-                fluid={props.previous.frontmatter.cover.childImageSharp.fluid}
-                style={{
-                  position: 'absolute',
-                  left: 0,
-                  top: 0,
-                  width: '100%',
-                  height: '100%',
-                }}
-              />
+              {props.previous.frontmatter.cover && (
+                <Img
+                  fluid={props.previous.frontmatter.cover.childImageSharp.fluid}
+                  style={{
+                    position: 'absolute',
+                    left: 0,
+                    top: 0,
+                    width: '100%',
+                    height: '100%',
+                  }}
+                />
+              )}
             </Box>
           )}
           <Line />
@@ -131,19 +135,23 @@ const Preview = props => {
               <TextContainer>
                 <div>
                   <SubTitle>Next Post</SubTitle>
-                  <Title>{props.next.frontmatter.title}</Title>
+                  {props.next.frontmatter.title && (
+                    <Title>{props.next.frontmatter.title}</Title>
+                  )}
                 </div>
               </TextContainer>
-              <Img
-                fluid={props.next.frontmatter.cover.childImageSharp.fluid}
-                style={{
-                  position: 'absolute',
-                  left: 0,
-                  top: 0,
-                  width: '100%',
-                  height: '100%',
-                }}
-              />
+              {props.next.frontmatter.cover && (
+                <Img
+                  fluid={props.next.frontmatter.cover.childImageSharp.fluid}
+                  style={{
+                    position: 'absolute',
+                    left: 0,
+                    top: 0,
+                    width: '100%',
+                    height: '100%',
+                  }}
+                />
+              )}
             </Box>
           )}
         </Wrapper>
