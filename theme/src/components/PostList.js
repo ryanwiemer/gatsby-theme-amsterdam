@@ -36,10 +36,13 @@ const Item = styled(motion.li)`
   }
 `
 
-const ImageContainer = styled(motion.div)`
-  .gatsby-image-wrapper {
-    height: 0;
-    padding-bottom: 60%;
+const Cover = styled(Img)`
+  transition: opacity 0.4s;
+  &:hover {
+    opacity: 0.7;
+  }
+  @media (hover: none) {
+    opacity: 1 !important;
   }
 `
 
@@ -79,13 +82,6 @@ const OrganicItem = styled(Item)`
   }
 `
 
-const OrganicImageContainer = styled(ImageContainer)`
-  .gatsby-image-wrapper {
-    height: 100%;
-    padding: 0;
-  }
-`
-
 const BasicGrid = props => {
   return (
     <List>
@@ -93,19 +89,13 @@ const BasicGrid = props => {
         <Item key={post.frontmatter.title}>
           <Link to={post.fields.slug}>
             {post.frontmatter.cover && (
-              <ImageContainer
-                whileHover={{
-                  opacity: 0.7,
-                  transition: {
-                    duration: 0.4,
-                  },
+              <Cover
+                sizes={{
+                  ...post.frontmatter.cover.childImageSharp.fluid,
+                  aspectRatio: 5 / 3,
                 }}
-              >
-                <Img
-                  fluid={post.frontmatter.cover.childImageSharp.fluid}
-                  alt={post.frontmatter.cover.childImageSharp.title}
-                />
-              </ImageContainer>
+                alt={post.frontmatter.cover.childImageSharp.title}
+              />
             )}
             <Title>{post.frontmatter.title}</Title>
           </Link>
@@ -122,19 +112,10 @@ const OrganicGrid = props => {
         <OrganicItem key={post.frontmatter.title}>
           <Link to={post.fields.slug}>
             {post.frontmatter.cover && (
-              <OrganicImageContainer
-                whileHover={{
-                  opacity: 0.7,
-                  transition: {
-                    duration: 0.4,
-                  },
-                }}
-              >
-                <Img
-                  fluid={post.frontmatter.cover.childImageSharp.fluid}
-                  alt={post.frontmatter.cover.childImageSharp.title}
-                />
-              </OrganicImageContainer>
+              <Cover
+                fluid={post.frontmatter.cover.childImageSharp.fluid}
+                alt={post.frontmatter.cover.childImageSharp.title}
+              />
             )}
             <Title>{post.frontmatter.title}</Title>
           </Link>
