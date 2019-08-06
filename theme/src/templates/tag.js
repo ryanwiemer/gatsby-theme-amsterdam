@@ -43,6 +43,7 @@ export const tagQuery = graphql`
           fields {
             slug
           }
+          excerpt
           frontmatter {
             title
             cover {

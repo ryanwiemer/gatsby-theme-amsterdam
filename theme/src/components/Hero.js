@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Img from 'gatsby-image'
 import TagList from './TagList'
 import DateIcon from '../icons/DateIcon'
-import ImageIcon from '../icons/ImageIcon'
+import Placeholder from './Placeholder'
 
 const Wrapper = styled.div`
   margin: 0 -1.5rem 2rem;
@@ -44,21 +44,6 @@ const Date = styled.p`
   color: ${props => props.theme.colors.secondary};
 `
 
-const Placeholder = styled.div`
-  width: 100%;
-  background: ${props => props.theme.colors.border};
-  padding-bottom: 60%;
-  position: relative;
-  svg {
-    width: 15%;
-    max-width: 150px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-`
-
 const Hero = props => {
   return (
     <Wrapper>
@@ -83,13 +68,7 @@ const Hero = props => {
             title={props.image.title}
           />
         )}
-        {props.image === null ? (
-          <Placeholder>
-            <ImageIcon />
-          </Placeholder>
-        ) : (
-          ''
-        )}
+        {props.image === null ? <Placeholder aspectRatio={5 / 3} /> : ''}
       </ImageContainer>
     </Wrapper>
   )

@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
 import { motion } from 'framer-motion'
-import ImageIcon from '../icons/ImageIcon'
+import Placeholder from './Placeholder'
 
 // Basic Grid Styling
 const List = styled.ul`
@@ -73,33 +73,6 @@ const Excerpt = styled.p`
   color: ${props => props.theme.colors.secondary};
 `
 
-// Placeholder Image
-const Placeholder = styled.div`
-  width: 100%;
-  background: ${props => props.theme.colors.border};
-  padding-bottom: 60%;
-  position: relative;
-  svg {
-    transition: transform 0.6s;
-    width: 15%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  &:hover {
-    svg {
-      transform: translate(-50%, -50%) scale(1.05);
-    }
-  }
-  @media (hover: none) {
-    opacity: 1 !important;
-    svg {
-      transform: translate(-50%, -50%) scale(1) !important;
-    }
-  }
-`
-
 // List Grid Styling
 const ListItem = styled(Item)`
   align-self: center;
@@ -154,9 +127,7 @@ const BasicGrid = props => {
               />
             )}
             {post.frontmatter.cover === null ? (
-              <Placeholder>
-                <ImageIcon />
-              </Placeholder>
+              <Placeholder aspectRatio={5 / 3} />
             ) : (
               ''
             )}
@@ -183,6 +154,11 @@ const ListGrid = props => {
                 }}
                 alt={post.frontmatter.cover.childImageSharp.title}
               />
+            )}
+            {post.frontmatter.cover === null ? (
+              <Placeholder aspectRatio={2 / 1} />
+            ) : (
+              ''
             )}
             <ListContent>
               <Title>{post.frontmatter.title}</Title>
