@@ -40,8 +40,8 @@ module.exports = {
     {
       resolve: 'gatsby-theme-amsterdam',
       options: {
-        postsPerPage: 6,
-        grid: 'basic',
+        postsPerPage: 2,
+        grid: 'list',
       },
     },
     {

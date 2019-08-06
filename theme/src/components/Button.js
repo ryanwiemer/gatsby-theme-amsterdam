@@ -7,7 +7,7 @@ const Wrapper = styled(Link)`
   color: ${props => props.theme.colors.secondary};
   padding: 0.5rem;
   border-radius: 2px;
-  margin: 0 0.5rem;
+  margin: 0 0 0 0.5rem;
   cursor: pointer;
   text-decoration: none;
   transition: 0.3s all;
