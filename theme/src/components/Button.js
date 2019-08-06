@@ -4,6 +4,7 @@ import { Link } from 'gatsby'
 
 const Wrapper = styled(Link)`
   background: ${props => props.theme.colors.button};
+  border: 1px solid ${props => props.theme.colors.border};
   color: ${props => props.theme.colors.secondary};
   padding: 0.5rem;
   border-radius: 2px;
@@ -13,11 +14,13 @@ const Wrapper = styled(Link)`
   transition: 0.3s all;
   &:hover {
     background: ${props => props.theme.colors.highlight};
+    border-color: ${props => props.theme.colors.highlight};
     color: white;
   }
   @media (hover: none) {
     background: ${props => props.theme.colors.button} !important;
     color: ${props => props.theme.colors.secondary} !important;
+    border-color: ${props => props.theme.colors.border} !important;
   }
 `
 

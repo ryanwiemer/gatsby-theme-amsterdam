@@ -1,7 +1,7 @@
 ---
 title: Groceries On The Move
 date: "2019-07-05"
-cover: "cover.jp"
+cover: "cover.jpg"
 tags: ["photography", "cycling"]
 ---
 

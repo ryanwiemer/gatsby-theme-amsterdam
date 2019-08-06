@@ -171,7 +171,7 @@ export default {
     highlight: '#C29967',
     background: '#F5F0EB',
     border: '#DCD8D3',
-    button: '#E5E3E1',
+    button: '#E9E4DF',
     text: '#292929',
     code: '#E9E5E0',
   },

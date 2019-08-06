@@ -509,7 +509,7 @@ const DocsPage = ({ data }) => {
               <span className="token punctuation">,</span>
               <br />
               {'    '}button<span className="token punctuation">:</span>{' '}
-              <span className="token string">'#E5E3E1'</span>
+              <span className="token string">'#E9E4DF'</span>
               <span className="token punctuation">,</span>
               <br />
               {'    '}text<span className="token punctuation">:</span>{' '}
