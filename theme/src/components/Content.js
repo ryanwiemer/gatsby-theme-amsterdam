@@ -41,21 +41,21 @@ const Wrapper = styled.div`
   h4 {
     font-size: 1rem;
     @media screen and (min-width: ${props => props.theme.responsive.small}) {
-      font-size: 1rem;
+      font-size: 1.1rem;
     }
   }
 
   h5 {
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     @media screen and (min-width: ${props => props.theme.responsive.small}) {
-      font-size: 0.875rem;
+      font-size: 0.95rem;
     }
   }
 
   h6 {
-    font-size: 0.675rem;
+    font-size: 0.75rem;
     @media screen and (min-width: ${props => props.theme.responsive.small}) {
-      font-size: 0.75rem;
+      font-size: 0.875rem;
     }
   }
 

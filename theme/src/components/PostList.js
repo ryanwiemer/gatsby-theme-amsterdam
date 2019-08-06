@@ -26,12 +26,12 @@ const Item = styled(motion.li)`
   a {
     text-decoration: none;
     transition: color 0.3s;
-    color: ${props => props.theme.colors.secondary};
+    color: ${props => props.theme.colors.base};
     &:hover {
       color: ${props => props.theme.colors.highlight};
     }
     @media (hover: none) {
-      color: ${props => props.theme.colors.secondary} !important;
+      color: ${props => props.theme.colors.base} !important;
     }
   }
 `
@@ -47,10 +47,20 @@ const Cover = styled(Img)`
 `
 
 const Title = styled.h2`
-  text-align: left;
+  font-weight: ${props => props.theme.fonts.boldWeight};
   padding: 0.5rem 0 0 0;
-  display: inline-block;
+  display: block;
   line-height: 1.25;
+  font-size: 1rem;
+  @media screen and (min-width: ${props => props.theme.responsive.small}) {
+    font-size: 1.1rem;
+  }
+`
+
+const Excerpt = styled.p`
+  padding: 0.5rem 0 0 0;
+  line-height: 1.5;
+  color: ${props => props.theme.colors.secondary};
 `
 
 // Organic Grid Styling
@@ -98,6 +108,7 @@ const BasicGrid = props => {
               />
             )}
             <Title>{post.frontmatter.title}</Title>
+            <Excerpt>{post.excerpt}</Excerpt>
           </Link>
         </Item>
       ))}
@@ -118,6 +129,7 @@ const OrganicGrid = props => {
               />
             )}
             <Title>{post.frontmatter.title}</Title>
+            <Excerpt>{post.excerpt}</Excerpt>
           </Link>
         </OrganicItem>
       ))}

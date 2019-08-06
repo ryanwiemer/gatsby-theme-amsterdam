@@ -44,8 +44,11 @@ export const postsQuery = graphql`
           fields {
             slug
           }
+          excerpt
           frontmatter {
             title
+            tags
+            date(formatString: "MMMM DD, YYYY")
             cover {
               childImageSharp {
                 fluid(maxWidth: 1000) {
