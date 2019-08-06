@@ -15,6 +15,19 @@ const List = styled.ul`
   justify-content: space-between;
 `
 
+const Cover = styled(Img)`
+  transition: opacity 0.4s;
+  img {
+    transition: transform 0.6s !important;
+  }
+  @media (hover: none) {
+    opacity: 1 !important;
+    img {
+      transform: scale(1) !important;
+    }
+  }
+`
+
 const Item = styled(motion.li)`
   position: relative;
   display: inline-block;
@@ -30,28 +43,15 @@ const Item = styled(motion.li)`
     color: ${props => props.theme.colors.base};
     &:hover {
       color: ${props => props.theme.colors.highlight};
+      ${Cover} {
+        opacity: 0.8;
+        img {
+          transform: scale(1.03);
+        }
+      }
     }
     @media (hover: none) {
       color: ${props => props.theme.colors.base} !important;
-    }
-  }
-`
-
-const Cover = styled(Img)`
-  transition: opacity 0.4s;
-  img {
-    transition: transform 0.6s !important;
-  }
-  &:hover {
-    opacity: 0.8;
-    img {
-      transform: scale(1.03);
-    }
-  }
-  @media (hover: none) {
-    opacity: 1 !important;
-    img {
-      transform: scale(1) !important;
     }
   }
 `
@@ -100,33 +100,42 @@ const Placeholder = styled.div`
   }
 `
 
-// Organic Grid Styling
-const OrganicList = styled(List)`
-  max-width: 100%;
+// List Grid Styling
+const ListItem = styled(Item)`
+  align-self: center;
+  margin: 0 0 2rem;
+  border-radius: 2px;
+  @media screen and (min-width: ${props => props.theme.responsive.small}) {
+    flex: 0 100%;
+  }
 `
 
-const OrganicItem = styled(Item)`
-  align-self: center;
-  flex: 0 47.5%;
-  margin: 0 0 2rem;
+const ListLink = styled(Link)`
+  h2 {
+    padding: 0;
+  }
   @media screen and (min-width: ${props => props.theme.responsive.small}) {
-    margin: 0 0 3rem;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
   }
-  &:nth-child(3n) {
-    flex: 0 75%;
-    margin-left: 25%;
-    position: relative;
-    left: 1.5rem;
+`
+
+const ListCover = styled(Cover)`
+  flex: 0 60%;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  @media screen and (min-width: ${props => props.theme.responsive.small}) {
+    border-top-right-radius: 0;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
   }
-  &:nth-child(6n) {
-    flex: 0 75%;
-    margin-left: 0;
-    position: relative;
-    left: -1.5rem;
-    h2 {
-      padding: 1rem 0 0 1.5rem;
-    }
-  }
+`
+
+const ListContent = styled.div`
+  flex: 0 40%;
+  padding: 1.5em;
+  background: ${props => props.theme.colors.code};
 `
 
 const BasicGrid = props => {
@@ -160,30 +169,35 @@ const BasicGrid = props => {
   )
 }
 
-const OrganicGrid = props => {
+const ListGrid = props => {
   return (
-    <OrganicList>
+    <List>
       {props.posts.map(({ node: post }) => (
-        <OrganicItem key={post.frontmatter.title}>
-          <Link to={post.fields.slug}>
+        <ListItem key={post.frontmatter.title}>
+          <ListLink to={post.fields.slug}>
             {post.frontmatter.cover && (
-              <Cover
-                fluid={post.frontmatter.cover.childImageSharp.fluid}
+              <ListCover
+                sizes={{
+                  ...post.frontmatter.cover.childImageSharp.fluid,
+                  aspectRatio: 2 / 1,
+                }}
                 alt={post.frontmatter.cover.childImageSharp.title}
               />
             )}
-            <Title>{post.frontmatter.title}</Title>
-            <Excerpt>{post.excerpt}</Excerpt>
-          </Link>
-        </OrganicItem>
+            <ListContent>
+              <Title>{post.frontmatter.title}</Title>
+              <Excerpt>{post.excerpt}</Excerpt>
+            </ListContent>
+          </ListLink>
+        </ListItem>
       ))}
-    </OrganicList>
+    </List>
   )
 }
 
 const PostList = props => {
-  if (props.grid === 'organic') {
-    return <OrganicGrid {...props} />
+  if (props.grid === 'list') {
+    return <ListGrid {...props} />
   }
   return <BasicGrid {...props} />
 }
