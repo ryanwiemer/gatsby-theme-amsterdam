@@ -15,6 +15,10 @@ const List = styled.ul`
     border: 0;
     padding-top: 0;
   }
+  li:last-child a {
+    padding-bottom: 0;
+    margin-bottom: 2rem;
+  }
 `
 
 const Cover = styled(Img)`
@@ -82,7 +86,6 @@ const StyledLink = styled(Link)`
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
-    border-radius: 2px;
     padding: 2rem 0;
     border-top: 1px solid ${props => props.theme.colors.border};
   }
