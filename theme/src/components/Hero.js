@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Img from 'gatsby-image'
 import TagList from './TagList'
 import DateIcon from '../icons/DateIcon'
+import ImageIcon from '../icons/ImageIcon'
 
 const Wrapper = styled.div`
   margin: 0 -1.5rem 2rem;
@@ -12,15 +13,9 @@ const ImageContainer = styled.div`
   padding: 0 1.5rem;
 `
 
-const BgImg = styled(Img)`
+const Cover = styled(Img)`
   margin: 0 auto;
   width: 100%;
-  height: 0;
-  padding-bottom: 60%;
-  & > img {
-    object-fit: cover !important;
-    object-position: 50% 50% !important;
-  }
 `
 
 const TextContainer = styled.div`
@@ -49,6 +44,21 @@ const Date = styled.p`
   color: ${props => props.theme.colors.secondary};
 `
 
+const Placeholder = styled.div`
+  width: 100%;
+  background: ${props => props.theme.colors.border};
+  padding-bottom: 60%;
+  position: relative;
+  svg {
+    width: 15%;
+    max-width: 150px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+`
+
 const Hero = props => {
   return (
     <Wrapper>
@@ -62,15 +72,25 @@ const Hero = props => {
           </Date>
         )}
       </TextContainer>
-      {props.image && (
-        <ImageContainer>
-          <BgImg
-            fluid={props.image.childImageSharp.fluid}
+      <ImageContainer>
+        {props.image && (
+          <Cover
+            sizes={{
+              ...props.image.childImageSharp.fluid,
+              aspectRatio: 5 / 3,
+            }}
             alt={props.image.title}
             title={props.image.title}
           />
-        </ImageContainer>
-      )}
+        )}
+        {props.image === null ? (
+          <Placeholder>
+            <ImageIcon />
+          </Placeholder>
+        ) : (
+          ''
+        )}
+      </ImageContainer>
     </Wrapper>
   )
 }
