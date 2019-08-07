@@ -1,8 +1,8 @@
 ---
 title: Lush Garden Vibes
-date: "2019-07-04"
-cover: "cover.jpg"
-tags: ["photography", "garden inspiration"]
+date: 2019-07-04
+cover: cover.jpg
+tags: [photography, garden inspiration]
 ---
 
 Vestibulum quis est iaculis, euismod lacus sit amet, tincidunt ante. Duis convallis urna tincidunt, venenatis augue ut, tincidunt est. Duis eget ornare dui. Nunc imperdiet eu nisl vel aliquet. Sed venenatis eleifend libero a pharetra. Fusce tincidunt est nunc, eget vulputate magna luctus in. Quisque id eros mollis, ullamcorper sem in, accumsan ex. Suspendisse non sollicitudin mauris. Vivamus ac arcu non lectus auctor dapibus. Phasellus nec sapien in felis aliquam hendrerit quis id erat. Aliquam tempus, magna nec viverra consectetur, leo enim mollis neque, a consectetur orci justo in magna. Nulla ullamcorper sed sem a tempus. Vivamus ut dui nec orci vestibulum maximus vitae at libero.

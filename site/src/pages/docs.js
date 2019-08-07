@@ -188,8 +188,7 @@ const DocsPage = ({ data }) => {
               </td>
               <td align="left">
                 Determines the type of grid used on the posts and tag templates.
-                Two available options: <code>basic</code> and{' '}
-                <code>organic</code>.
+                Two available options: <code>basic</code> and <code>list</code>.
               </td>
             </tr>
           </tbody>
@@ -248,7 +247,7 @@ const DocsPage = ({ data }) => {
               <br />
               {'      '}grid<span className="token punctuation">:</span>{' '}
               <span className="token template-string">
-                <span className="token string">'organic'</span>
+                <span className="token string">'list'</span>
               </span>
               <br />
               {'      '}
@@ -613,11 +612,11 @@ const DocsPage = ({ data }) => {
               <br />
               title: Hello World
               <br />
-              date: "2019-07-06"
+              date: 2019-07-06
               <br />
-              cover: "cover.jpg"
+              cover: cover.jpg
               <br />
-              tags: ["greeting", "blog"]
+              tags: [greeting", blog]
               <br />
               <span className="token hr punctuation">---</span>
             </code>
