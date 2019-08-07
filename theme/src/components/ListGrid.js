@@ -122,6 +122,9 @@ const Tag = styled.span`
   a {
     text-decoration: underline;
     color: ${props => props.theme.colors.tertiary};
+    @media (hover: none) {
+      color: ${props => props.theme.colors.tertiary} !important;
+    }
   }
 `
 
