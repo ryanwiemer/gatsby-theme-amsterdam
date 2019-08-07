@@ -86,7 +86,7 @@ module.exports = {
 | `contentPath` | `/content`    | Location of markdown files used for the posts.                                                                                                   |  |
 | `transitions` | `true`        | Include simple page transitions powered with [framer-motion](https://github.com/framer/motion)                                                   |
 | `iconPath`    | default icon  | Path to the icon to be used for the favicon and web manifest. For example `'src/images/favicon.png'`. For best results provide a 512x512 square. |
-| `grid`        | `basic`       | Determines the type of grid used on the posts and tag templates. Two available options: `basic` and `organic`.                                   |
+| `grid`        | `basic`       | Determines the type of grid used on the posts and tag templates. Two available options: `basic` and `list`.                                      |
 
 #### Example Usage
 
@@ -102,7 +102,7 @@ module.exports = {
         // the path to your icon file
         iconPath: 'src/images/favicon.png',
         // grid defaults to 'basic'
-        grid: 'organic',
+        grid: 'list',
       },
     },
   ],
@@ -171,7 +171,7 @@ export default {
     highlight: '#C29967',
     background: '#F5F0EB',
     border: '#DCD8D3',
-    button: '#E5E3E1',
+    button: '#E9E4DF',
     text: '#292929',
     code: '#E9E5E0',
   },
@@ -202,8 +202,8 @@ Posts are written in markdown format `.md` and placed in the `content` directory
 ```markdown
 ---
 title: Hello World
-date: '2019-07-06'
-cover: 'cover.jpg'
-tags: ['greeting', 'blog']
+date: 2019-07-06
+cover: cover.jpg
+tags: [greeting, blog]
 ---
 ```

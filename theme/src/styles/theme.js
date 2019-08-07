@@ -4,11 +4,11 @@ export default {
     secondary: '#686461',
     tertiary: '#958E8E',
     highlight: '#C29967',
-    background: '#f5f0eb',
-    border: '#dcd8d3',
-    button: '#E5E3E1',
+    background: '#F5F0EB',
+    border: '#DCD8D3',
+    button: '#E9E4DF',
     text: '#292929',
-    code: '#e9e5e0',
+    code: '#E9E5E0',
   },
   fonts: {
     body:

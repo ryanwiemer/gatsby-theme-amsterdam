@@ -1,8 +1,8 @@
 ---
 title: Public Transit In Motion
-date: "2019-07-06"
-cover: "cover.jpg"
-tags: ["photography", "transit"]
+date: 2019-07-06
+cover: cover.jpg
+tags: [photography, transit]
 ---
 
 <!-- Headings -->

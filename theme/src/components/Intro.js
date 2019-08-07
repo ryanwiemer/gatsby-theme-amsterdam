@@ -1,11 +1,16 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const Wrapper = styled.div`
   max-width: ${props => props.theme.sizes.maxWidth};
   width: 100%;
   margin: 3rem auto 0;
   padding: 0 1.5rem;
+  ${props =>
+    props.capitalize &&
+    css`
+      text-transform: capitalize;
+    `};
 `
 
 const Title = styled.h2`
@@ -24,7 +29,7 @@ const Intro = props => {
   return (
     <>
       {props.context.humanPageNumber === 1 && (
-        <Wrapper>
+        <Wrapper {...props}>
           <Title>{props.title}</Title>
         </Wrapper>
       )}
