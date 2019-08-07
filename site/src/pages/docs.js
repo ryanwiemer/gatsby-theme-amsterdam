@@ -616,7 +616,7 @@ const DocsPage = ({ data }) => {
               <br />
               cover: cover.jpg
               <br />
-              tags: [greeting", blog]
+              tags: [greeting, blog]
               <br />
               <span className="token hr punctuation">---</span>
             </code>
