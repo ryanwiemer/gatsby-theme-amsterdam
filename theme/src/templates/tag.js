@@ -20,7 +20,11 @@ const TagPage = ({ data, pageContext }) => {
     <>
       <SEO title={`Tag: ${pageContext.tag}`} image={ogImage} />
       <Container fullWidth noPadding>
-        <Intro title={`Tagged: ${pageContext.tag}`} context={pageContext} />
+        <Intro
+          title={`Tagged: ${pageContext.tag}`}
+          context={pageContext}
+          capitalize
+        />
         {posts.length > 0 && <PostList posts={posts} grid={pageContext.grid} />}
       </Container>
       <Pagination context={pageContext} />
@@ -46,6 +50,8 @@ export const tagQuery = graphql`
           excerpt
           frontmatter {
             title
+            tags
+            date(formatString: "MMMM DD, YYYY")
             cover {
               childImageSharp {
                 fluid(maxWidth: 1000) {
