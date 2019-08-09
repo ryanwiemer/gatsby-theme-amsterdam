@@ -22,7 +22,7 @@ const PostsPage = ({ data, pageContext }) => {
     <>
       <SEO title="Home" image={ogImage} />
       <Container fullWidth noPadding>
-        {intro && <Intro title={intro} context={pageContext} />}
+        {intro && <Intro text={intro} context={pageContext} />}
         {posts.length > 0 && <PostList posts={posts} grid={pageContext.grid} />}
       </Container>
       <Pagination context={pageContext} />

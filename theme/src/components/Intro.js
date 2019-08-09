@@ -30,7 +30,7 @@ const Intro = props => {
     <>
       {props.context.humanPageNumber === 1 && (
         <Wrapper {...props}>
-          <Title>{props.title}</Title>
+          <Title>{props.text}</Title>
         </Wrapper>
       )}
     </>

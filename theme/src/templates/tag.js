@@ -21,7 +21,7 @@ const TagPage = ({ data, pageContext }) => {
       <SEO title={`Tag: ${pageContext.tag}`} image={ogImage} />
       <Container fullWidth noPadding>
         <Intro
-          title={`Tagged: ${pageContext.tag}`}
+          text={`Tagged: ${pageContext.tag}`}
           context={pageContext}
           capitalize
         />
