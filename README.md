@@ -197,13 +197,14 @@ export default {
 
 ### Writing Content
 
-Posts are written in markdown format `.md` and placed in the `content` directory at the root of the site unless a different `contentPath` is defined in the theme options. There are four front matter variables used in the theme which are shown below.
+Posts are written in markdown format `.md` and placed in the `content` directory at the root of the site unless a different `contentPath` is defined in the theme options. There are five front matter variables used in the theme which are shown below.
 
 ```markdown
 ---
 title: Hello World
 date: 2019-07-06
 cover: cover.jpg
+heroImage: false
 tags: [greeting, blog]
 ---
 ```

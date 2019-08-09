@@ -29,6 +29,7 @@ const PostTemplate = ({ data, pageContext }) => {
         <Hero
           title={post.frontmatter.title}
           image={post.frontmatter.cover}
+          heroImage={post.frontmatter.heroImage}
           date={post.frontmatter.date}
           tags={post.frontmatter.tags}
         />
@@ -49,6 +50,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         tags
+        heroImage
         date(formatString: "MMMM DD, YYYY")
         cover {
           childImageSharp {

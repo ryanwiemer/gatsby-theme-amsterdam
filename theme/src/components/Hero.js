@@ -57,19 +57,21 @@ const Hero = props => {
           </Date>
         )}
       </TextContainer>
-      <ImageContainer>
-        {props.image && (
-          <Cover
-            sizes={{
-              ...props.image.childImageSharp.fluid,
-              aspectRatio: 5 / 3,
-            }}
-            alt={props.image.title}
-            title={props.image.title}
-          />
-        )}
-        {props.image === null ? <Placeholder aspectRatio={5 / 3} /> : ''}
-      </ImageContainer>
+      {props.heroImage !== false && (
+        <ImageContainer>
+          {props.image && (
+            <Cover
+              sizes={{
+                ...props.image.childImageSharp.fluid,
+                aspectRatio: 5 / 3,
+              }}
+              alt={props.image.title}
+              title={props.image.title}
+            />
+          )}
+          {props.image === null ? <Placeholder aspectRatio={5 / 3} /> : ''}
+        </ImageContainer>
+      )}
     </Wrapper>
   )
 }

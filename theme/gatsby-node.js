@@ -25,6 +25,7 @@ exports.sourceNodes = ({ actions, schema }) => {
       title: String
       date: Date @dateformat
       cover: File @fileByRelativePath
+      heroImage: Boolean
       tags: [String]
     }
     type Fields @infer {
