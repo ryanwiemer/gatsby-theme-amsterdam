@@ -134,7 +134,7 @@ const ListGrid = props => {
       {props.posts.map(({ node: post }) => (
         <Item key={post.frontmatter.title}>
           <ImageContainer>
-            <Link to={post.fields.slug}>
+            <Link to={props.context.basePath + post.fields.slug}>
               {post.frontmatter.cover && (
                 <Cover
                   sizes={{
@@ -152,7 +152,7 @@ const ListGrid = props => {
             </Link>
           </ImageContainer>
           <TextContainer>
-            <Link to={post.fields.slug}>
+            <Link to={props.context.basePath + post.fields.slug}>
               <Title>{post.frontmatter.title}</Title>
               <Excerpt>{post.excerpt}</Excerpt>
             </Link>
@@ -163,7 +163,13 @@ const ListGrid = props => {
                   <Divider>/</Divider>
                   {post.frontmatter.tags.map(tag => (
                     <Tag key={tag}>
-                      <Link to={`/tag/${_.kebabCase(tag)}/`}>{tag}</Link>
+                      <Link
+                        to={`${props.context.basePath}/tag/${_.kebabCase(
+                          tag
+                        )}/`}
+                      >
+                        {tag}
+                      </Link>
                     </Tag>
                   ))}
                 </>

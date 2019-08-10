@@ -62,8 +62,8 @@ const Pagination = props => {
   function changePage(e) {
     navigate(
       e.target.value
-        ? `${props.context.basePath}/${e.target.value}/`
-        : `${props.context.basePath}`
+        ? `${props.context.paginationPath}/${e.target.value}`
+        : `${props.context.paginationPath}/`
     )
   }
 
@@ -91,15 +91,12 @@ const Pagination = props => {
           </Numbers>
           <div>
             {props.context.previousPagePath && (
-              <Button to={`${props.context.previousPagePath}/`}>
+              <Button to={`${props.context.previousPagePath}`}>
                 <span>&larr;</span> Prev
               </Button>
             )}
             {props.context.nextPagePath && (
-              <Button
-                style={{ order: 3 }}
-                to={`${props.context.nextPagePath}/`}
-              >
+              <Button style={{ order: 3 }} to={`${props.context.nextPagePath}`}>
                 Next <span>&rarr;</span>
               </Button>
             )}
