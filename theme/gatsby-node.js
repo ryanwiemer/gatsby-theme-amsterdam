@@ -78,11 +78,13 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
     reporter.panic(result.errors)
   }
   const posts = result.data.allMarkdownRemark.edges
+  const basePath = themeOptions.basePath || `/`
 
   // Create individual post pages
   posts.forEach((post, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
     const next = index === 0 ? null : posts[index - 1].node
+
     createPage({
       path: post.node.fields.slug,
       component: require.resolve(`./src/templates/post`),
@@ -95,7 +97,6 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
   })
 
   // Create posts list page and paginate
-  const basePath = themeOptions.basePath || `/`
   const postsPerPage = themeOptions.postsPerPage || 6
   const grid = themeOptions.grid || `basic`
   paginate({
@@ -106,6 +107,7 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
     component: require.resolve(`./src/templates/posts`),
     context: {
       grid: grid,
+      basePath: basePath,
     },
   })
 
@@ -123,15 +125,22 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
         post.node.frontmatter.tags &&
         post.node.frontmatter.tags.indexOf(tag) !== -1
     )
+
+    const pathForTags =
+      basePath === '/'
+        ? `${basePath}tag/${_.kebabCase(tag)}`
+        : `${basePath}/tag/${_.kebabCase(tag)}`
+
     paginate({
       createPage,
       items: postsWithTag,
       itemsPerPage: postsPerPage,
-      pathPrefix: `${basePath}tag/${_.kebabCase(tag)}`,
+      pathPrefix: pathForTags,
       component: require.resolve(`./src/templates/tag`),
       context: {
         tag,
         grid: grid,
+        basePath: pathForTags,
       },
     })
   })
