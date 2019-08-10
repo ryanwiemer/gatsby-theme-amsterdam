@@ -49,7 +49,7 @@ const Hero = props => {
     <Wrapper>
       <TextContainer>
         <Title>{props.title}</Title>
-        {props.tags && <TagList tags={props.tags} />}
+        {props.tags && <TagList tags={props.tags} context={props.context} />}
         {props.date && (
           <Date>
             <DateIcon />

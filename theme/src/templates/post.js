@@ -31,9 +31,10 @@ const PostTemplate = ({ data, pageContext }) => {
           image={post.frontmatter.cover}
           date={post.frontmatter.date}
           tags={post.frontmatter.tags}
+          context={pageContext}
         />
         <Content html={post.html} />
-        <Preview previous={previous} next={next} />
+        <Preview previous={previous} next={next} context={pageContext} />
       </Container>
     </>
   )

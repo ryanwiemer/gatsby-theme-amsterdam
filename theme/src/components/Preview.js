@@ -101,7 +101,7 @@ const Preview = props => {
         <Wrapper>
           {props.previous && (
             <Box
-              to={props.previous.fields.slug}
+              to={props.context.basePath + props.previous.fields.slug}
               style={{ order: 1, marginRight: 'auto' }}
             >
               <TextContainer>
@@ -129,7 +129,7 @@ const Preview = props => {
           <Line />
           {props.next && (
             <Box
-              to={props.next.fields.slug}
+              to={props.context.basePath + props.next.fields.slug}
               style={{ order: 3, marginLeft: 'auto' }}
             >
               <TextContainer>

@@ -31,7 +31,9 @@ const TagList = props => {
       <TagIcon />
       {props.tags.map(tag => (
         <Tag key={tag}>
-          <Link to={`/tag/${_.kebabCase(tag)}/`}>{tag}</Link>
+          <Link to={`${props.context.basePath}/tag/${_.kebabCase(tag)}/`}>
+            {tag}
+          </Link>
         </Tag>
       ))}
     </List>
