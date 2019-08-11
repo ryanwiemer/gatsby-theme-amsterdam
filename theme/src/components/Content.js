@@ -130,13 +130,6 @@ const Wrapper = styled.div`
     font-style: italic;
   }
 
-  code {
-    display: inline-block;
-    font-size: 0.9rem !important;
-    padding: 0.25rem !important;
-    background: ${props => props.theme.colors.code} !important;
-  }
-
   pre {
     text-shadow: none !important;
     border: 0 !important;
@@ -149,6 +142,12 @@ const Wrapper = styled.div`
       background: ${props => props.theme.colors.code} !important;
       padding: 0 !important;
     }
+  }
+
+  code {
+    font-size: 0.9rem !important;
+    padding: 0.25rem !important;
+    background: ${props => props.theme.colors.code} !important;
   }
 
   td,
