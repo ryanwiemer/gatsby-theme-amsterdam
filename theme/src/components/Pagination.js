@@ -42,7 +42,7 @@ const Numbers = styled.div`
     color: ${props => props.theme.colors.secondary} !important;
     border-color: ${props => props.theme.colors.border} !important;
     svg {
-      fill: ${props => props.theme.colors.tertiary};
+      fill: ${props => props.theme.colors.tertiary} !important;
     }
   }
 `
