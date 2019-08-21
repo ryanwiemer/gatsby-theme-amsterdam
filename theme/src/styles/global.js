@@ -98,7 +98,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   /* Added to Fix Footer to bottom of viewport */
-  html, body {
+  html {
     height: 100%;
   }
   .siteRoot {

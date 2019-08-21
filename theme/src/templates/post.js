@@ -5,6 +5,7 @@ import Hero from '../components/Hero'
 import Content from '../components/Content'
 import Preview from '../components/Preview'
 import SEO from '../components/SEO'
+import ProgressIndicator from '../components/ProgressIndicator'
 
 const PostTemplate = ({ data, pageContext }) => {
   const post = data.markdownRemark
@@ -25,6 +26,7 @@ const PostTemplate = ({ data, pageContext }) => {
         description={post.excerpt}
         image={ogImage}
       />
+      <ProgressIndicator />
       <Container fullWidth>
         <Hero
           title={post.frontmatter.title}
