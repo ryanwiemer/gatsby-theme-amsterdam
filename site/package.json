@@ -15,8 +15,8 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "gatsby": "^2.13.57",
-    "gatsby-plugin-google-analytics": "^2.1.7",
+    "gatsby": "^2.13.72",
+    "gatsby-plugin-google-analytics": "^2.1.8",
     "gatsby-theme-amsterdam": "*",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"

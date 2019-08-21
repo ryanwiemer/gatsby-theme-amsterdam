@@ -8,7 +8,8 @@
     "develop": "yarn workspace site develop",
     "build": "yarn workspace site build",
     "clean": "yarn workspace site clean",
-    "serve": "yarn workspace site serve"
+    "serve": "yarn workspace site serve",
+    "publish": "yarn workspace theme publish"
   },
   "devDependencies": {
     "eslint": "5.16.0",
