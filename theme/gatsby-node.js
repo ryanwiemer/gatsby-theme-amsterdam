@@ -102,7 +102,6 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
 
   // Create posts list page and paginate
   const postsPerPage = themeOptions.postsPerPage || 6
-  const grid = themeOptions.grid || `basic`
 
   paginate({
     createPage,
@@ -111,7 +110,6 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
     pathPrefix: basePath,
     component: require.resolve(`./src/templates/posts`),
     context: {
-      grid: grid,
       basePath: basePath === '/' ? '' : basePath,
       paginationPath: basePath === '/' ? '' : basePath,
     },
@@ -145,7 +143,6 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
       component: require.resolve(`./src/templates/tag`),
       context: {
         tag,
-        grid: grid,
         basePath: basePath === '/' ? '' : basePath,
         paginationPath: tagPagination,
       },

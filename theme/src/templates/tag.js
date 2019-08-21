@@ -25,13 +25,7 @@ const TagPage = ({ data, pageContext }) => {
           context={pageContext}
           capitalize
         />
-        {posts.length > 0 && (
-          <PostList
-            posts={posts}
-            grid={pageContext.grid}
-            context={pageContext}
-          />
-        )}
+        {posts.length > 0 && <PostList posts={posts} context={pageContext} />}
       </Container>
       <Pagination context={pageContext} />
     </>
