@@ -70,6 +70,7 @@ const AboutPage = ({ data }) => {
           <li>Customizable theme colors and typography</li>
           <li>SEO friendly component</li>
           <li>Mobile menu</li>
+          <li>Optional scroll progress indicator</li>
           <li>Styled components</li>
           <li>Tags</li>
           <li>Pagination</li>
