@@ -5,7 +5,7 @@ import { OptionsProvider } from './src/components/OptionsContext'
 export const wrapPageElement = ({ element, props }, pluginOptions) => {
   const value = {
     transitions: true,
-    grid: 'basic',
+    grid: 'grid',
     postsPerPage: 6,
     progressIndicator: true,
     ...pluginOptions,

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { graphql } from 'gatsby'
 import Container from '../components/Container'
 import Hero from '../components/Hero'
@@ -6,11 +6,13 @@ import Content from '../components/Content'
 import Preview from '../components/Preview'
 import SEO from '../components/SEO'
 import ProgressIndicator from '../components/ProgressIndicator'
+import OptionsContext from '../components/OptionsContext'
 
 const PostTemplate = ({ data, pageContext }) => {
   const post = data.markdownRemark
   const next = pageContext.previous
   const previous = pageContext.next
+  const options = useContext(OptionsContext)
 
   let ogImage
   try {
@@ -26,7 +28,7 @@ const PostTemplate = ({ data, pageContext }) => {
         description={post.excerpt}
         image={ogImage}
       />
-      <ProgressIndicator />
+      {options.progressIndicator && <ProgressIndicator />}
       <Container fullWidth>
         <Hero
           title={post.frontmatter.title}
