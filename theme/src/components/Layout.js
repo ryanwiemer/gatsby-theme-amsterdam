@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
 import theme from '../styles/theme'
@@ -6,6 +6,7 @@ import GlobalStyle from '../styles/global'
 import Menu from './Menu'
 import Footer from './Footer'
 import Transition from './Transition'
+import OptionsContext from './OptionsContext'
 
 const Skip = styled.a`
   padding: 0 1rem;
@@ -33,6 +34,7 @@ const Layout = props => {
   }
 
   useEffect(() => window.addEventListener('keydown', handleFirstTab), [])
+  const options = useContext(OptionsContext)
 
   return (
     <>
@@ -43,27 +45,29 @@ const Layout = props => {
       <Skip href="#main" id="skip-navigation">
         Skip to content
       </Skip>
+
       <ThemeProvider theme={theme}>
-        {props.transitions ? (
-          <>
-            <Menu />
-            <Transition {...props}>
-              <div className="siteRoot">
+        <>
+          {options.transitions ? (
+            <>
+              <Menu />
+              <Transition {...props}>
+                <div className="siteRoot">
+                  {props.children}
+                  <Footer />
+                </div>
+              </Transition>
+            </>
+          ) : (
+            <>
+              <Menu />
+              <main className="siteRoot" id="main">
                 {props.children}
                 <Footer />
-              </div>
-            </Transition>
-          </>
-        ) : (
-          <>
-            <Menu />
-            <main className="siteRoot" id="main">
-              {props.children}
-              <Footer />
-            </main>
-            <Footer />
-          </>
-        )}
+              </main>
+            </>
+          )}
+        </>
       </ThemeProvider>
       <GlobalStyle />
     </>

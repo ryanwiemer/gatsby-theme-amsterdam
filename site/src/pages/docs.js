@@ -179,6 +179,20 @@ const DocsPage = ({ data }) => {
                 results provide a 512x512 square.
               </td>
             </tr>
+
+            <tr>
+              <td>
+                <code>postsPerPage</code>
+              </td>
+              <td align="left">
+                <code>6</code>
+              </td>
+              <td align="left">
+                Determines the number of posts shown on each page. This effects
+                both the posts and tag template.
+              </td>
+            </tr>
+
             <tr>
               <td>
                 <code>grid</code>
@@ -189,6 +203,18 @@ const DocsPage = ({ data }) => {
               <td align="left">
                 Determines the type of grid used on the posts and tag templates.
                 Two available options: <code>basic</code> and <code>list</code>.
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <code>progressIndicator</code>
+              </td>
+              <td align="left">
+                <code>true</code>
+              </td>
+              <td align="left">
+                Include a progress indicator on the post template.
               </td>
             </tr>
           </tbody>
