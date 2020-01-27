@@ -69,7 +69,7 @@ const ProgressIndicator = () => {
   const [isVisible, setIsVisible] = useState(false)
   useEffect(
     () => scrollYProgress.onChange(v => setIsVisible(v >= 0.05 && v <= 0.9)),
-    []
+    [scrollYProgress]
   )
 
   const scrollToTop = () => {
