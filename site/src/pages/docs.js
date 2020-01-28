@@ -478,14 +478,22 @@ const DocsPage = ({ data }) => {
         <p>
           Gatsby Theme Amsterdam uses{' '}
           <a
-            href="https://github.com/styled-components/styled-components"
+            href="https://theme-ui.com/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            styled-components
+            Theme UI
           </a>{' '}
-          and defines the theme related tokens in a file called{' '}
-          <code>theme.js</code>. In order to change these values simply{' '}
+          and{' '}
+          <a
+            href="https://emotion.sh/docs/introduction"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Emotion
+          </a>{' '}
+          using the styled-components syntax. In order to change these values
+          simply{' '}
           <a
             href="https://www.gatsbyjs.org/blog/2019-04-29-component-shadowing/"
             target="_blank"
@@ -499,8 +507,8 @@ const DocsPage = ({ data }) => {
           <pre className="language-javascript">
             <code className="language-javascript">
               <span className="token comment">
-                {'//'} Create a theme.js file located at
-                'src/gatsby-theme-amsterdam/styles/theme.js'
+                {'//'} Create an index.js file located at
+                'src/gatsby-theme-amsterdam/src/gatsby-plugin-theme-ui/index.js'
               </span>
               <br />
               <span className="token keyword">export</span>{' '}
