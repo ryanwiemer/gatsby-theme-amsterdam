@@ -1,7 +1,7 @@
 {
   "name": "gatsby-theme-amsterdam",
   "description": "A Gatsby theme for artists, photographers and other creative people",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "author": "Ryan Wiemer <ryan@ryanwiemer.com>",
   "keywords": [
     "gatsby",
@@ -44,9 +44,9 @@
     "theme-ui": "^0.3.1"
   },
   "peerDependencies": {
-    "gatsby": "^2.13.42",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "gatsby": "^2.19.7",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
   },
   "scripts": {
     "build": "gatsby build",
