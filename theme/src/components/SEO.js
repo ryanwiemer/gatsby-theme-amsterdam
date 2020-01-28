@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
+import OptionsContext from './OptionsContext'
 import defaultImage from '../images/og-image.jpg'
 
 const SEO = ({ title, description, image, slug }) => {
+  const options = useContext(OptionsContext)
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -21,8 +23,11 @@ const SEO = ({ title, description, image, slug }) => {
 
   const metaDescription = description || site.siteMetadata.description
   const metaImage = image || defaultImage
-  const defaultUrl = site.siteMetadata.url
-  const metaUrl = slug ? `${defaultUrl}/${slug}` : defaultUrl
+  const defaultUrl =
+    options.basePath === '/'
+      ? site.siteMetadata.url
+      : site.siteMetadata.url + options.basePath
+  const metaUrl = slug ? defaultUrl + slug : defaultUrl
 
   return (
     <Helmet

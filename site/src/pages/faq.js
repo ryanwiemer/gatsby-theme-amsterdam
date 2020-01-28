@@ -10,6 +10,7 @@ const FAQPage = ({ data }) => {
       <SEO
         title="FAQ"
         description="Frequently Asked Questions About Gatsby Theme Amsterdam"
+        slug="/faq/"
       />
       <Content>
         <h1>Frequently Asked Questions</h1>

@@ -27,7 +27,7 @@ const PostTemplate = ({ data, pageContext }) => {
         title={post.frontmatter.title}
         description={post.excerpt}
         image={ogImage}
-        slug={post.slug}
+        slug={pageContext.slug}
       />
       {options.progressIndicator && <ProgressIndicator />}
       <Container fullWidth>

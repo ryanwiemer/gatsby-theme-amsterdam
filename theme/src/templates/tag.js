@@ -21,7 +21,11 @@ const TagPage = ({ data, pageContext }) => {
       <SEO
         title={`Tag: ${pageContext.tag}`}
         image={ogImage}
-        slug={pageContext.slug}
+        slug={
+          pageContext.humanPageNumber === 1
+            ? `${pageContext.paginationPath}/`
+            : `${pageContext.paginationPath}/${pageContext.humanPageNumber}`
+        }
       />
       <Container fullWidth noPadding>
         <Intro

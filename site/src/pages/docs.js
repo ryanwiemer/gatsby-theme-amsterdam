@@ -9,6 +9,7 @@ const DocsPage = ({ data }) => {
       <SEO
         title="Docs"
         description="Documentation for Gatsby Theme Amsterdam"
+        slug="/docs/"
       />
       <Content>
         <h1>Docs</h1>

@@ -20,7 +20,15 @@ const PostsPage = ({ data, pageContext }) => {
 
   return (
     <>
-      <SEO title="Home" image={ogImage} />
+      <SEO
+        title="Home"
+        image={ogImage}
+        slug={
+          pageContext.humanPageNumber === 1
+            ? `${pageContext.paginationPath}/`
+            : `${pageContext.paginationPath}/${pageContext.humanPageNumber}`
+        }
+      />
       <Container fullWidth noPadding>
         {intro && <Intro text={intro} context={pageContext} />}
         {posts.length > 0 && <PostList posts={posts} context={pageContext} />}

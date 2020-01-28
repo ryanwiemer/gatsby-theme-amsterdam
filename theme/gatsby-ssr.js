@@ -8,6 +8,7 @@ export const wrapPageElement = ({ element, props }, pluginOptions) => {
     grid: 'grid',
     postsPerPage: 6,
     progressIndicator: true,
+    basePath: '/',
     ...pluginOptions,
   }
 

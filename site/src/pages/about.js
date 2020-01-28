@@ -6,7 +6,11 @@ import SEO from 'gatsby-theme-amsterdam/src/components/SEO'
 const AboutPage = ({ data }) => {
   return (
     <Container>
-      <SEO title="About" description="About Gatsby Theme Amsterdam" />
+      <SEO
+        title="About"
+        description="About Gatsby Theme Amsterdam"
+        slug="/about/"
+      />
       <Content>
         <h1>About</h1>
         <p>
