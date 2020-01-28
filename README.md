@@ -28,11 +28,11 @@ A Gatsby theme for artists, photographers and other creative folks.
 - Minimal responsive design
 - Optional page transitions
 - Multiple grid options to display posts
-- Customizable theme colors and typography
+- Customizable theme colors and typography with Theme UI
 - SEO friendly component
 - Mobile menu
 - Optional scroll progress indicator
-- Styled components
+- Emotion using styled-components syntax
 - Tags
 - Pagination
 - Offline support
