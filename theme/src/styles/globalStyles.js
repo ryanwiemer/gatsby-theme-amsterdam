@@ -1,23 +1,82 @@
-import theme from '../styles/theme'
-import { createGlobalStyle } from 'styled-components'
-
-const GlobalStyle = createGlobalStyle`
+import { css } from '@emotion/core'
+export const globalStyles = css`
   /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
   */
-  html, body, div, span, applet, object, iframe,
-  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-  a, abbr, acronym, address, big, cite, code,
-  del, dfn, em, img, ins, kbd, q, s, samp,
-  small, strike, strong, sub, sup, tt, var,
-  b, u, i, center,
-  dl, dt, dd, ol, ul, li,
-  fieldset, form, label, legend,
-  article, aside, canvas, details, embed,
-  figure, figcaption, footer, header, hgroup,
-  menu, nav, output, ruby, section, summary,
-  time, mark, audio, video {
+  html,
+  body,
+  div,
+  span,
+  applet,
+  object,
+  iframe,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  blockquote,
+  pre,
+  a,
+  abbr,
+  acronym,
+  address,
+  big,
+  cite,
+  code,
+  del,
+  dfn,
+  em,
+  img,
+  ins,
+  kbd,
+  q,
+  s,
+  samp,
+  small,
+  strike,
+  strong,
+  sub,
+  sup,
+  tt,
+  var,
+  b,
+  u,
+  i,
+  center,
+  dl,
+  dt,
+  dd,
+  ol,
+  ul,
+  li,
+  fieldset,
+  form,
+  label,
+  legend,
+  article,
+  aside,
+  canvas,
+  details,
+  embed,
+  figure,
+  figcaption,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  output,
+  ruby,
+  section,
+  summary,
+  time,
+  mark,
+  audio,
+  video {
     margin: 0;
     padding: 0;
     border: 0;
@@ -27,8 +86,17 @@ const GlobalStyle = createGlobalStyle`
     vertical-align: baseline;
   }
 
-  article, aside, details, figcaption, figure,
-  footer, header, hgroup, menu, nav, section {
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  section {
     display: block;
   }
   @media screen and (min-width: 35em) {
@@ -37,14 +105,19 @@ const GlobalStyle = createGlobalStyle`
       overflow-x: hidden;
     }
   }
-  ol, ul, li {
+  ol,
+  ul,
+  li {
     list-style: none;
   }
-  blockquote, q {
+  blockquote,
+  q {
     quotes: none;
   }
-  blockquote::before, blockquote::after,
-  q::before, q::after {
+  blockquote::before,
+  blockquote::after,
+  q::before,
+  q::after {
     content: '';
     content: none;
   }
@@ -56,28 +129,16 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   body {
-    background: ${theme.colors.background};
-    color: ${theme.colors.text};
     line-height: 1;
     font-size: 100%;
     font-variant-ligatures: none;
     text-rendering: optimizeLegibility;
-    text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
-    font-weight: ${theme.fonts.normalWeight};
-    font-family: ${theme.fonts.body};
-  }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: ${theme.fonts.heading};
+    text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
   }
   img {
     display: block;
-  	width: 100%;
-  	height: auto;
+    width: 100%;
+    height: auto;
   }
   button,
   input {
@@ -97,19 +158,9 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
-  /* Added to Fix Footer to bottom of viewport */
+  /* Added to stick footer to bottom of viewport */
   html {
     height: 100%;
-  }
-  .siteRoot {
-    padding: 60px 0 0 0;
-    margin: 0 auto;
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
-  .siteContent {
-    flex: 1;
   }
 
   /* Added to prevent scrolling when the menu is open */
@@ -121,7 +172,6 @@ const GlobalStyle = createGlobalStyle`
   input,
   textarea,
   select {
-    color: ${theme.colors.text};
     font-family: inherit;
     font-size: inherit;
     background: none;
@@ -137,7 +187,7 @@ const GlobalStyle = createGlobalStyle`
       box-shadow: none;
     }
     &:focus {
-      outline: 5px auto #5E9ED6;
+      outline: 5px auto #5e9ed6;
       outline: 5px auto -webkit-focus-ring-color;
     }
   }
@@ -146,9 +196,7 @@ const GlobalStyle = createGlobalStyle`
   body:not(.user-is-tabbing) input:focus,
   body:not(.user-is-tabbing) select:focus,
   body:not(.user-is-tabbing) textarea:focus,
-  body:not(.user-is-tabbing) a:focus  {
+  body:not(.user-is-tabbing) a:focus {
     outline: none;
   }
-
 `
-export default GlobalStyle

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import Img from 'gatsby-image'
 import Placeholder from './Placeholder'
 const _ = require(`lodash`)
@@ -12,11 +12,11 @@ const List = styled.ul`
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  li:first-child {
+  li:first-of-type {
     border: 0;
     padding-top: 0;
   }
-  li:last-child {
+  li:last-of-type {
     padding-bottom: 0;
     margin-bottom: 2rem;
   }

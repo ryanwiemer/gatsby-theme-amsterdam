@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { Link } from 'gatsby'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
 import { useSiteMetadata } from '../hooks/use-site-metadata'
 
 const Header = styled.header`
+  font-family: ${props => props.theme.fonts.body};
   transition: max-height 0.5s cubic-bezier(0.52, 0.16, 0.24, 1), border 0.3s;
   background: ${props => props.theme.colors.background};
   position: fixed;
@@ -54,7 +55,7 @@ const Item = styled(motion.li)`
     opacity: 1 !important;
     visibility: visible !important;
   }
-  &:first-child {
+  &:first-of-type {
     padding: 0;
     pointer-events: auto;
     line-height: 60px;
@@ -107,11 +108,11 @@ const Toggle = styled.button`
     width: 100%;
     height: 2px;
   }
-  span:first-child {
+  span:first-of-type {
     transform: rotate(${props => (props.open ? '45deg' : '0')})
       translateY(${props => (props.open ? '0' : '.35rem')});
   }
-  span:nth-child(2n) {
+  span:nth-of-type(2n) {
     transform: rotate(${props => (props.open ? '-45deg' : '0')})
       translateY(${props => (props.open ? '0' : '-.35rem')});
     position: relative;

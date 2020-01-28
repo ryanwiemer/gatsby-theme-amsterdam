@@ -1,16 +1,12 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from '@emotion/styled'
 
 const Wrapper = styled.div`
   max-width: ${props => props.theme.sizes.maxWidth};
   width: 100%;
   margin: 3rem auto 0;
   padding: 0 1.5rem;
-  ${props =>
-    props.capitalize &&
-    css`
-      text-transform: capitalize;
-    `};
+  text-transform: ${props => (props.capitalize ? 'capitalize' : 'none')};
 `
 
 const Title = styled.h2`

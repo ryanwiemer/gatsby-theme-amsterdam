@@ -18,7 +18,11 @@ const TagPage = ({ data, pageContext }) => {
 
   return (
     <>
-      <SEO title={`Tag: ${pageContext.tag}`} image={ogImage} />
+      <SEO
+        title={`Tag: ${pageContext.tag}`}
+        image={ogImage}
+        slug={pageContext.slug}
+      />
       <Container fullWidth noPadding>
         <Intro
           text={`Tagged: ${pageContext.tag}`}

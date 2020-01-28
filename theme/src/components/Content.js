@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 require('prismjs/themes/prism.css')
 
 const Wrapper = styled.div`
@@ -182,7 +182,7 @@ const Wrapper = styled.div`
     border-top: 1px solid ${props => props.theme.colors.border};
   }
 
-  table tr:nth-child(2n) {
+  table tr:nth-of-type(2n) {
     background: ${props => props.theme.colors.code};
   }
 
