@@ -1,41 +1,24 @@
-# Gatsby Theme Amsterdam
+---
+title: Docs
+description: Docs description
+---
 
-<p>
-  <a href="https://github.com/ryanwiemer/gatsby-theme-amsterdam/blob/master/LICENSE">
-    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="Gatsby Theme Amsterdam is released under the MIT license." />
-  </a>
-  <a href="https://www.npmjs.com/package/gatsby-theme-amsterdam">
-    <img src="https://img.shields.io/npm/v/gatsby-theme-amsterdam.svg" alt="Current npm package version." />
-  </a>
-  <a href="https://npmcharts.com/compare/gatsby-theme-amsterdam?minimal=true">
-    <img src="https://img.shields.io/npm/dm/gatsby-theme-amsterdam.svg" alt="Downloads per month on npm." />
-  </a>
-  <a href="https://npmcharts.com/compare/gatsby-theme-amsterdam?minimal=true">
-    <img src="https://img.shields.io/npm/dt/gatsby-theme-amsterdam.svg" alt="Total downloads on npm." />
-  </a>
-  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome!" />
-  <a href="https://twitter.com/intent/follow?screen_name=ryanwiemer">
-      <img src="https://img.shields.io/twitter/follow/ryanwiemer.svg?label=Follow%20@ryanwiemer" alt="Follow @ryanwiemer" />
-    </a>
-</p>
+# Docs
+
+### Gatsby Theme Amsterdam
 
 A Gatsby theme for artists, photographers and other creative folks.
 
-[Demo Website](https://amsterdam.netlify.com/)
-
-## Features
-
-- Minimal responsive design
-- Optional page transitions
-- Multiple grid options to display posts
-- Customizable theme colors and typography with Theme UI
-- SEO friendly component
-- Mobile menu
-- Optional scroll progress indicator
-- Emotion using styled-components syntax
-- Tags
-- Pagination
-- Offline support
+<p>
+  <iframe
+    title="github"
+    src="https://ghbtns.com/github-btn.html?user=ryanwiemer&repo=gatsby-theme-amsterdam&type=star&count=true&size=large"
+    frameBorder="0"
+    scrolling="0"
+    width="160px"
+    height="30px"
+  ></iframe>
+</p>
 
 ## Installation
 

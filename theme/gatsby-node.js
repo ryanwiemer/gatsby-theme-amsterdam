@@ -45,6 +45,7 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
       {
         allMarkdownRemark(
           sort: { fields: [frontmatter___date], order: DESC }
+          filter: { fields: { sourceName: { eq: "posts" } } }
           limit: 1000
         ) {
           edges {
@@ -152,8 +153,15 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
-
   if (node.internal.type === `MarkdownRemark`) {
+    const parent = getNode(node.parent)
+    if (parent.internal.type === 'File') {
+      createNodeField({
+        name: `sourceName`,
+        node,
+        value: parent.sourceInstanceName,
+      })
+    }
     const value = createFilePath({ node, getNode })
     createNodeField({
       name: `slug`,

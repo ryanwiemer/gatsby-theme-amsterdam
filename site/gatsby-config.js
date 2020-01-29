@@ -38,6 +38,13 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `documentation`,
+        name: `documentation`,
+      },
+    },
+    {
       resolve: 'gatsby-theme-amsterdam',
       options: {
         postsPerPage: 6,
