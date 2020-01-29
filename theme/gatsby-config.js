@@ -7,6 +7,7 @@ module.exports = options => {
     siteMetadata: {
       title: 'Gatsby Theme Amsterdam',
       description: '',
+      image: '',
       url: '',
       author: '',
       intro: '',

@@ -258,7 +258,7 @@ const DocsPage = ({ data }) => {
               <br />
               {'      '}
               <span className="token comment">
-                {'//'} the path to your icon file'
+                {'//'} the local path to your icon file
               </span>
               <br />
               {'      '}iconPath<span className="token punctuation">:</span>{' '}
@@ -339,6 +339,19 @@ const DocsPage = ({ data }) => {
               {'    '}url<span className="token punctuation">:</span>{' '}
               <span className="token template-string">
                 <span className="token string">'https://www.example.com'</span>
+              </span>
+              <span className="token punctuation">,</span>
+              <br />
+              {'    '}
+              <span className="token comment">
+                {'//'} Used for SEO. Must be the full URL for the default image
+              </span>
+              <br />
+              {'    '}image<span className="token punctuation">:</span>{' '}
+              <span className="token template-string">
+                <span className="token string">
+                  'https://www.example.com/og-image.jpg'
+                </span>
               </span>
               <span className="token punctuation">,</span>
               <br />

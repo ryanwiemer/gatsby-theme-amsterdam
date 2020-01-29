@@ -8,6 +8,7 @@ export const useSiteMetadata = () => {
           siteMetadata {
             title
             description
+            image
             intro
             author
             menuLinks {

@@ -2,7 +2,6 @@ import React, { useContext } from 'react'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 import OptionsContext from './OptionsContext'
-import defaultImage from '../images/og-image.jpg'
 
 const SEO = ({ title, description, image, slug }) => {
   const options = useContext(OptionsContext)
@@ -12,8 +11,9 @@ const SEO = ({ title, description, image, slug }) => {
         site {
           siteMetadata {
             title
-            url
             description
+            image
+            url
             author
           }
         }
@@ -22,12 +22,15 @@ const SEO = ({ title, description, image, slug }) => {
   )
 
   const metaDescription = description || site.siteMetadata.description
-  const metaImage = image || defaultImage
   const defaultUrl =
     options.basePath === '/'
       ? site.siteMetadata.url
       : site.siteMetadata.url + options.basePath
   const metaUrl = slug ? defaultUrl + slug : defaultUrl
+  const defaultImage = site.siteMetadata.image
+    ? site.siteMetadata.image
+    : defaultUrl + '/og-image.jpg'
+  const metaImage = image ? defaultUrl + image : defaultImage
 
   return (
     <Helmet
@@ -37,9 +40,9 @@ const SEO = ({ title, description, image, slug }) => {
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
     >
+      {/* General tags */}
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      {/* General tags */}
       <meta name="image" content={image} />
       <meta name="description" content={metaDescription} />
 
@@ -49,7 +52,7 @@ const SEO = ({ title, description, image, slug }) => {
       <meta property="og:image" content={metaImage} />
       <meta property="og:description" content={metaDescription} />
 
-      {/* Twitter Card tags */}
+      {/* Twitter card tags */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:image" content={metaImage} />

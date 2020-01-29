@@ -126,6 +126,8 @@ module.exports = {
     description: 'My site description...',
     // Used for SEO. Do not include a trailing slash
     url: 'https://www.example.com',
+    // Used for SEO. Must be the full URL for the default image
+    image: 'https://www.example.com/og-image.jpg',
     // Used for SEO
     author: 'John Doe',
     // Used for an optional intro section at the top of the posts template
@@ -162,10 +164,10 @@ module.exports = {
 
 ### Customization
 
-Gatsby Theme Amsterdam uses [styled-components](https://github.com/styled-components/styled-components) and defines the theme related tokens in a file called `theme.js`. In order to change these values simply [shadow](https://www.gatsbyjs.org/blog/2019-04-29-component-shadowing/) the file and replace with your desired values. See the example below.
+Gatsby Theme Amsterdam uses [Theme UI](https://theme-ui.com/) and [Emotion](https://emotion.sh/docs/introduction) using the styled-components syntax. In order to change these values simply [shadow](https://www.gatsbyjs.org/blog/2019-04-29-component-shadowing/) the file and replace with your desired values. See the example below.
 
 ```javascript
-// Create a theme.js file located at 'src/gatsby-theme-amsterdam/styles/theme.js'
+// Create an index.js file located at 'src/gatsby-theme-amsterdam/gatsby-plugin-theme-ui/index.js'
 export default {
   colors: {
     base: '#292929',
@@ -180,9 +182,11 @@ export default {
   },
   fonts: {
     body:
-      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
+      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Helvetica, Arial, sans-serif',
     heading:
-      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
+      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Helvetica, Arial, sans-serif',
     normalWeight: '400',
     boldWeight: '600',
   },
