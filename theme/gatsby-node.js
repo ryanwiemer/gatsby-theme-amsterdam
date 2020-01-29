@@ -43,7 +43,7 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
   const result = await graphql(
     `
       {
-        allMarkdownRemark(
+        allMdx(
           sort: { fields: [frontmatter___date], order: DESC }
           filter: { fields: { sourceName: { eq: "posts" } } }
           limit: 1000
@@ -78,7 +78,7 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
   if (result.errors) {
     reporter.panic(result.errors)
   }
-  const posts = result.data.allMarkdownRemark.edges
+  const posts = result.data.allMdx.edges
   const basePath = themeOptions.basePath || `/`
 
   // Create individual post pages
@@ -153,7 +153,7 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
-  if (node.internal.type === `MarkdownRemark`) {
+  if (node.internal.type === `Mdx`) {
     const parent = getNode(node.parent)
     if (parent.internal.type === 'File') {
       createNodeField({

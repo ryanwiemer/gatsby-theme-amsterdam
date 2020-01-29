@@ -9,7 +9,7 @@ import { useSiteMetadata } from '../hooks/use-site-metadata'
 
 const PostsPage = ({ data, pageContext }) => {
   const { intro } = useSiteMetadata()
-  const posts = data.allMarkdownRemark.edges
+  const posts = data.allMdx.edges
 
   let ogImage
   try {
@@ -42,7 +42,7 @@ export default PostsPage
 
 export const postsQuery = graphql`
   query($skip: Int!, $limit: Int!) {
-    allMarkdownRemark(
+    allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { fields: { sourceName: { eq: "posts" } } }
       skip: $skip

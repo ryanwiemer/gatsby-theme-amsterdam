@@ -3,8 +3,6 @@ title: Docs
 description: Docs description
 ---
 
-# Docs
-
 ### Gatsby Theme Amsterdam
 
 A Gatsby theme for artists, photographers and other creative folks.
@@ -26,7 +24,7 @@ A Gatsby theme for artists, photographers and other creative folks.
 
 This will generate a new site pre-configured to use Gatsby Theme Amsterdam.
 
-```sh
+```shell
 gatsby new your-themed-site https://github.com/ryanwiemer/gatsby-starter-amsterdam
 ```
 
@@ -34,13 +32,13 @@ gatsby new your-themed-site https://github.com/ryanwiemer/gatsby-starter-amsterd
 
 1. Install the theme
 
-```sh
+```shell
 npm install --save gatsby-theme-amsterdam
 ```
 
 or
 
-```sh
+```shell
 yarn add gatsby-theme-amsterdam
 ```
 
@@ -189,9 +187,11 @@ export default {
 
 Posts are written in markdown format `.md` and placed in the `content` directory at the root of the site unless a different `contentPath` is defined in the theme options. There are four front matter variables used in the theme which are shown below.
 
-<div class="gatsby-highlight" data-language="markdown"><pre class="language-markdown"><code class="language-markdown"><span class="token hr punctuation">---</span>
+```none
+---
 title: Hello World
 date: 2019-07-06
 cover: cover.jpg
 tags: [greeting, blog]
-<span class="token punctuation">---</span></code></pre></div>
+---
+```

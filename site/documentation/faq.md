@@ -3,8 +3,6 @@ title: FAQ
 description: FAQ description
 ---
 
-# Frequently Asked Questions
-
 ### What is Gatsby?
 
 [Gatsby](https://www.gatsbyjs.org/) is a free and open source framework based on React that helps developers build blazing fast websites and apps.
@@ -25,8 +23,8 @@ Yes. Gatsby Theme Amsterdam can be installed alongside other themes.
 
 Gatsby Theme Amsterdam was designed to be a minimal and clean theme geared towards photographers, artists and other creative folks. If you have an idea for an enhancement or feature that fits within that vision please log a ticket on [GitHub](https://github.com/ryanwiemer/gatsby-theme-amsterdam) or better yet submit a pull request.
 
-<hr>
+<hr/>
 
 ### Still have a question?
 
-Send me a tweet on Twitter []@ryanwiemer](https://twitter.com/ryanwiemer).
+Send me a tweet on Twitter [@ryanwiemer](https://twitter.com/ryanwiemer).

@@ -7,7 +7,7 @@ import Pagination from '../components/Pagination'
 import Container from '../components/Container'
 
 const TagPage = ({ data, pageContext }) => {
-  const posts = data.allMarkdownRemark.edges
+  const posts = data.allMdx.edges
 
   let ogImage
   try {
@@ -44,7 +44,7 @@ export default TagPage
 
 export const tagQuery = graphql`
   query($skip: Int!, $limit: Int!, $tag: String) {
-    allMarkdownRemark(
+    allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
       skip: $skip
       limit: $limit

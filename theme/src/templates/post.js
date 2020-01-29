@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { graphql } from 'gatsby'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 import Container from '../components/Container'
 import Hero from '../components/Hero'
 import Content from '../components/Content'
@@ -9,7 +10,7 @@ import ProgressIndicator from '../components/ProgressIndicator'
 import OptionsContext from '../components/OptionsContext'
 
 const PostTemplate = ({ data, pageContext }) => {
-  const post = data.markdownRemark
+  const post = data.mdx
   const next = pageContext.previous
   const previous = pageContext.next
   const options = useContext(OptionsContext)
@@ -38,7 +39,9 @@ const PostTemplate = ({ data, pageContext }) => {
           tags={post.frontmatter.tags}
           context={pageContext}
         />
-        <Content html={post.html} />
+        <Content>
+          <MDXRenderer>{post.body}</MDXRenderer>
+        </Content>
         <Preview previous={previous} next={next} context={pageContext} />
       </Container>
     </>
@@ -49,8 +52,8 @@ export default PostTemplate
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
+    mdx(fields: { slug: { eq: $slug } }) {
+      body
       excerpt
       frontmatter {
         title

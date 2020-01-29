@@ -33,9 +33,10 @@ module.exports = options => {
         },
       },
       {
-        resolve: `gatsby-transformer-remark`,
+        resolve: `gatsby-plugin-mdx`,
         options: {
-          plugins: [
+          extensions: [`.mdx`, `.md`],
+          gatsbyRemarkPlugins: [
             `gatsby-remark-prismjs`,
             {
               resolve: `gatsby-remark-images`,

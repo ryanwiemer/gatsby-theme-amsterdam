@@ -3,8 +3,6 @@ title: About
 description: About description
 ---
 
-# About
-
 <p>
   <img
     src="https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg"
@@ -23,7 +21,7 @@ description: About description
   </span>
 </p>
 
-<strong>Gatsby Theme Amsterdam</strong> was designed to be a minimal
+**Gatsby Theme Amsterdam** was designed to be a minimal
 and clean theme geared towards photographers, artists and other
 creative folks. Inspired by the capital city of the Netherlands known
 for its artistic heritage, impressive architecture and canals that
@@ -41,7 +39,7 @@ sounds like a pretty cool place so I decided to use the name.
   ></iframe>
 </p>
 
-Created by <strong> [Ryan Wiemer](https://twitter.com/ryanwiemer)</strong>
+Created by **[Ryan Wiemer](https://twitter.com/ryanwiemer)**
 
 ### Features
 

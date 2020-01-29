@@ -1,19 +1,30 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
+import styled from '@emotion/styled'
 import Container from 'gatsby-theme-amsterdam/src/components/Container'
 import Content from 'gatsby-theme-amsterdam/src/components/Content'
 import SEO from 'gatsby-theme-amsterdam/src/components/SEO'
 
+const Title = styled.h1`
+  font-size: 1.75rem;
+  @media screen and (min-width: ${props => props.theme.responsive.small}) {
+    font-size: 2rem;
+  }
+`
+
 const PageTemplate = ({ data }) => {
-  console.log(data)
   return (
     <>
       <SEO
-        title={data.markdownRemark.frontmatter.title}
-        description={data.markdownRemark.frontmatter.description}
+        title={data.mdx.frontmatter.title}
+        description={data.mdx.frontmatter.description}
       />
       <Container>
-        <Content html={data.markdownRemark.html} />
+        <Content>
+          <Title>{data.mdx.frontmatter.title}</Title>
+          <MDXRenderer>{data.mdx.body}</MDXRenderer>
+        </Content>
       </Container>
     </>
   )
@@ -23,9 +34,8 @@ export default PageTemplate
 
 export const pageQuery = graphql`
   query($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
-      excerpt
+    mdx(fields: { slug: { eq: $slug } }) {
+      body
       frontmatter {
         title
         description

@@ -1,13 +1,10 @@
 // Create documentation pages for https://amsterdam.netlify.com/
-
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
   const result = await graphql(
     `
       {
-        allMarkdownRemark(
-          filter: { fields: { sourceName: { eq: "documentation" } } }
-        ) {
+        allMdx(filter: { fields: { sourceName: { eq: "documentation" } } }) {
           edges {
             node {
               fields {
@@ -26,7 +23,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   if (result.errors) {
     reporter.panic(result.errors)
   }
-  const pages = result.data.allMarkdownRemark.edges
+  const pages = result.data.allMdx.edges
   pages.forEach((post, index) => {
     createPage({
       path: post.node.fields.slug,
