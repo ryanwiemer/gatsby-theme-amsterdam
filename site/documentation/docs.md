@@ -189,11 +189,9 @@ export default {
 
 Posts are written in markdown format `.md` and placed in the `content` directory at the root of the site unless a different `contentPath` is defined in the theme options. There are four front matter variables used in the theme which are shown below.
 
-```markdown
----
+<div class="gatsby-highlight" data-language="markdown"><pre class="language-markdown"><code class="language-markdown"><span class="token hr punctuation">---</span>
 title: Hello World
 date: 2019-07-06
 cover: cover.jpg
 tags: [greeting, blog]
----
-```
+<span class="token punctuation">---</span></code></pre></div>

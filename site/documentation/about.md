@@ -41,7 +41,7 @@ sounds like a pretty cool place so I decided to use the name.
   ></iframe>
 </p>
 
-Created by <strong> <a href="https://twitter.com/ryanwiemer" target="_blank" rel="noopener noreferrer"> Ryan Wiemer</a></strong>
+Created by <strong> [Ryan Wiemer](https://twitter.com/ryanwiemer)</strong>
 
 ### Features
 
