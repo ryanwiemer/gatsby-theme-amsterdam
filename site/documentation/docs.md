@@ -3,7 +3,7 @@ title: Docs
 description: Docs description
 ---
 
-### Gatsby Theme Amsterdam
+## Gatsby Theme Amsterdam
 
 A Gatsby theme for artists, photographers and other creative folks.
 
@@ -72,7 +72,7 @@ module.exports = {
 | `grid`              | `basic`       | Determines the type of grid used on the posts and tag templates. Two available options: `basic` and `list`.                                      |
 | `progressIndicator` | `true`        | Include a progress indicator on the post template.                                                                                               |
 
-#### Example Usage
+### Example Usage
 
 ```javascript
 // gatsby-config.js

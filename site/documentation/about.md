@@ -41,16 +41,17 @@ sounds like a pretty cool place so I decided to use the name.
 
 Created by **[Ryan Wiemer](https://twitter.com/ryanwiemer)**
 
-### Features
+## Features
 
 - Minimal responsive design
 - Optional page transitions
 - Multiple grid options to display posts
-- Customizable theme colors and typography
+- Customizable theme colors and typography with Theme UI
+- MDX support
 - SEO friendly component
 - Mobile menu
 - Optional scroll progress indicator
-- Styled components
+- Emotion using styled-components syntax
 - Tags
 - Pagination
 - Offline support

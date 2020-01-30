@@ -7,9 +7,9 @@ import Content from 'gatsby-theme-amsterdam/src/components/Content'
 import SEO from 'gatsby-theme-amsterdam/src/components/SEO'
 
 const Title = styled.h1`
-  font-size: 1.75rem;
+  font-size: 2rem;
   @media screen and (min-width: ${props => props.theme.responsive.small}) {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 `
 

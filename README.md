@@ -29,6 +29,7 @@ A Gatsby theme for artists, photographers and other creative folks.
 - Optional page transitions
 - Multiple grid options to display posts
 - Customizable theme colors and typography with Theme UI
+- MDX support
 - SEO friendly component
 - Mobile menu
 - Optional scroll progress indicator

@@ -37,7 +37,7 @@ const Wrapper = styled.div`
   }
 `
 
-const H1 = styled.h1`
+const H1 = styled.h2`
   font-size: 1.75rem;
   @media screen and (min-width: ${props => props.theme.responsive.small}) {
     font-size: 2rem;
@@ -52,30 +52,30 @@ const H2 = styled.h2`
 `
 
 const H3 = styled.h3`
+  font-size: 1.2rem;
+  @media screen and (min-width: ${props => props.theme.responsive.small}) {
+    font-size: 1.35rem;
+  }
+`
+
+const H4 = styled.h4`
   font-size: 1.1rem;
   @media screen and (min-width: ${props => props.theme.responsive.small}) {
     font-size: 1.25rem;
   }
 `
 
-const H4 = styled.h4`
-  font-size: 1rem;
+const H5 = styled.h5`
+  font-size: 1.05rem;
   @media screen and (min-width: ${props => props.theme.responsive.small}) {
     font-size: 1.1rem;
   }
 `
 
-const H5 = styled.h5`
-  font-size: 0.875rem;
-  @media screen and (min-width: ${props => props.theme.responsive.small}) {
-    font-size: 0.95rem;
-  }
-`
-
 const H6 = styled.h6`
-  font-size: 0.75rem;
+  font-size: 1rem;
   @media screen and (min-width: ${props => props.theme.responsive.small}) {
-    font-size: 0.875rem;
+    font-size: 1.05rem;
   }
 `
 
@@ -187,11 +187,11 @@ const A = styled.a`
 `
 
 const components = {
-  h1: H2, // h1 reserved for title
-  h2: H3,
-  h3: H4,
-  h4: H5,
-  h5: H6,
+  h1: H1,
+  h2: H2,
+  h3: H3,
+  h4: H4,
+  h5: H5,
   h6: H6,
   p: P,
   hr: HR,
