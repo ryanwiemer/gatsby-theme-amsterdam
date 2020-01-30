@@ -1,9 +1,8 @@
 import React, { useContext } from 'react'
 import { graphql } from 'gatsby'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
 import Container from '../components/Container'
 import Hero from '../components/Hero'
-import Content from '../components/Content'
+import MDX from '../components/MDX'
 import Preview from '../components/Preview'
 import SEO from '../components/SEO'
 import ProgressIndicator from '../components/ProgressIndicator'
@@ -39,9 +38,7 @@ const PostTemplate = ({ data, pageContext }) => {
           tags={post.frontmatter.tags}
           context={pageContext}
         />
-        <Content>
-          <MDXRenderer>{post.body}</MDXRenderer>
-        </Content>
+        <MDX content={post.body} />
         <Preview previous={previous} next={next} context={pageContext} />
       </Container>
     </>

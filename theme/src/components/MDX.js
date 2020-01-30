@@ -1,4 +1,5 @@
 import React from 'react'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
 import styled from '@emotion/styled'
 require('prismjs/themes/prism.css')
@@ -185,7 +186,6 @@ const A = styled.a`
     color: ${props => props.theme.colors.secondary} !important;
   }
 `
-
 const components = {
   h1: H1,
   h2: H2,
@@ -207,7 +207,9 @@ const components = {
 const Content = props => {
   return (
     <Wrapper>
-      <MDXProvider components={components}>{props.children}</MDXProvider>
+      <MDXProvider components={components}>
+        <MDXRenderer {...props}>{props.content}</MDXRenderer>
+      </MDXProvider>
     </Wrapper>
   )
 }
