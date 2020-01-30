@@ -23,6 +23,8 @@ A Gatsby theme for artists, photographers and other creative folks.
 
 [Demo Website](https://amsterdam.netlify.com/)
 
+![](screenshots/demo.jpg)
+
 ## Features
 
 - Minimal responsive design
@@ -179,7 +181,7 @@ export default {
   ...amsterdamTheme,
   colors: {
     ...amsterdamTheme.colors,
-    background: '#ffea00',
+    background: '#FCD5C0',
   },
 }
 ```

@@ -159,7 +159,7 @@ export default {
   ...amsterdamTheme,
   colors: {
     ...amsterdamTheme.colors,
-    background: '#ffea00',
+    background: '#FCD5C0',
   },
 }
 ```
