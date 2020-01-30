@@ -1,7 +1,5 @@
-const path = require('path')
-
 module.exports = options => {
-  const { contentPath, iconPath, basePath } = options
+  const { contentPath } = options
 
   return {
     siteMetadata: {
@@ -47,20 +45,6 @@ module.exports = options => {
               },
             },
           ],
-        },
-      },
-      {
-        resolve: `gatsby-plugin-manifest`,
-        options: {
-          name: `Gatsby Theme Amsterdam`,
-          short_name: `Amsterdam`,
-          background_color: `#f5f0eb`,
-          theme_color: `#292929`,
-          start_url: basePath || `/`,
-          display: `standalone`,
-          icon: iconPath
-            ? path.resolve(iconPath)
-            : require.resolve('./src/images/favicon.png'),
         },
       },
       `gatsby-plugin-theme-ui`,

@@ -45,9 +45,15 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-theme-amsterdam',
+      resolve: `gatsby-plugin-manifest`,
       options: {
-        postsPerPage: 6,
+        name: `Gatsby Theme Amsterdam`,
+        short_name: `Amsterdam`,
+        background_color: `#f5f0eb`,
+        theme_color: `#f5f0eb`,
+        start_url: `/`,
+        display: `standalone`,
+        icon: require.resolve('./src/images/favicon.png'),
       },
     },
     {
@@ -56,6 +62,12 @@ module.exports = {
         trackingId: process.env.GOOGLE_ANALYTICS,
         head: true,
         pageTransitionDelay: 350,
+      },
+    },
+    {
+      resolve: 'gatsby-theme-amsterdam',
+      options: {
+        postsPerPage: 6,
       },
     },
   ],

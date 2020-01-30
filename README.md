@@ -84,16 +84,15 @@ module.exports = {
 
 ### Theme Options
 
-| Key                 | Default Value | Description                                                                                                                                      |
-| ------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `basePath`          | `/`           | Root URL for all posts.                                                                                                                          |
-| `contentPath`       | `/content`    | Location of markdown files used for the posts.                                                                                                   |  |
-| `transitions`       | `true`        | Include simple page transitions powered with [framer-motion](https://github.com/framer/motion)                                                   |
-| `iconPath`          | default icon  | Path to the icon to be used for the favicon and web manifest. For example `'src/images/favicon.png'`. For best results provide a 512x512 square. |
-| `postsPerPage`      | `6`           | Determines the number of posts shown on each page. This effects both the posts and tag template.                                                 |
-| `grid`              | `basic`       | Determines the type of grid used on the posts and tag templates. Two available options: `basic` and `list`.                                      |
-| `progressIndicator` | `true`        | Include a progress indicator on the post template.                                                                                               |
-| `colorToggle`       | `true`        | Include a button in the menu to toggle the color modes.                                                                                          |
+| Key                 | Default Value | Description                                                                                                 |
+| ------------------- | ------------- | ----------------------------------------------------------------------------------------------------------- |
+| `basePath`          | `/`           | Root URL for all posts.                                                                                     |
+| `contentPath`       | `/content`    | Location of markdown files used for the posts.                                                              |  |
+| `transitions`       | `true`        | Include simple page transitions powered with [framer-motion](https://github.com/framer/motion)              |
+| `postsPerPage`      | `6`           | Determines the number of posts shown on each page. This effects both the posts and tag template.            |
+| `grid`              | `basic`       | Determines the type of grid used on the posts and tag templates. Two available options: `basic` and `list`. |
+| `progressIndicator` | `true`        | Include a progress indicator on the post template.                                                          |
+| `colorToggle`       | `true`        | Include a button in the menu to toggle the color modes.                                                     |
 
 #### Example Usage
 
@@ -106,8 +105,6 @@ module.exports = {
       options: {
         // basePath defaults to '/'
         basePath: '/photography',
-        // the path to your icon file
-        iconPath: 'src/images/favicon.png',
         // grid defaults to 'basic'
         grid: 'list',
       },
