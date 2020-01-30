@@ -166,51 +166,20 @@ module.exports = {
 
 ### Customization
 
-Gatsby Theme Amsterdam uses [Theme UI](https://theme-ui.com/) and [Emotion](https://emotion.sh/docs/introduction) using the styled-components syntax. In order to change these values simply [shadow](https://www.gatsbyjs.org/blog/2019-04-29-component-shadowing/) the file and replace with your desired values. See the example below.
+Gatsby Theme Amsterdam utilizes [Theme UI](https://theme-ui.com/). In order to customize the theme styling you must create a theme file and then override the default `amsterdamTheme` values. If you're familiar with Styled Components or Emotion it's the same as adapting the theme you pass to `ThemeProvider`.
+
+All default values can be viewed [here](https://github.com/ryanwiemer/gatsby-theme-amsterdam/blob/master/theme/src/gatsby-plugin-theme-ui/index.js).
 
 ```javascript
-// Create an index.js file located at 'src/gatsby-theme-amsterdam/src/gatsby-plugin-theme-ui/index.js'
+// src/gatsby-plugin-theme-ui/index.js
+
+import amsterdamTheme from 'gatsby-theme-amsterdam/src/gatsby-plugin-theme-ui'
+
 export default {
+  ...amsterdamTheme,
   colors: {
-    base: '#292929',
-    secondary: '#686461',
-    tertiary: '#958E8E',
-    highlight: '#C29967',
-    background: '#F5F0EB',
-    border: '#DCD8D3',
-    button: '#E9E4DF',
-    text: '#292929',
-    code: '#E9E5E0',
-    modes: {
-      dark: {
-        base: '#292929',
-        secondary: '#888888',
-        tertiary: '#555555',
-        highlight: '#C29967',
-        background: '#0a0a0a',
-        border: '#333333',
-        button: '#101010',
-        text: '#ffffff',
-        code: '#292929',
-      },
-    },
-  },
-  fonts: {
-    body:
-      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
-    heading:
-      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
-    normalWeight: '400',
-    boldWeight: '600',
-  },
-  sizes: {
-    maxWidth: '1050px',
-    maxWidthCentered: '800px',
-  },
-  responsive: {
-    small: '35em',
-    medium: '50em',
-    large: '70em',
+    ...amsterdamTheme.colors,
+    background: '#ffea00',
   },
 }
 ```
