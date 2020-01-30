@@ -9,6 +9,19 @@ export default {
     button: '#E9E4DF',
     text: '#292929',
     code: '#E9E5E0',
+    modes: {
+      dark: {
+        base: '#292929',
+        secondary: '#888888',
+        tertiary: '#555555',
+        highlight: '#C29967',
+        background: '#0a0a0a',
+        border: '#333333',
+        button: '#101010',
+        text: '#ffffff',
+        code: '#292929',
+      },
+    },
   },
   fonts: {
     body:

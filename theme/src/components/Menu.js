@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Link } from 'gatsby'
 import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
 import { useSiteMetadata } from '../hooks/use-site-metadata'
+import ColorToggle from './ColorToggle'
+import OptionsContext from '../components/OptionsContext'
 
 const Header = styled.header`
   font-family: ${props => props.theme.fonts.body};
@@ -51,7 +53,7 @@ const Item = styled(motion.li)`
     padding: 0;
     line-height: 60px;
     display: inline-block;
-    margin: 0 0 0 1rem;
+    margin: 0 0 0 1.5rem;
     opacity: 1 !important;
     visibility: visible !important;
   }
@@ -122,7 +124,7 @@ const Toggle = styled.button`
 
 const Menu = () => {
   const { menuLinks } = useSiteMetadata()
-
+  const options = useContext(OptionsContext)
   const [isOpen, setIsOpen] = useState(false)
 
   function toggle() {
@@ -173,6 +175,15 @@ const Menu = () => {
               </Link>
             </Item>
           ))}
+          {options.colorToggle && (
+            <Item
+              initial={false}
+              variants={itemVariants}
+              animate={isOpen ? 'open' : 'closed'}
+            >
+              <ColorToggle />
+            </Item>
+          )}
         </List>
       </Nav>
     </Header>

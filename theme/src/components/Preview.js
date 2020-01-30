@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import styled from '@emotion/styled'
 import Img from 'gatsby-image'
+import { useColorMode } from 'theme-ui'
 
 const Wrapper = styled.div`
   position: relative;
@@ -27,10 +28,13 @@ const Box = styled(Link)`
     opacity: 0;
   }
   &::after {
+    background: ${props =>
+      props.mode === 'dark'
+        ? 'rgba(255, 255, 255, 0.05)'
+        : 'rgba(0, 0, 0, 0.05)'};
     transition: background-color 0.4s;
     content: '';
     position: absolute;
-    background: rgba(0, 0, 0, 0.05);
     height: 100%;
     width: 100%;
     top: 0;
@@ -94,13 +98,17 @@ const Line = styled.div`
 `
 
 const Preview = props => {
+  const [colorMode] = useColorMode()
   const hasPreviewContent = props.next || props.previous
+
+  console.log(colorMode)
   return (
     <>
       {hasPreviewContent && (
         <Wrapper>
           {props.previous && (
             <Box
+              mode={colorMode}
               to={props.context.basePath + props.previous.fields.slug}
               style={{ order: 1, marginRight: 'auto' }}
             >
@@ -129,6 +137,7 @@ const Preview = props => {
           <Line />
           {props.next && (
             <Box
+              mode={colorMode}
               to={props.context.basePath + props.next.fields.slug}
               style={{ order: 3, marginLeft: 'auto' }}
             >

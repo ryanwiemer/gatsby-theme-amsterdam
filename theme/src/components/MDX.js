@@ -129,9 +129,13 @@ const OL = styled.ol`
 `
 
 const Code = styled.code`
+  font-family: 'Lucida Console', Monaco, monospace;
   font-size: 0.9rem !important;
   padding: 0.25rem !important;
   background: ${props => props.theme.colors.code} !important;
+  color: ${props => props.theme.colors.text} !important;
+  opacity: 1;
+  text-shadow: none !important;
 `
 
 const Table = styled.table`
@@ -164,8 +168,8 @@ const Table = styled.table`
 const Pre = styled.pre`
   text-shadow: none !important;
   border: 0 !important;
-  margin: 0 0 1.75rem 0 !important;
-  border-radius: 2px !important;
+  margin: 0 0 1.25em 0 !important;
+  border-radius: 3px !important;
   background: ${props => props.theme.colors.code} !important;
   code,
   span {

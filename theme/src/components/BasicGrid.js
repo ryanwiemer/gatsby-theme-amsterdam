@@ -44,17 +44,19 @@ const Item = styled.li`
   a {
     text-decoration: none;
     transition: color 0.3s;
-    color: ${props => props.theme.colors.base};
+    color: ${props => props.theme.colors.tertiary};
     &:hover {
       color: ${props => props.theme.colors.highlight};
     }
     @media (hover: none) {
-      color: ${props => props.theme.colors.base} !important;
+      color: ${props => props.theme.colors.tertiary} !important;
     }
   }
 `
 
 const Title = styled.h2`
+  transition: color 0.3s;
+  color: ${props => props.theme.colors.text};
   font-weight: ${props => props.theme.fonts.boldWeight};
   margin: 1rem 0 0 0;
   display: block;
@@ -62,6 +64,12 @@ const Title = styled.h2`
   font-size: 1rem;
   @media screen and (min-width: ${props => props.theme.responsive.small}) {
     font-size: 1.1rem;
+  }
+  &:hover {
+    color: ${props => props.theme.colors.highlight};
+  }
+  @media (hover: none) {
+    color: ${props => props.theme.colors.text} !important;
   }
 `
 

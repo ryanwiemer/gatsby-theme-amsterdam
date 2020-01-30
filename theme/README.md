@@ -28,11 +28,12 @@ A Gatsby theme for artists, photographers and other creative folks.
 - Minimal responsive design
 - Optional page transitions
 - Multiple grid options to display posts
-- Customizable theme colors and typography
+- Customizable theme colors and typography with Theme UI
+- MDX support
 - SEO friendly component
 - Mobile menu
 - Optional scroll progress indicator
-- Styled components
+- Emotion using styled-components syntax
 - Tags
 - Pagination
 - Offline support
@@ -49,7 +50,7 @@ gatsby new your-themed-site https://github.com/ryanwiemer/gatsby-starter-amsterd
 
 ### Manually Add To Your Site
 
-Install the theme
+1. Install the theme
 
 ```sh
 npm install --save gatsby-theme-amsterdam
@@ -61,7 +62,7 @@ or
 yarn add gatsby-theme-amsterdam
 ```
 
-Add the theme to your `gatsby-config.js`
+2. Add the theme to your `gatsby-config.js`
 
 ```javascript
 // gatsby-config.js
@@ -90,6 +91,7 @@ module.exports = {
 | `postsPerPage`      | `6`           | Determines the number of posts shown on each page. This effects both the posts and tag template.                                                 |
 | `grid`              | `basic`       | Determines the type of grid used on the posts and tag templates. Two available options: `basic` and `list`.                                      |
 | `progressIndicator` | `true`        | Include a progress indicator on the post template.                                                                                               |
+| `colorToggle`       | `true`        | Include a button in the menu to toggle the color modes.                                                                                          |
 
 #### Example Usage
 
@@ -167,7 +169,7 @@ module.exports = {
 Gatsby Theme Amsterdam uses [Theme UI](https://theme-ui.com/) and [Emotion](https://emotion.sh/docs/introduction) using the styled-components syntax. In order to change these values simply [shadow](https://www.gatsbyjs.org/blog/2019-04-29-component-shadowing/) the file and replace with your desired values. See the example below.
 
 ```javascript
-// Create an index.js file located at 'src/gatsby-theme-amsterdam/gatsby-plugin-theme-ui/index.js'
+// Create an index.js file located at 'src/gatsby-theme-amsterdam/src/gatsby-plugin-theme-ui/index.js'
 export default {
   colors: {
     base: '#292929',
@@ -179,14 +181,25 @@ export default {
     button: '#E9E4DF',
     text: '#292929',
     code: '#E9E5E0',
+    modes: {
+      dark: {
+        base: '#292929',
+        secondary: '#888888',
+        tertiary: '#555555',
+        highlight: '#C29967',
+        background: '#0a0a0a',
+        border: '#333333',
+        button: '#101010',
+        text: '#ffffff',
+        code: '#292929',
+      },
+    },
   },
   fonts: {
     body:
-      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Helvetica, Arial, sans-serif',
+      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
     heading:
-      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Helvetica, Arial, sans-serif',
+      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
     normalWeight: '400',
     boldWeight: '600',
   },

@@ -9,6 +9,7 @@ export const wrapPageElement = ({ element, props }, pluginOptions) => {
     postsPerPage: 6,
     progressIndicator: true,
     basePath: '/',
+    colorToggle: true,
     ...pluginOptions,
   }
 
