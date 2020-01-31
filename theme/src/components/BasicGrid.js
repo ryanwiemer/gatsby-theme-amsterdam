@@ -112,33 +112,29 @@ const BasicGrid = props => {
   return (
     <List>
       {props.posts.map(({ node: post }) => (
-        <Item key={post.frontmatter.title}>
-          <Link to={props.context.basePath + post.fields.slug}>
-            {post.frontmatter.cover && (
+        <Item key={post.title}>
+          <Link to={props.context.basePath + post.slug}>
+            {post.cover && (
               <Cover
                 sizes={{
-                  ...post.frontmatter.cover.childImageSharp.fluid,
+                  ...post.cover.childImageSharp.fluid,
                   aspectRatio: 5 / 3,
                 }}
-                alt={post.frontmatter.cover.childImageSharp.title}
+                alt={post.cover.childImageSharp.title}
               />
             )}
-            {post.frontmatter.cover === null ? (
-              <Placeholder aspectRatio={5 / 3} />
-            ) : (
-              ''
-            )}
+            {post.cover === null ? <Placeholder aspectRatio={5 / 3} /> : ''}
           </Link>
-          <Link to={props.context.basePath + post.fields.slug}>
-            <Title>{post.frontmatter.title}</Title>
+          <Link to={props.context.basePath + post.slug}>
+            <Title>{post.title}</Title>
             <Excerpt>{post.excerpt}</Excerpt>
           </Link>
           <Container>
-            {post.frontmatter.date && <Date>{post.frontmatter.date}</Date>}
-            {post.frontmatter.tags && (
+            {post.date && <Date>{post.date}</Date>}
+            {post.tags && (
               <>
                 <Divider>/</Divider>
-                {post.frontmatter.tags.map(tag => (
+                {post.tags.map(tag => (
                   <Tag key={tag}>
                     <Link
                       to={`${props.context.basePath}/tag/${_.kebabCase(tag)}/`}

@@ -132,36 +132,32 @@ const ListGrid = props => {
   return (
     <List>
       {props.posts.map(({ node: post }) => (
-        <Item key={post.frontmatter.title}>
+        <Item key={post.title}>
           <ImageContainer>
-            <Link to={props.context.basePath + post.fields.slug}>
-              {post.frontmatter.cover && (
+            <Link to={props.context.basePath + post.slug}>
+              {post.cover && (
                 <Cover
                   sizes={{
-                    ...post.frontmatter.cover.childImageSharp.fluid,
+                    ...post.cover.childImageSharp.fluid,
                     aspectRatio: 2 / 1,
                   }}
-                  alt={post.frontmatter.cover.childImageSharp.title}
+                  alt={post.cover.childImageSharp.title}
                 />
               )}
-              {post.frontmatter.cover === null ? (
-                <Placeholder aspectRatio={2 / 1} />
-              ) : (
-                ''
-              )}
+              {post.cover === null ? <Placeholder aspectRatio={2 / 1} /> : ''}
             </Link>
           </ImageContainer>
           <TextContainer>
-            <Link to={props.context.basePath + post.fields.slug}>
-              <Title>{post.frontmatter.title}</Title>
+            <Link to={props.context.basePath + post.slug}>
+              <Title>{post.title}</Title>
               <Excerpt>{post.excerpt}</Excerpt>
             </Link>
             <AdditionalContainer>
-              {post.frontmatter.date && <Date>{post.frontmatter.date}</Date>}
-              {post.frontmatter.tags && (
+              {post.date && <Date>{post.date}</Date>}
+              {post.tags && (
                 <>
                   <Divider>/</Divider>
-                  {post.frontmatter.tags.map(tag => (
+                  {post.tags.map(tag => (
                     <Tag key={tag}>
                       <Link
                         to={`${props.context.basePath}/tag/${_.kebabCase(

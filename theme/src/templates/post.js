@@ -9,14 +9,14 @@ import ProgressIndicator from '../components/ProgressIndicator'
 import OptionsContext from '../components/OptionsContext'
 
 const PostTemplate = ({ data, pageContext }) => {
-  const post = data.mdx
+  const post = data.post
   const next = pageContext.previous
   const previous = pageContext.next
   const options = useContext(OptionsContext)
 
   let ogImage
   try {
-    ogImage = post.frontmatter.cover.childImageSharp.ogimg.src
+    ogImage = post.cover.childImageSharp.ogimg.src
   } catch (error) {
     ogImage = null
   }
@@ -24,7 +24,7 @@ const PostTemplate = ({ data, pageContext }) => {
   return (
     <>
       <SEO
-        title={post.frontmatter.title}
+        title={post.title}
         description={post.excerpt}
         image={ogImage}
         slug={pageContext.slug}
@@ -32,10 +32,10 @@ const PostTemplate = ({ data, pageContext }) => {
       {options.progressIndicator && <ProgressIndicator />}
       <Container fullWidth>
         <Hero
-          title={post.frontmatter.title}
-          image={post.frontmatter.cover}
-          date={post.frontmatter.date}
-          tags={post.frontmatter.tags}
+          title={post.title}
+          image={post.cover}
+          date={post.date}
+          tags={post.tags}
           context={pageContext}
         />
         <MDX content={post.body} />
@@ -48,22 +48,20 @@ const PostTemplate = ({ data, pageContext }) => {
 export default PostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
-    mdx(fields: { slug: { eq: $slug } }) {
+  query($slug: String!) {
+    post(slug: { eq: $slug }) {
       body
       excerpt
-      frontmatter {
-        title
-        tags
-        date(formatString: "MMMM DD, YYYY")
-        cover {
-          childImageSharp {
-            fluid(maxWidth: 1000) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-            ogimg: resize(width: 1000) {
-              src
-            }
+      title
+      tags
+      date(formatString: "MMMM DD, YYYY")
+      cover {
+        childImageSharp {
+          fluid(maxWidth: 1000) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+          ogimg: resize(width: 1000) {
+            src
           }
         }
       }

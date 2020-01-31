@@ -19,13 +19,10 @@ const Title = styled.h1`
 const PageTemplate = ({ data }) => {
   return (
     <>
-      <SEO
-        title={data.mdx.frontmatter.title}
-        description={data.mdx.frontmatter.description}
-      />
+      <SEO title={data.page.title} />
       <Container>
-        <Title>{data.mdx.frontmatter.title}</Title>
-        <MDX content={data.mdx.body} />
+        <Title>{data.page.title}</Title>
+        <MDX content={data.page.body} />
       </Container>
     </>
   )
@@ -35,12 +32,9 @@ export default PageTemplate
 
 export const pageQuery = graphql`
   query($slug: String!) {
-    mdx(fields: { slug: { eq: $slug } }) {
+    page(slug: { eq: $slug }) {
       body
-      frontmatter {
-        title
-        description
-      }
+      title
     }
   }
 `

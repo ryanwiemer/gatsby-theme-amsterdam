@@ -2,8 +2,8 @@ const path = require(`path`)
 const fs = require(`fs`)
 const mkdirp = require(`mkdirp`)
 const _ = require(`lodash`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
 const { paginate } = require(`gatsby-awesome-pagination`)
+const slugify = require('slugify')
 
 // Ensure that content directory exist at the site-level
 exports.onPreBootstrap = ({ store }, themeOptions) => {
@@ -17,24 +17,86 @@ exports.onPreBootstrap = ({ store }, themeOptions) => {
   })
 }
 
-// Schema Customization
-exports.sourceNodes = ({ actions, schema }) => {
-  const { createTypes } = actions
-  createTypes(`
-    type Frontmatter @infer {
-      title: String
-      date: Date @dateformat
+// Schema customization
+exports.createSchemaCustomization = ({ actions, schema }) => {
+  actions.createTypes(`
+    type Post implements Node {
+      id: ID!
+      slug: String!
+      title: String!
+      date: Date! @dateformat
+      excerpt(pruneLength: Int = 140): String!
+      body: String!
       cover: File @fileByRelativePath
-      tags: [String]
-    }
-    type Fields @infer {
-      slug: String
-    }
-    type MarkdownRemark implements Node @infer {
-      frontmatter: Frontmatter
-      fields: Fields
     }
   `)
+}
+
+// Helper to resolve mdx fields
+const mdxResolverPassthrough = fieldName => async (
+  source,
+  args,
+  context,
+  info
+) => {
+  const type = info.schema.getType(`Mdx`)
+  const mdxNode = context.nodeModel.getNodeById({
+    id: source.parent,
+  })
+  const resolver = type.getFields()[fieldName].resolve
+  return resolver(mdxNode, args, context, {
+    fieldName,
+  })
+}
+
+// Pass mdx body and excerpt
+exports.createResolvers = ({ createResolvers }) => {
+  createResolvers({
+    Post: {
+      body: {
+        resolve: mdxResolverPassthrough(`body`),
+      },
+      excerpt: {
+        resolve: mdxResolverPassthrough(`excerpt`),
+      },
+    },
+  })
+}
+
+// Create 'Post' nodes
+exports.onCreateNode = async (
+  { node, actions, getNode, createNodeId, createContentDigest },
+  themeOptions
+) => {
+  // Ignore files not in the defined content directory
+
+  const contentPath = themeOptions.contentPath || 'content'
+
+  if (node.internal.type !== `Mdx`) {
+    return
+  }
+
+  const parent = getNode(node.parent)
+  if (parent.sourceInstanceName !== contentPath) {
+    return
+  }
+
+  // Create nodes
+  if (node.internal.type === `Mdx`) {
+    actions.createNode({
+      id: createNodeId(`${node.id} >>> Post`),
+      slug: `${node.frontmatter.slug || slugify(parent.relativeDirectory)}`,
+      title: node.frontmatter.title,
+      date: node.frontmatter.date,
+      cover: node.frontmatter.cover,
+      tags: node.frontmatter.tags || [],
+      parent: node.id,
+      internal: {
+        type: 'Post',
+        contentDigest: createContentDigest(node.internal.contentDigest),
+      },
+    })
+  }
 }
 
 // Create Pages
@@ -43,29 +105,22 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
   const result = await graphql(
     `
       {
-        allMdx(
-          sort: { fields: [frontmatter___date], order: DESC }
-          filter: { fields: { sourceName: { eq: "posts" } } }
-          limit: 1000
-        ) {
+        allPost(sort: { fields: [date], order: DESC }) {
           edges {
             node {
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-                tags
-                cover {
-                  childImageSharp {
-                    fluid(maxWidth: 1000) {
-                      aspectRatio
-                      src
-                      srcSet
-                      srcWebp
-                      srcSetWebp
-                      sizes
-                    }
+              title
+              date
+              tags
+              slug
+              cover {
+                childImageSharp {
+                  fluid(maxWidth: 1000) {
+                    aspectRatio
+                    src
+                    srcSet
+                    srcWebp
+                    srcSetWebp
+                    sizes
                   }
                 }
               }
@@ -78,7 +133,7 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
   if (result.errors) {
     reporter.panic(result.errors)
   }
-  const posts = result.data.allMdx.edges
+  const posts = result.data.allPost.edges
   const basePath = themeOptions.basePath || `/`
 
   // Create individual post pages
@@ -87,13 +142,10 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
     const next = index === 0 ? null : posts[index - 1].node
 
     createPage({
-      path:
-        basePath === '/'
-          ? post.node.fields.slug
-          : basePath + post.node.fields.slug,
+      path: basePath === '/' ? post.node.slug : basePath + post.node.slug,
       component: require.resolve(`./src/templates/post`),
       context: {
-        slug: post.node.fields.slug,
+        slug: post.node.slug,
         basePath: basePath === '/' ? '' : basePath,
         previous,
         next,
@@ -119,16 +171,14 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
   // Create tag pages and paginate
   let tags = []
   _.each(posts, post => {
-    if (_.get(post, 'node.frontmatter.tags')) {
-      tags = tags.concat(post.node.frontmatter.tags)
+    if (_.get(post, 'node.tags')) {
+      tags = tags.concat(post.node.tags)
     }
   })
   tags = _.uniq(tags)
   tags.forEach(tag => {
     const postsWithTag = posts.filter(
-      post =>
-        post.node.frontmatter.tags &&
-        post.node.frontmatter.tags.indexOf(tag) !== -1
+      post => post.node.tags && post.node.tags.indexOf(tag) !== -1
     )
 
     const tagPagination =
@@ -149,24 +199,4 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
       },
     })
   })
-}
-
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
-  if (node.internal.type === `Mdx`) {
-    const parent = getNode(node.parent)
-    if (parent.internal.type === 'File') {
-      createNodeField({
-        name: `sourceName`,
-        node,
-        value: parent.sourceInstanceName,
-      })
-    }
-    const value = createFilePath({ node, getNode })
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
-    })
-  }
 }

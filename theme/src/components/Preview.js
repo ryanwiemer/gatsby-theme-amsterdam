@@ -101,7 +101,7 @@ const Preview = props => {
   const [colorMode] = useColorMode()
   const hasPreviewContent = props.next || props.previous
 
-  console.log(colorMode)
+  console.log(props.next)
   return (
     <>
       {hasPreviewContent && (
@@ -109,20 +109,20 @@ const Preview = props => {
           {props.previous && (
             <Box
               mode={colorMode}
-              to={props.context.basePath + props.previous.fields.slug}
+              to={props.context.basePath + props.previous.slug}
               style={{ order: 1, marginRight: 'auto' }}
             >
               <TextContainer>
                 <div>
                   <SubTitle>Previous Post</SubTitle>
-                  {props.previous.frontmatter.title && (
-                    <Title>{props.previous.frontmatter.title}</Title>
+                  {props.previous.title && (
+                    <Title>{props.previous.title}</Title>
                   )}
                 </div>
               </TextContainer>
-              {props.previous.frontmatter.cover && (
+              {props.previous.cover && (
                 <Img
-                  fluid={props.previous.frontmatter.cover.childImageSharp.fluid}
+                  fluid={props.previous.cover.childImageSharp.fluid}
                   style={{
                     position: 'absolute',
                     left: 0,
@@ -138,20 +138,18 @@ const Preview = props => {
           {props.next && (
             <Box
               mode={colorMode}
-              to={props.context.basePath + props.next.fields.slug}
+              to={props.context.basePath + props.next.slug}
               style={{ order: 3, marginLeft: 'auto' }}
             >
               <TextContainer>
                 <div>
                   <SubTitle>Next Post</SubTitle>
-                  {props.next.frontmatter.title && (
-                    <Title>{props.next.frontmatter.title}</Title>
-                  )}
+                  {props.next.title && <Title>{props.next.title}</Title>}
                 </div>
               </TextContainer>
-              {props.next.frontmatter.cover && (
+              {props.next.cover && (
                 <Img
-                  fluid={props.next.frontmatter.cover.childImageSharp.fluid}
+                  fluid={props.next.cover.childImageSharp.fluid}
                   style={{
                     position: 'absolute',
                     left: 0,

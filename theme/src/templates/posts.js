@@ -9,11 +9,11 @@ import { useSiteMetadata } from '../hooks/use-site-metadata'
 
 const PostsPage = ({ data, pageContext }) => {
   const { intro } = useSiteMetadata()
-  const posts = data.allMdx.edges
+  const posts = data.allPost.edges
 
   let ogImage
   try {
-    ogImage = posts[0].node.frontmatter.cover.childImageSharp.ogimg.src
+    ogImage = posts[0].node.cover.childImageSharp.ogimg.src
   } catch (error) {
     ogImage = null
   }
@@ -42,30 +42,21 @@ export default PostsPage
 
 export const postsQuery = graphql`
   query($skip: Int!, $limit: Int!) {
-    allMdx(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fields: { sourceName: { eq: "posts" } } }
-      skip: $skip
-      limit: $limit
-    ) {
+    allPost(sort: { fields: [date], order: DESC }, skip: $skip, limit: $limit) {
       edges {
         node {
-          fields {
-            slug
-          }
+          slug
           excerpt
-          frontmatter {
-            title
-            tags
-            date(formatString: "MMMM DD, YYYY")
-            cover {
-              childImageSharp {
-                fluid(maxWidth: 1000) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
-                ogimg: resize(width: 1000) {
-                  src
-                }
+          title
+          tags
+          date(formatString: "MMMM DD, YYYY")
+          cover {
+            childImageSharp {
+              fluid(maxWidth: 1000) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+              ogimg: resize(width: 1000) {
+                src
               }
             }
           }

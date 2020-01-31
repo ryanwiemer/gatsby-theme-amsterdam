@@ -1,6 +1,5 @@
 ---
 title: FAQ
-description: FAQ description
 ---
 
 ### What is Gatsby?

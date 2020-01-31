@@ -7,11 +7,11 @@ import Pagination from '../components/Pagination'
 import Container from '../components/Container'
 
 const TagPage = ({ data, pageContext }) => {
-  const posts = data.allMdx.edges
+  const posts = data.allPost.edges
 
   let ogImage
   try {
-    ogImage = posts[0].node.frontmatter.cover.childImageSharp.ogimg.src
+    ogImage = posts[0].node.cover.childImageSharp.ogimg.src
   } catch (error) {
     ogImage = null
   }
@@ -44,30 +44,26 @@ export default TagPage
 
 export const tagQuery = graphql`
   query($skip: Int!, $limit: Int!, $tag: String) {
-    allMdx(
-      sort: { fields: [frontmatter___date], order: DESC }
+    allPost(
+      sort: { fields: [date], order: DESC }
       skip: $skip
       limit: $limit
-      filter: { frontmatter: { tags: { in: [$tag] } } }
+      filter: { tags: { in: [$tag] } }
     ) {
       edges {
         node {
-          fields {
-            slug
-          }
+          slug
           excerpt
-          frontmatter {
-            title
-            tags
-            date(formatString: "MMMM DD, YYYY")
-            cover {
-              childImageSharp {
-                fluid(maxWidth: 1000) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
-                ogimg: resize(width: 1000) {
-                  src
-                }
+          title
+          tags
+          date(formatString: "MMMM DD, YYYY")
+          cover {
+            childImageSharp {
+              fluid(maxWidth: 1000) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+              ogimg: resize(width: 1000) {
+                src
               }
             }
           }

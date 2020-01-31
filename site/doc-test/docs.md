@@ -1,6 +1,5 @@
 ---
 title: Docs
-description: Docs description
 ---
 
 ## Gatsby Theme Amsterdam
@@ -65,7 +64,7 @@ module.exports = {
 | Key                 | Default Value | Description                                                                                                 |
 | ------------------- | ------------- | ----------------------------------------------------------------------------------------------------------- |
 | `basePath`          | `/`           | Root URL for all posts.                                                                                     |
-| `contentPath`       | `/content`    | Location of markdown files used for the posts.                                                              |  |
+| `contentPath`       | `content`     | Location of markdown files used for the posts.                                                              |  |
 | `transitions`       | `true`        | Include simple page transitions powered with [framer-motion](https://github.com/framer/motion)              |
 | `postsPerPage`      | `6`           | Determines the number of posts shown on each page. This effects both the posts and tag template.            |
 | `grid`              | `basic`       | Determines the type of grid used on the posts and tag templates. Two available options: `basic` and `list`. |
