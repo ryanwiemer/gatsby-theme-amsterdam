@@ -35,6 +35,7 @@ A Gatsby theme for artists, photographers and other creative folks.
 - SEO friendly component
 - Mobile menu
 - Optional scroll progress indicator
+- Optional toggle to switch color modes
 - Emotion using styled-components syntax
 - Tags
 - Pagination
@@ -104,7 +105,7 @@ module.exports = {
       resolve: 'gatsby-theme-amsterdam',
       options: {
         // basePath defaults to '/'
-        basePath: '/photography',
+        basePath: 'photography',
         // grid defaults to 'basic'
         grid: 'list',
       },
@@ -185,7 +186,7 @@ export default {
 
 ### Writing Content
 
-Posts are written in markdown format `.md` and placed in the `content` directory at the root of the site unless a different `contentPath` is defined in the theme options. There are four front matter variables used in the theme which are shown below.
+Posts are written in markdown / mdx format with either `.md` or `.mdx` and placed in the `content` directory at the root of the site unless a different `contentPath` is defined in the theme options. There are four front matter variables used in the theme which are shown below.
 
 ```markdown
 ---

@@ -1,4 +1,3 @@
-// Create documentation pages for https://amsterdam.netlify.com/
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 // Schema customization
@@ -100,9 +99,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   if (result.errors) {
     reporter.panic(result.errors)
   }
-
   const pages = result.data.allPage.edges
-
   pages.forEach((page, index) => {
     createPage({
       path: page.node.slug,

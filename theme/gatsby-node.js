@@ -17,16 +17,16 @@ exports.onPreBootstrap = ({ store }, themeOptions) => {
   })
 }
 
-// Schema customization
+// Schema customization for Post type
 exports.createSchemaCustomization = ({ actions, schema }) => {
   actions.createTypes(`
     type Post implements Node {
       id: ID!
       slug: String!
-      title: String!
-      date: Date! @dateformat
-      excerpt(pruneLength: Int = 140): String!
-      body: String!
+      title: String
+      date: Date @dateformat
+      excerpt(pruneLength: Int = 140): String
+      body: String
       cover: File @fileByRelativePath
     }
   `)
@@ -49,7 +49,7 @@ const mdxResolverPassthrough = fieldName => async (
   })
 }
 
-// Pass mdx body and excerpt
+// Pass mdx body and excerpt to Post type
 exports.createResolvers = ({ createResolvers }) => {
   createResolvers({
     Post: {
@@ -63,31 +63,26 @@ exports.createResolvers = ({ createResolvers }) => {
   })
 }
 
-// Create 'Post' nodes
+// Create Post type nodes
 exports.onCreateNode = async (
   { node, actions, getNode, createNodeId, createContentDigest },
   themeOptions
 ) => {
-  // Ignore files not in the defined content directory
-
-  const contentPath = themeOptions.contentPath || 'content'
-
   if (node.internal.type !== `Mdx`) {
     return
   }
-
+  const contentPath = themeOptions.contentPath || 'content'
   const parent = getNode(node.parent)
   if (parent.sourceInstanceName !== contentPath) {
     return
   }
-
   function generateSlug(...arguments_) {
     return `/${arguments_.join('/')}`.replace(/\/\/+/g, '/')
   }
 
-  // Create nodes
   if (node.internal.type === `Mdx`) {
     const filePath = createFilePath({ node, getNode })
+
     actions.createNode({
       id: createNodeId(`${node.id} >>> Post`),
       slug:
@@ -105,7 +100,6 @@ exports.onCreateNode = async (
   }
 }
 
-// Create Pages
 exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
   const { createPage } = actions
   const result = await graphql(
@@ -148,7 +142,7 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
     const next = index === 0 ? null : posts[index - 1].node
 
     createPage({
-      path: basePath === '/' ? post.node.slug : basePath + post.node.slug,
+      path: post.node.slug,
       component: require.resolve(`./src/templates/post`),
       context: {
         slug: post.node.slug,
@@ -161,7 +155,6 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
 
   // Create posts list page and paginate
   const postsPerPage = themeOptions.postsPerPage || 6
-
   paginate({
     createPage,
     items: posts,

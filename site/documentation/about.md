@@ -50,6 +50,7 @@ Created by **[Ryan Wiemer](https://twitter.com/ryanwiemer)**
 - SEO friendly component
 - Mobile menu
 - Optional scroll progress indicator
+- Optional toggle to switch color modes
 - Emotion using styled-components syntax
 - Tags
 - Pagination
