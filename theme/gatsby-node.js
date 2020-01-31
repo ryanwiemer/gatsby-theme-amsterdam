@@ -3,7 +3,7 @@ const fs = require(`fs`)
 const mkdirp = require(`mkdirp`)
 const _ = require(`lodash`)
 const { paginate } = require(`gatsby-awesome-pagination`)
-const slugify = require('slugify')
+const { createFilePath } = require(`gatsby-source-filesystem`)
 
 // Ensure that content directory exist at the site-level
 exports.onPreBootstrap = ({ store }, themeOptions) => {
@@ -81,11 +81,17 @@ exports.onCreateNode = async (
     return
   }
 
+  function generateSlug(...arguments_) {
+    return `/${arguments_.join('/')}`.replace(/\/\/+/g, '/')
+  }
+
   // Create nodes
   if (node.internal.type === `Mdx`) {
+    const filePath = createFilePath({ node, getNode })
     actions.createNode({
       id: createNodeId(`${node.id} >>> Post`),
-      slug: `${node.frontmatter.slug || slugify(parent.relativeDirectory)}`,
+      slug:
+        node.frontmatter.slug || generateSlug(themeOptions.basePath, filePath),
       title: node.frontmatter.title,
       date: node.frontmatter.date,
       cover: node.frontmatter.cover,

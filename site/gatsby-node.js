@@ -1,5 +1,5 @@
 // Create documentation pages for https://amsterdam.netlify.com/
-const slugify = require('slugify')
+const { createFilePath } = require(`gatsby-source-filesystem`)
 
 // Schema customization
 exports.createSchemaCustomization = ({ actions, schema }) => {
@@ -50,20 +50,27 @@ exports.onCreateNode = async (
   { node, actions, getNode, createNodeId, createContentDigest },
   themeOptions
 ) => {
+  function generateSlug(...arguments_) {
+    return `/${arguments_.join('/')}`.replace(/\/\/+/g, '/')
+  }
+
+  const contentPath = 'documentation'
+
   if (node.internal.type !== `Mdx`) {
     return
   }
 
   const parent = getNode(node.parent)
-  if (parent.sourceInstanceName !== 'documentation') {
+  if (parent.sourceInstanceName !== contentPath) {
     return
   }
 
   // Create nodes
   if (node.internal.type === `Mdx`) {
+    const filePath = createFilePath({ node, getNode })
     actions.createNode({
       id: createNodeId(`${node.id} >>> Page`),
-      slug: `${node.frontmatter.slug || slugify(parent.relativeDirectory)}`,
+      slug: node.frontmatter.slug || generateSlug('/', filePath),
       title: node.frontmatter.title,
       parent: node.id,
       internal: {
@@ -74,6 +81,7 @@ exports.onCreateNode = async (
   }
 }
 
+// Create pages for documentation
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
   const result = await graphql(
@@ -92,7 +100,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   if (result.errors) {
     reporter.panic(result.errors)
   }
+
   const pages = result.data.allPage.edges
+
   pages.forEach((page, index) => {
     createPage({
       path: page.node.slug,
