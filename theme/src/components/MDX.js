@@ -128,16 +128,6 @@ const OL = styled.ol`
   }
 `
 
-const Code = styled.code`
-  font-family: 'Lucida Console', Monaco, monospace;
-  font-size: 0.9rem !important;
-  padding: 0.25rem !important;
-  background: ${props => props.theme.colors.code} !important;
-  color: ${props => props.theme.colors.text} !important;
-  opacity: 1;
-  text-shadow: none !important;
-`
-
 const Table = styled.table`
   display: block;
   overflow: auto;
@@ -163,6 +153,16 @@ const Table = styled.table`
   tr:nth-of-type(2n) {
     background: ${props => props.theme.colors.code};
   }
+`
+
+const Code = styled.code`
+  font-family: ${props => props.theme.fonts.monospace} !important;
+  font-size: 0.9rem !important;
+  padding: 0.25rem !important;
+  background: ${props => props.theme.colors.code} !important;
+  color: ${props => props.theme.colors.text} !important;
+  opacity: 1;
+  text-shadow: none !important;
 `
 
 const Pre = styled.pre`
