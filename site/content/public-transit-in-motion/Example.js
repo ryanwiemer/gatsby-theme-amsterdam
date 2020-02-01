@@ -27,7 +27,7 @@ const Number = styled.p`
   margin: 0 0 1rem 0;
 `
 
-const Box = props => {
+const Example = props => {
   const [count, setCount] = useState(0);
   return (
     <Wrapper onClick={() => setCount(count + 1)}>
@@ -41,4 +41,4 @@ const Box = props => {
     )
 }
 
-export default Box
+export default Example

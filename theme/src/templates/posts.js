@@ -21,7 +21,6 @@ const PostsPage = ({ data, pageContext }) => {
   return (
     <>
       <SEO
-        title="Home"
         image={ogImage}
         slug={
           pageContext.humanPageNumber === 1
