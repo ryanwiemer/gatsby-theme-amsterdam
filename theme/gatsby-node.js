@@ -4,6 +4,7 @@ const mkdirp = require(`mkdirp`)
 const _ = require(`lodash`)
 const { paginate } = require(`gatsby-awesome-pagination`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
+const slugify = require('slugify')
 
 // Ensure that content directory exist at the site-level
 exports.onPreBootstrap = ({ store }, themeOptions) => {
@@ -24,6 +25,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       id: ID!
       slug: String!
       title: String
+      tags: [String]
       date: Date @dateformat
       excerpt(pruneLength: Int = 140): String
       body: String
@@ -85,12 +87,16 @@ exports.onCreateNode = async (
 
     actions.createNode({
       id: createNodeId(`${node.id} >>> Post`),
-      slug:
-        node.frontmatter.slug || generateSlug(themeOptions.basePath, filePath),
+      slug: node.frontmatter.slug
+        ? `${generateSlug(
+            themeOptions.basePath,
+            slugify(node.frontmatter.slug)
+          )}/`
+        : generateSlug(themeOptions.basePath, filePath),
       title: node.frontmatter.title,
       date: node.frontmatter.date,
       cover: node.frontmatter.cover,
-      tags: node.frontmatter.tags || [],
+      tags: node.frontmatter.tags,
       parent: node.id,
       internal: {
         type: 'Post',

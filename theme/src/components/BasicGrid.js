@@ -113,7 +113,7 @@ const BasicGrid = props => {
     <List>
       {props.posts.map(({ node: post }) => (
         <Item key={post.title}>
-          <Link to={props.context.basePath + post.slug}>
+          <Link to={post.slug}>
             {post.cover && (
               <Cover
                 sizes={{
@@ -125,7 +125,7 @@ const BasicGrid = props => {
             )}
             {post.cover === null ? <Placeholder aspectRatio={5 / 3} /> : ''}
           </Link>
-          <Link to={props.context.basePath + post.slug}>
+          <Link to={post.slug}>
             <Title>{post.title}</Title>
             <Excerpt>{post.excerpt}</Excerpt>
           </Link>

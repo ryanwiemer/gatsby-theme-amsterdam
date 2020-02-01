@@ -101,7 +101,6 @@ const Preview = props => {
   const [colorMode] = useColorMode()
   const hasPreviewContent = props.next || props.previous
 
-  console.log(props.next)
   return (
     <>
       {hasPreviewContent && (
@@ -109,7 +108,7 @@ const Preview = props => {
           {props.previous && (
             <Box
               mode={colorMode}
-              to={props.context.basePath + props.previous.slug}
+              to={props.previous.slug}
               style={{ order: 1, marginRight: 'auto' }}
             >
               <TextContainer>
@@ -138,7 +137,7 @@ const Preview = props => {
           {props.next && (
             <Box
               mode={colorMode}
-              to={props.context.basePath + props.next.slug}
+              to={props.next.slug}
               style={{ order: 3, marginLeft: 'auto' }}
             >
               <TextContainer>

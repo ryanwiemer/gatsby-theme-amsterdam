@@ -9,14 +9,14 @@ import ProgressIndicator from '../components/ProgressIndicator'
 import OptionsContext from '../components/OptionsContext'
 
 const PostTemplate = ({ data, pageContext }) => {
-  const post = data.post
   const next = pageContext.previous
   const previous = pageContext.next
   const options = useContext(OptionsContext)
 
   let ogImage
+
   try {
-    ogImage = post.cover.childImageSharp.ogimg.src
+    ogImage = data.post.cover.childImageSharp.ogimg.src
   } catch (error) {
     ogImage = null
   }
@@ -24,21 +24,21 @@ const PostTemplate = ({ data, pageContext }) => {
   return (
     <>
       <SEO
-        title={post.title}
-        description={post.excerpt}
+        title={data.post.title}
+        description={data.post.excerpt}
         image={ogImage}
         slug={pageContext.slug}
       />
       {options.progressIndicator && <ProgressIndicator />}
       <Container fullWidth>
         <Hero
-          title={post.title}
-          image={post.cover}
-          date={post.date}
-          tags={post.tags}
+          title={data.post.title}
+          image={data.post.cover}
+          date={data.post.date}
+          tags={data.post.tags}
           context={pageContext}
         />
-        <MDX content={post.body} />
+        <MDX content={data.post.body} />
         <Preview previous={previous} next={next} context={pageContext} />
       </Container>
     </>

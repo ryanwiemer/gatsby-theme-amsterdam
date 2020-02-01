@@ -6,9 +6,9 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
     type Page implements Node {
       id: ID!
       slug: String!
-      title: String!
-      excerpt(pruneLength: Int = 140): String!
-      body: String!
+      title: String
+      excerpt(pruneLength: Int = 140): String
+      body: String
     }
   `)
 }
