@@ -19,7 +19,11 @@ const Title = styled.h1`
 const PageTemplate = ({ data }) => {
   return (
     <>
-      <SEO title={data.page.title} />
+      <SEO
+        title={data.page.title}
+        description={data.page.description}
+        slug={data.page.slug}
+      />
       <Container>
         <Title>{data.page.title}</Title>
         <MDX content={data.page.body} />
@@ -35,6 +39,8 @@ export const pageQuery = graphql`
     page(slug: { eq: $slug }) {
       body
       title
+      description
+      slug
     }
   }
 `

@@ -1,10 +1,8 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
-import OptionsContext from './OptionsContext'
 
 const SEO = ({ title, description, image, slug }) => {
-  const options = useContext(OptionsContext)
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -22,10 +20,7 @@ const SEO = ({ title, description, image, slug }) => {
   )
 
   const metaDescription = description || site.siteMetadata.description
-  const defaultUrl =
-    options.basePath === '/'
-      ? site.siteMetadata.url
-      : site.siteMetadata.url + options.basePath
+  const defaultUrl = site.siteMetadata.url
   const metaUrl = slug ? defaultUrl + slug : defaultUrl
   const defaultImage = site.siteMetadata.image
     ? site.siteMetadata.image

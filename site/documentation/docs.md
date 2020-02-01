@@ -1,5 +1,6 @@
 ---
 title: Docs
+description: Documentation for Gatsby Theme Amsterdam
 ---
 
 ## Gatsby Theme Amsterdam

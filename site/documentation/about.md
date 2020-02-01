@@ -1,5 +1,6 @@
 ---
 title: About
+description: Learn about Gatsby Theme Amsterdam
 ---
 
 <p>

@@ -7,6 +7,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       id: ID!
       slug: String!
       title: String
+      description: String
       excerpt(pruneLength: Int = 140): String
       body: String
     }
@@ -71,6 +72,7 @@ exports.onCreateNode = async (
       id: createNodeId(`${node.id} >>> Page`),
       slug: node.frontmatter.slug || generateSlug('/', filePath),
       title: node.frontmatter.title,
+      description: node.frontmatter.description,
       parent: node.id,
       internal: {
         type: 'Page',

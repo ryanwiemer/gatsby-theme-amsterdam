@@ -25,8 +25,8 @@ const PostsPage = ({ data, pageContext }) => {
         image={ogImage}
         slug={
           pageContext.humanPageNumber === 1
-            ? `${pageContext.paginationPath}/`
-            : `${pageContext.paginationPath}/${pageContext.humanPageNumber}`
+            ? `/${pageContext.paginationPath}/`
+            : `/${pageContext.paginationPath}/${pageContext.humanPageNumber}`
         }
       />
       <Container fullWidth noPadding>

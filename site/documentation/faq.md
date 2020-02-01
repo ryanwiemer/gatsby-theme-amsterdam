@@ -1,5 +1,6 @@
 ---
 title: FAQ
+description: Frequently asked questions related to Gatsby Theme Amsterdam
 ---
 
 ### What is Gatsby?
