@@ -1,8 +1,7 @@
 import React, { useEffect, useContext } from 'react'
-import styled, { ThemeProvider } from 'styled-components'
-import Helmet from 'react-helmet'
-import theme from '../styles/theme'
-import GlobalStyle from '../styles/global'
+import styled from '@emotion/styled'
+import { Global } from '@emotion/core'
+import { globalStyles } from '../styles/globalStyles.js'
 import Menu from './Menu'
 import Footer from './Footer'
 import Transition from './Transition'
@@ -26,6 +25,24 @@ const Skip = styled.a`
   }
 `
 
+const Root = styled.main`
+  font-family: ${props => props.theme.fonts.body};
+  font-weight: ${props => props.theme.fonts.normalWeight};
+  padding: 60px 0 0 0;
+  margin: 0 auto;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: ${props => props.theme.fonts.heading};
+  }
+`
+
 const Layout = props => {
   function handleFirstTab(e) {
     if (e.keyCode === 9) {
@@ -38,38 +55,29 @@ const Layout = props => {
 
   return (
     <>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Helmet>
       <Skip href="#main" id="skip-navigation">
         Skip to content
       </Skip>
-
-      <ThemeProvider theme={theme}>
+      {options.transitions ? (
         <>
-          {options.transitions ? (
-            <>
-              <Menu />
-              <Transition {...props}>
-                <div className="siteRoot">
-                  {props.children}
-                  <Footer />
-                </div>
-              </Transition>
-            </>
-          ) : (
-            <>
-              <Menu />
-              <main className="siteRoot" id="main">
-                {props.children}
-                <Footer />
-              </main>
-            </>
-          )}
+          <Menu />
+          <Transition {...props}>
+            <Root className="siteRoot" id="main">
+              {props.children}
+              <Footer />
+            </Root>
+          </Transition>
         </>
-      </ThemeProvider>
-      <GlobalStyle />
+      ) : (
+        <>
+          <Menu />
+          <Root className="siteRoot" id="main">
+            {props.children}
+            <Footer />
+          </Root>
+        </>
+      )}
+      <Global styles={globalStyles} />
     </>
   )
 }

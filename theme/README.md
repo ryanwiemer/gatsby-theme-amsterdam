@@ -23,16 +23,20 @@ A Gatsby theme for artists, photographers and other creative folks.
 
 [Demo Website](https://amsterdam.netlify.com/)
 
+![](screenshots/demo.jpg)
+
 ## Features
 
 - Minimal responsive design
 - Optional page transitions
 - Multiple grid options to display posts
-- Customizable theme colors and typography
+- Customizable theme colors and typography with Theme UI
+- MDX support
 - SEO friendly component
 - Mobile menu
 - Optional scroll progress indicator
-- Styled components
+- Optional toggle to switch color modes
+- Emotion using styled-components syntax
 - Tags
 - Pagination
 - Offline support
@@ -49,7 +53,7 @@ gatsby new your-themed-site https://github.com/ryanwiemer/gatsby-starter-amsterd
 
 ### Manually Add To Your Site
 
-Install the theme
+1. Install the theme
 
 ```sh
 npm install --save gatsby-theme-amsterdam
@@ -61,7 +65,7 @@ or
 yarn add gatsby-theme-amsterdam
 ```
 
-Add the theme to your `gatsby-config.js`
+2. Add the theme to your `gatsby-config.js`
 
 ```javascript
 // gatsby-config.js
@@ -81,15 +85,15 @@ module.exports = {
 
 ### Theme Options
 
-| Key                 | Default Value | Description                                                                                                                                      |
-| ------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `basePath`          | `/`           | Root URL for all posts.                                                                                                                          |
-| `contentPath`       | `/content`    | Location of markdown files used for the posts.                                                                                                   |  |
-| `transitions`       | `true`        | Include simple page transitions powered with [framer-motion](https://github.com/framer/motion)                                                   |
-| `iconPath`          | default icon  | Path to the icon to be used for the favicon and web manifest. For example `'src/images/favicon.png'`. For best results provide a 512x512 square. |
-| `postsPerPage`      | `6`           | Determines the number of posts shown on each page. This effects both the posts and tag template.                                                 |
-| `grid`              | `basic`       | Determines the type of grid used on the posts and tag templates. Two available options: `basic` and `list`.                                      |
-| `progressIndicator` | `true`        | Include a progress indicator on the post template.                                                                                               |
+| Key                 | Default Value | Description                                                                                                 |
+| ------------------- | ------------- | ----------------------------------------------------------------------------------------------------------- |
+| `basePath`          | `/`           | Root URL for all posts.                                                                                     |
+| `contentPath`       | `content`     | Location of markdown files used for the posts.                                                              |  |
+| `transitions`       | `true`        | Include simple page transitions powered with [framer-motion](https://github.com/framer/motion)              |
+| `postsPerPage`      | `6`           | Determines the number of posts shown on each page. This effects both the posts and tag template.            |
+| `grid`              | `basic`       | Determines the type of grid used on the posts and tag templates. Two available options: `basic` and `list`. |
+| `progressIndicator` | `true`        | Include a progress indicator on the post template.                                                          |
+| `colorToggle`       | `true`        | Include a button in the menu to toggle the color modes.                                                     |
 
 #### Example Usage
 
@@ -101,9 +105,7 @@ module.exports = {
       resolve: 'gatsby-theme-amsterdam',
       options: {
         // basePath defaults to '/'
-        basePath: '/photography',
-        // the path to your icon file
-        iconPath: 'src/images/favicon.png',
+        basePath: 'photography',
         // grid defaults to 'basic'
         grid: 'list',
       },
@@ -126,6 +128,8 @@ module.exports = {
     description: 'My site description...',
     // Used for SEO. Do not include a trailing slash
     url: 'https://www.example.com',
+    // Used for SEO. Must be the full URL for the default image
+    image: 'https://www.example.com/og-image.jpg',
     // Used for SEO
     author: 'John Doe',
     // Used for an optional intro section at the top of the posts template
@@ -162,45 +166,27 @@ module.exports = {
 
 ### Customization
 
-Gatsby Theme Amsterdam uses [styled-components](https://github.com/styled-components/styled-components) and defines the theme related tokens in a file called `theme.js`. In order to change these values simply [shadow](https://www.gatsbyjs.org/blog/2019-04-29-component-shadowing/) the file and replace with your desired values. See the example below.
+Gatsby Theme Amsterdam utilizes [Theme UI](https://theme-ui.com/). In order to customize the theme styling you must create a theme file and then override the default `amsterdamTheme` values. If you're familiar with Styled Components or Emotion it's the same as adapting the theme you pass to `ThemeProvider`.
+
+All default values can be viewed [here](https://github.com/ryanwiemer/gatsby-theme-amsterdam/blob/master/theme/src/gatsby-plugin-theme-ui/index.js).
 
 ```javascript
-// Create a theme.js file located at 'src/gatsby-theme-amsterdam/styles/theme.js'
+// src/gatsby-plugin-theme-ui/index.js
+
+import amsterdamTheme from 'gatsby-theme-amsterdam/src/gatsby-plugin-theme-ui'
+
 export default {
+  ...amsterdamTheme,
   colors: {
-    base: '#292929',
-    secondary: '#686461',
-    tertiary: '#958E8E',
-    highlight: '#C29967',
-    background: '#F5F0EB',
-    border: '#DCD8D3',
-    button: '#E9E4DF',
-    text: '#292929',
-    code: '#E9E5E0',
-  },
-  fonts: {
-    body:
-      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
-    heading:
-      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
-    normalWeight: '400',
-    boldWeight: '600',
-  },
-  sizes: {
-    maxWidth: '1050px',
-    maxWidthCentered: '800px',
-  },
-  responsive: {
-    small: '35em',
-    medium: '50em',
-    large: '70em',
+    ...amsterdamTheme.colors,
+    background: '#FCD5C0',
   },
 }
 ```
 
 ### Writing Content
 
-Posts are written in markdown format `.md` and placed in the `content` directory at the root of the site unless a different `contentPath` is defined in the theme options. There are four front matter variables used in the theme which are shown below.
+Posts are written in markdown / mdx format with either `.md` or `.mdx` and placed in the `content` directory at the root of the site unless a different `contentPath` is defined in the theme options. There are four front matter variables used in the theme which are shown below.
 
 ```markdown
 ---

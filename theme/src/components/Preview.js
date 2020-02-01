@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import Img from 'gatsby-image'
+import { useColorMode } from 'theme-ui'
 
 const Wrapper = styled.div`
   position: relative;
@@ -27,10 +28,13 @@ const Box = styled(Link)`
     opacity: 0;
   }
   &::after {
+    background: ${props =>
+      props.mode === 'dark'
+        ? 'rgba(255, 255, 255, 0.05)'
+        : 'rgba(0, 0, 0, 0.05)'};
     transition: background-color 0.4s;
     content: '';
     position: absolute;
-    background: rgba(0, 0, 0, 0.05);
     height: 100%;
     width: 100%;
     top: 0;
@@ -94,27 +98,30 @@ const Line = styled.div`
 `
 
 const Preview = props => {
+  const [colorMode] = useColorMode()
   const hasPreviewContent = props.next || props.previous
+
   return (
     <>
       {hasPreviewContent && (
         <Wrapper>
           {props.previous && (
             <Box
-              to={props.context.basePath + props.previous.fields.slug}
+              mode={colorMode}
+              to={props.previous.slug}
               style={{ order: 1, marginRight: 'auto' }}
             >
               <TextContainer>
                 <div>
                   <SubTitle>Previous Post</SubTitle>
-                  {props.previous.frontmatter.title && (
-                    <Title>{props.previous.frontmatter.title}</Title>
+                  {props.previous.title && (
+                    <Title>{props.previous.title}</Title>
                   )}
                 </div>
               </TextContainer>
-              {props.previous.frontmatter.cover && (
+              {props.previous.cover && (
                 <Img
-                  fluid={props.previous.frontmatter.cover.childImageSharp.fluid}
+                  fluid={props.previous.cover.childImageSharp.fluid}
                   style={{
                     position: 'absolute',
                     left: 0,
@@ -129,20 +136,19 @@ const Preview = props => {
           <Line />
           {props.next && (
             <Box
-              to={props.context.basePath + props.next.fields.slug}
+              mode={colorMode}
+              to={props.next.slug}
               style={{ order: 3, marginLeft: 'auto' }}
             >
               <TextContainer>
                 <div>
                   <SubTitle>Next Post</SubTitle>
-                  {props.next.frontmatter.title && (
-                    <Title>{props.next.frontmatter.title}</Title>
-                  )}
+                  {props.next.title && <Title>{props.next.title}</Title>}
                 </div>
               </TextContainer>
-              {props.next.frontmatter.cover && (
+              {props.next.cover && (
                 <Img
-                  fluid={props.next.frontmatter.cover.childImageSharp.fluid}
+                  fluid={props.next.cover.childImageSharp.fluid}
                   style={{
                     position: 'absolute',
                     left: 0,

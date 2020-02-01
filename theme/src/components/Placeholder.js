@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import ImageIcon from '../icons/ImageIcon'
 
 const Wrapper = styled.div`

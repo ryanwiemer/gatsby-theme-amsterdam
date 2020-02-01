@@ -2,8 +2,9 @@ const path = require(`path`)
 const fs = require(`fs`)
 const mkdirp = require(`mkdirp`)
 const _ = require(`lodash`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
 const { paginate } = require(`gatsby-awesome-pagination`)
+const { createFilePath } = require(`gatsby-source-filesystem`)
+const slugify = require('slugify')
 
 // Ensure that content directory exist at the site-level
 exports.onPreBootstrap = ({ store }, themeOptions) => {
@@ -17,54 +18,115 @@ exports.onPreBootstrap = ({ store }, themeOptions) => {
   })
 }
 
-// Schema Customization
-exports.sourceNodes = ({ actions, schema }) => {
-  const { createTypes } = actions
-  createTypes(`
-    type Frontmatter @infer {
+// Schema customization for Post type
+exports.createSchemaCustomization = ({ actions, schema }) => {
+  actions.createTypes(`
+    type Post implements Node {
+      id: ID!
+      slug: String!
       title: String
-      date: Date @dateformat
-      cover: File @fileByRelativePath
       tags: [String]
-    }
-    type Fields @infer {
-      slug: String
-    }
-    type MarkdownRemark implements Node @infer {
-      frontmatter: Frontmatter
-      fields: Fields
+      date: Date @dateformat
+      excerpt(pruneLength: Int = 140): String
+      body: String
+      cover: File @fileByRelativePath
     }
   `)
 }
 
-// Create Pages
+// Helper to resolve mdx fields
+const mdxResolverPassthrough = fieldName => async (
+  source,
+  args,
+  context,
+  info
+) => {
+  const type = info.schema.getType(`Mdx`)
+  const mdxNode = context.nodeModel.getNodeById({
+    id: source.parent,
+  })
+  const resolver = type.getFields()[fieldName].resolve
+  return resolver(mdxNode, args, context, {
+    fieldName,
+  })
+}
+
+// Pass mdx body and excerpt to Post type
+exports.createResolvers = ({ createResolvers }) => {
+  createResolvers({
+    Post: {
+      body: {
+        resolve: mdxResolverPassthrough(`body`),
+      },
+      excerpt: {
+        resolve: mdxResolverPassthrough(`excerpt`),
+      },
+    },
+  })
+}
+
+// Create Post type nodes
+exports.onCreateNode = async (
+  { node, actions, getNode, createNodeId, createContentDigest },
+  themeOptions
+) => {
+  if (node.internal.type !== `Mdx`) {
+    return
+  }
+  const contentPath = themeOptions.contentPath || 'content'
+  const parent = getNode(node.parent)
+  if (parent.sourceInstanceName !== contentPath) {
+    return
+  }
+  function generateSlug(...arguments_) {
+    return `/${arguments_.join('/')}`.replace(/\/\/+/g, '/')
+  }
+
+  if (node.internal.type === `Mdx`) {
+    const filePath = createFilePath({ node, getNode })
+
+    actions.createNode({
+      id: createNodeId(`${node.id} >>> Post`),
+      slug: node.frontmatter.slug
+        ? `${generateSlug(
+            themeOptions.basePath,
+            slugify(node.frontmatter.slug)
+          )}/`
+        : generateSlug(themeOptions.basePath, filePath),
+      title: node.frontmatter.title,
+      date: node.frontmatter.date,
+      cover: node.frontmatter.cover,
+      tags: node.frontmatter.tags,
+      parent: node.id,
+      internal: {
+        type: 'Post',
+        contentDigest: createContentDigest(node.internal.contentDigest),
+      },
+    })
+  }
+}
+
 exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
   const { createPage } = actions
   const result = await graphql(
     `
       {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
-          limit: 1000
-        ) {
+        allPost(sort: { fields: [date], order: DESC }) {
           edges {
             node {
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-                tags
-                cover {
-                  childImageSharp {
-                    fluid(maxWidth: 1000) {
-                      aspectRatio
-                      src
-                      srcSet
-                      srcWebp
-                      srcSetWebp
-                      sizes
-                    }
+              title
+              date
+              tags
+              slug
+              cover {
+                childImageSharp {
+                  fluid(maxWidth: 1000) {
+                    aspectRatio
+                    src
+                    srcSet
+                    srcWebp
+                    srcSetWebp
+                    sizes
                   }
                 }
               }
@@ -77,7 +139,7 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
   if (result.errors) {
     reporter.panic(result.errors)
   }
-  const posts = result.data.allMarkdownRemark.edges
+  const posts = result.data.allPost.edges
   const basePath = themeOptions.basePath || `/`
 
   // Create individual post pages
@@ -86,13 +148,10 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
     const next = index === 0 ? null : posts[index - 1].node
 
     createPage({
-      path:
-        basePath === '/'
-          ? post.node.fields.slug
-          : basePath + post.node.fields.slug,
+      path: post.node.slug,
       component: require.resolve(`./src/templates/post`),
       context: {
-        slug: post.node.fields.slug,
+        slug: post.node.slug,
         basePath: basePath === '/' ? '' : basePath,
         previous,
         next,
@@ -102,7 +161,6 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
 
   // Create posts list page and paginate
   const postsPerPage = themeOptions.postsPerPage || 6
-
   paginate({
     createPage,
     items: posts,
@@ -118,16 +176,14 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
   // Create tag pages and paginate
   let tags = []
   _.each(posts, post => {
-    if (_.get(post, 'node.frontmatter.tags')) {
-      tags = tags.concat(post.node.frontmatter.tags)
+    if (_.get(post, 'node.tags')) {
+      tags = tags.concat(post.node.tags)
     }
   })
   tags = _.uniq(tags)
   tags.forEach(tag => {
     const postsWithTag = posts.filter(
-      post =>
-        post.node.frontmatter.tags &&
-        post.node.frontmatter.tags.indexOf(tag) !== -1
+      post => post.node.tags && post.node.tags.indexOf(tag) !== -1
     )
 
     const tagPagination =
@@ -148,17 +204,4 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
       },
     })
   })
-}
-
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
-
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
-    })
-  }
 }

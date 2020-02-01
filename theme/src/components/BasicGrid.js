@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import Img from 'gatsby-image'
 import Placeholder from './Placeholder'
 const _ = require(`lodash`)
@@ -44,17 +44,19 @@ const Item = styled.li`
   a {
     text-decoration: none;
     transition: color 0.3s;
-    color: ${props => props.theme.colors.base};
+    color: ${props => props.theme.colors.tertiary};
     &:hover {
       color: ${props => props.theme.colors.highlight};
     }
     @media (hover: none) {
-      color: ${props => props.theme.colors.base} !important;
+      color: ${props => props.theme.colors.tertiary} !important;
     }
   }
 `
 
 const Title = styled.h2`
+  transition: color 0.3s;
+  color: ${props => props.theme.colors.text};
   font-weight: ${props => props.theme.fonts.boldWeight};
   margin: 1rem 0 0 0;
   display: block;
@@ -62,6 +64,12 @@ const Title = styled.h2`
   font-size: 1rem;
   @media screen and (min-width: ${props => props.theme.responsive.small}) {
     font-size: 1.1rem;
+  }
+  &:hover {
+    color: ${props => props.theme.colors.highlight};
+  }
+  @media (hover: none) {
+    color: ${props => props.theme.colors.text} !important;
   }
 `
 
@@ -104,33 +112,29 @@ const BasicGrid = props => {
   return (
     <List>
       {props.posts.map(({ node: post }) => (
-        <Item key={post.frontmatter.title}>
-          <Link to={props.context.basePath + post.fields.slug}>
-            {post.frontmatter.cover && (
+        <Item key={post.title}>
+          <Link to={post.slug}>
+            {post.cover && (
               <Cover
                 sizes={{
-                  ...post.frontmatter.cover.childImageSharp.fluid,
+                  ...post.cover.childImageSharp.fluid,
                   aspectRatio: 5 / 3,
                 }}
-                alt={post.frontmatter.cover.childImageSharp.title}
+                alt={post.cover.childImageSharp.title}
               />
             )}
-            {post.frontmatter.cover === null ? (
-              <Placeholder aspectRatio={5 / 3} />
-            ) : (
-              ''
-            )}
+            {post.cover === null ? <Placeholder aspectRatio={5 / 3} /> : ''}
           </Link>
-          <Link to={props.context.basePath + post.fields.slug}>
-            <Title>{post.frontmatter.title}</Title>
+          <Link to={post.slug}>
+            <Title>{post.title}</Title>
             <Excerpt>{post.excerpt}</Excerpt>
           </Link>
           <Container>
-            {post.frontmatter.date && <Date>{post.frontmatter.date}</Date>}
-            {post.frontmatter.tags && (
+            {post.date && <Date>{post.date}</Date>}
+            {post.tags && (
               <>
                 <Divider>/</Divider>
-                {post.frontmatter.tags.map(tag => (
+                {post.tags.map(tag => (
                   <Tag key={tag}>
                     <Link
                       to={`${props.context.basePath}/tag/${_.kebabCase(tag)}/`}

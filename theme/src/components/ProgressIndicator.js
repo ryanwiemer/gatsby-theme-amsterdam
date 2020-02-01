@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import styled, { css } from 'styled-components'
+import styled from '@emotion/styled'
 import { motion, useViewportScroll } from 'framer-motion'
 
 const Bar = styled(motion.div)`
@@ -19,7 +19,6 @@ const Bar = styled(motion.div)`
 
 const UpButton = styled.div`
   cursor: pointer;
-  pointer-events: none;
   transition: 0.35s opacity;
   position: fixed;
   bottom: 1rem;
@@ -28,15 +27,9 @@ const UpButton = styled.div`
   width: 48px;
   overflow: hidden;
   z-index: 999;
-  opacity: 0;
   display: none;
-  ${props =>
-    props.show &&
-    css`
-      pointer-events: auto;
-      opacity: 1;
-    `};
-
+  opacity: ${props => (props.show ? '1' : '0')};
+  pointer-events: ${props => (props.show ? 'auto' : 'none')};
   @media screen and (min-width: ${props => props.theme.responsive.large}) {
     display: block;
   }
@@ -69,7 +62,7 @@ const ProgressIndicator = () => {
   const [isVisible, setIsVisible] = useState(false)
   useEffect(
     () => scrollYProgress.onChange(v => setIsVisible(v >= 0.05 && v <= 0.9)),
-    []
+    [scrollYProgress]
   )
 
   const scrollToTop = () => {

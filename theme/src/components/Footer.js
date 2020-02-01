@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import { useSiteMetadata } from '../hooks/use-site-metadata'
 
 const Wrapper = styled.footer`
@@ -7,7 +7,7 @@ const Wrapper = styled.footer`
 `
 
 const Container = styled.div`
-  color: ${props => props.theme.colors.tertiary};
+  color: white;
   font-size: 0.9em;
   max-width: ${props => props.theme.sizes.maxWidth};
   width: 100%;
@@ -24,6 +24,7 @@ const Container = styled.div`
 `
 
 const Copyright = styled.p`
+  opacity: 0.5;
   margin: 0 0 1rem 0;
   @media screen and (min-width: ${props => props.theme.responsive.medium}) {
     margin: 0;

@@ -2,21 +2,21 @@ import React, { useContext } from 'react'
 import { graphql } from 'gatsby'
 import Container from '../components/Container'
 import Hero from '../components/Hero'
-import Content from '../components/Content'
+import MDX from '../components/MDX'
 import Preview from '../components/Preview'
 import SEO from '../components/SEO'
 import ProgressIndicator from '../components/ProgressIndicator'
 import OptionsContext from '../components/OptionsContext'
 
 const PostTemplate = ({ data, pageContext }) => {
-  const post = data.markdownRemark
   const next = pageContext.previous
   const previous = pageContext.next
   const options = useContext(OptionsContext)
 
   let ogImage
+
   try {
-    ogImage = post.frontmatter.cover.childImageSharp.ogimg.src
+    ogImage = data.post.cover.childImageSharp.ogimg.src
   } catch (error) {
     ogImage = null
   }
@@ -24,20 +24,21 @@ const PostTemplate = ({ data, pageContext }) => {
   return (
     <>
       <SEO
-        title={post.frontmatter.title}
-        description={post.excerpt}
+        title={data.post.title}
+        description={data.post.excerpt}
         image={ogImage}
+        slug={pageContext.slug}
       />
       {options.progressIndicator && <ProgressIndicator />}
       <Container fullWidth>
         <Hero
-          title={post.frontmatter.title}
-          image={post.frontmatter.cover}
-          date={post.frontmatter.date}
-          tags={post.frontmatter.tags}
+          title={data.post.title}
+          image={data.post.cover}
+          date={data.post.date}
+          tags={data.post.tags}
           context={pageContext}
         />
-        <Content html={post.html} />
+        <MDX content={data.post.body} />
         <Preview previous={previous} next={next} context={pageContext} />
       </Container>
     </>
@@ -47,22 +48,20 @@ const PostTemplate = ({ data, pageContext }) => {
 export default PostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
+  query($slug: String!) {
+    post(slug: { eq: $slug }) {
+      body
       excerpt
-      frontmatter {
-        title
-        tags
-        date(formatString: "MMMM DD, YYYY")
-        cover {
-          childImageSharp {
-            fluid(maxWidth: 1000) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-            ogimg: resize(width: 1000) {
-              src
-            }
+      title
+      tags
+      date(formatString: "MMMM DD, YYYY")
+      cover {
+        childImageSharp {
+          fluid(maxWidth: 1000) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+          ogimg: resize(width: 1000) {
+            src
           }
         }
       }

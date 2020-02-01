@@ -1,6 +1,6 @@
 import React from 'react'
 import { navigate } from 'gatsby'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import Button from './Button'
 import SelectIcon from '../icons/SelectIcon'
 

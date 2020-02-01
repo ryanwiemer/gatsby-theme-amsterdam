@@ -1,12 +1,11 @@
-const path = require('path')
-
 module.exports = options => {
-  const { contentPath, iconPath, basePath } = options
+  const { contentPath } = options
 
   return {
     siteMetadata: {
       title: 'Gatsby Theme Amsterdam',
       description: '',
+      image: '',
       url: '',
       author: '',
       intro: '',
@@ -32,9 +31,10 @@ module.exports = options => {
         },
       },
       {
-        resolve: `gatsby-transformer-remark`,
+        resolve: `gatsby-plugin-mdx`,
         options: {
-          plugins: [
+          extensions: [`.mdx`, `.md`],
+          gatsbyRemarkPlugins: [
             `gatsby-remark-prismjs`,
             {
               resolve: `gatsby-remark-images`,
@@ -47,22 +47,9 @@ module.exports = options => {
           ],
         },
       },
-      {
-        resolve: `gatsby-plugin-manifest`,
-        options: {
-          name: `Gatsby Theme Amsterdam`,
-          short_name: `Amsterdam`,
-          background_color: `#f5f0eb`,
-          theme_color: `#292929`,
-          start_url: basePath || `/`,
-          display: `standalone`,
-          icon: iconPath
-            ? path.resolve(iconPath)
-            : require.resolve('./src/images/favicon.png'),
-        },
-      },
+      `gatsby-plugin-theme-ui`,
+      `gatsby-plugin-emotion`,
       `gatsby-plugin-react-helmet`,
-      `gatsby-plugin-styled-components`,
       `gatsby-plugin-sharp`,
       `gatsby-transformer-sharp`,
       `gatsby-plugin-offline`,
