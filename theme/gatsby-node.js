@@ -169,7 +169,7 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
     component: require.resolve(`./src/templates/posts`),
     context: {
       basePath: basePath === '/' ? '' : basePath,
-      paginationPath: basePath === '/' ? '' : basePath,
+      paginationPath: basePath === '/' ? '' : `/${basePath}`,
     },
   })
 
@@ -188,8 +188,8 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
 
     const tagPagination =
       basePath === '/'
-        ? `tag/${_.kebabCase(tag)}`
-        : `${basePath}/tag/${_.kebabCase(tag)}`
+        ? `/tag/${_.kebabCase(tag)}`
+        : `/${basePath}/tag/${_.kebabCase(tag)}`
 
     paginate({
       createPage,
