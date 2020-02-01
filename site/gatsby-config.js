@@ -68,6 +68,7 @@ module.exports = {
       resolve: 'gatsby-theme-amsterdam',
       options: {
         postsPerPage: 6,
+        basePath: 'blog',
       },
     },
   ],
