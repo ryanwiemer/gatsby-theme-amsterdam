@@ -17,18 +17,10 @@ const PostsPage = ({ data, pageContext }) => {
   } catch (error) {
     ogImage = null
   }
-  console.log(pageContext.paginationPath)
 
   return (
     <>
-      <SEO
-        image={ogImage}
-        slug={
-          pageContext.humanPageNumber === 1
-            ? `${pageContext.paginationPath}/`
-            : `${pageContext.paginationPath}/${pageContext.humanPageNumber}`
-        }
-      />
+      <SEO image={ogImage} title={pageContext.basePath.toUpperCase()} />
       <Container fullWidth noPadding>
         {intro && <Intro text={intro} context={pageContext} />}
         {posts.length > 0 && <PostList posts={posts} context={pageContext} />}
