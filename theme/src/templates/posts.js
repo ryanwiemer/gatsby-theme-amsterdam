@@ -6,6 +6,7 @@ import SEO from '../components/SEO'
 import Pagination from '../components/Pagination'
 import Container from '../components/Container'
 import { useSiteMetadata } from '../hooks/use-site-metadata'
+import { titleCase } from '../utils/utils.js'
 
 const PostsPage = ({ data, pageContext }) => {
   const { intro } = useSiteMetadata()
@@ -18,15 +19,9 @@ const PostsPage = ({ data, pageContext }) => {
     ogImage = null
   }
 
-  // Capitalize first letter of the basePath to be used in the SEO title
-  const capitalize = s => {
-    if (typeof s !== 'string') return ''
-    return s.charAt(0).toUpperCase() + s.slice(1)
-  }
-
   return (
     <>
-      <SEO image={ogImage} title={capitalize(pageContext.basePath)} />
+      <SEO image={ogImage} title={titleCase(pageContext.basePath)} />
       <Container fullWidth noPadding>
         {intro && <Intro text={intro} context={pageContext} />}
         {posts.length > 0 && <PostList posts={posts} context={pageContext} />}

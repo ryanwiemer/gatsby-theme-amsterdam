@@ -5,6 +5,7 @@ import PostList from '../components/PostList'
 import SEO from '../components/SEO'
 import Pagination from '../components/Pagination'
 import Container from '../components/Container'
+import { titleCase } from '../utils/utils.js'
 
 const TagPage = ({ data, pageContext }) => {
   const posts = data.allPost.edges
@@ -18,7 +19,11 @@ const TagPage = ({ data, pageContext }) => {
 
   return (
     <>
-      <SEO title={`Tag: ${pageContext.tag}`} image={ogImage} />
+      <SEO
+        title={`Tag: ${titleCase(pageContext.tag)}`}
+        description={`Posts Tagged: ${titleCase(pageContext.tag)}`}
+        image={ogImage}
+      />
       <Container fullWidth noPadding>
         <Intro
           text={`Tagged: ${pageContext.tag}`}
