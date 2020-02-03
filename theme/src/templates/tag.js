@@ -5,7 +5,7 @@ import PostList from '../components/PostList'
 import SEO from '../components/SEO'
 import Pagination from '../components/Pagination'
 import Container from '../components/Container'
-import { titleCase } from '../utils/utils.js'
+import { startCase } from 'lodash'
 
 const TagPage = ({ data, pageContext }) => {
   const posts = data.allPost.edges
@@ -20,8 +20,8 @@ const TagPage = ({ data, pageContext }) => {
   return (
     <>
       <SEO
-        title={`Tag: ${titleCase(pageContext.tag)}`}
-        description={`Posts Tagged: ${titleCase(pageContext.tag)}`}
+        title={`Tag: ${startCase(pageContext.tag)}`}
+        description={`Posts Tagged: ${startCase(pageContext.tag)}`}
         image={ogImage}
       />
       <Container fullWidth noPadding>

@@ -6,7 +6,7 @@ import SEO from '../components/SEO'
 import Pagination from '../components/Pagination'
 import Container from '../components/Container'
 import { useSiteMetadata } from '../hooks/use-site-metadata'
-import { titleCase } from '../utils/utils.js'
+import { startCase } from 'lodash'
 
 const PostsPage = ({ data, pageContext }) => {
   const { intro } = useSiteMetadata()
@@ -21,7 +21,7 @@ const PostsPage = ({ data, pageContext }) => {
 
   return (
     <>
-      <SEO image={ogImage} title={titleCase(pageContext.basePath)} />
+      <SEO image={ogImage} title={startCase(pageContext.basePath)} />
       <Container fullWidth noPadding>
         {intro && <Intro text={intro} context={pageContext} />}
         {posts.length > 0 && <PostList posts={posts} context={pageContext} />}
