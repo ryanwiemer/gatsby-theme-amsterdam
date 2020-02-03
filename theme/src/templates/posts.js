@@ -18,9 +18,15 @@ const PostsPage = ({ data, pageContext }) => {
     ogImage = null
   }
 
+  // Capitalize first letter of the basePath to be used in the SEO title
+  const capitalize = s => {
+    if (typeof s !== 'string') return ''
+    return s.charAt(0).toUpperCase() + s.slice(1)
+  }
+
   return (
     <>
-      <SEO image={ogImage} title={pageContext.basePath.toUpperCase()} />
+      <SEO image={ogImage} title={capitalize(pageContext.basePath)} />
       <Container fullWidth noPadding>
         {intro && <Intro text={intro} context={pageContext} />}
         {posts.length > 0 && <PostList posts={posts} context={pageContext} />}
