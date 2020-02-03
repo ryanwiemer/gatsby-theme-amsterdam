@@ -6,6 +6,7 @@ import SEO from '../components/SEO'
 import Pagination from '../components/Pagination'
 import Container from '../components/Container'
 import { useSiteMetadata } from '../hooks/use-site-metadata'
+import { startCase } from 'lodash'
 
 const PostsPage = ({ data, pageContext }) => {
   const { intro } = useSiteMetadata()
@@ -17,18 +18,10 @@ const PostsPage = ({ data, pageContext }) => {
   } catch (error) {
     ogImage = null
   }
-  console.log(pageContext.paginationPath)
 
   return (
     <>
-      <SEO
-        image={ogImage}
-        slug={
-          pageContext.humanPageNumber === 1
-            ? `${pageContext.paginationPath}/`
-            : `${pageContext.paginationPath}/${pageContext.humanPageNumber}`
-        }
-      />
+      <SEO image={ogImage} title={startCase(pageContext.basePath)} />
       <Container fullWidth noPadding>
         {intro && <Intro text={intro} context={pageContext} />}
         {posts.length > 0 && <PostList posts={posts} context={pageContext} />}

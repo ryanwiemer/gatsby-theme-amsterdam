@@ -19,11 +19,7 @@ const Title = styled.h1`
 const PageTemplate = ({ data }) => {
   return (
     <>
-      <SEO
-        title={data.page.title}
-        description={data.page.description}
-        slug={data.page.slug}
-      />
+      <SEO title={data.page.title} description={data.page.description} />
       <Container>
         <Title>{data.page.title}</Title>
         <MDX content={data.page.body} />

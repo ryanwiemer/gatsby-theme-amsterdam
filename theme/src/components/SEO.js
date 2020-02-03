@@ -12,7 +12,6 @@ const SEO = ({ title, description, image, slug }) => {
             description
             image
             url
-            author
           }
         }
       }
@@ -20,8 +19,8 @@ const SEO = ({ title, description, image, slug }) => {
   )
 
   const metaDescription = description || site.siteMetadata.description
+  const metaTitle = title || site.siteMetadata.title
   const defaultUrl = site.siteMetadata.url
-  const metaUrl = slug ? defaultUrl + slug : defaultUrl
   const defaultImage = site.siteMetadata.image
     ? site.siteMetadata.image
     : defaultUrl + '/og-image.jpg'
@@ -43,14 +42,13 @@ const SEO = ({ title, description, image, slug }) => {
       <meta name="description" content={metaDescription} />
 
       {/* OpenGraph tags */}
-      <meta property="og:title" content={title} />
-      <meta property="og:url" content={metaUrl} />
+      <meta property="og:title" content={metaTitle} />
       <meta property="og:image" content={metaImage} />
       <meta property="og:description" content={metaDescription} />
 
       {/* Twitter card tags */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={title} />
+      <meta name="twitter:title" content={metaTitle} />
       <meta name="twitter:image" content={metaImage} />
       <meta name="twitter:description" content={metaDescription} />
     </Helmet>

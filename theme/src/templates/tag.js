@@ -5,6 +5,7 @@ import PostList from '../components/PostList'
 import SEO from '../components/SEO'
 import Pagination from '../components/Pagination'
 import Container from '../components/Container'
+import { startCase } from 'lodash'
 
 const TagPage = ({ data, pageContext }) => {
   const posts = data.allPost.edges
@@ -19,13 +20,9 @@ const TagPage = ({ data, pageContext }) => {
   return (
     <>
       <SEO
-        title={`Tag: ${pageContext.tag}`}
+        title={`Tag: ${startCase(pageContext.tag)}`}
+        description={`Posts Tagged: ${startCase(pageContext.tag)}`}
         image={ogImage}
-        slug={
-          pageContext.humanPageNumber === 1
-            ? `${pageContext.paginationPath}/`
-            : `${pageContext.paginationPath}/${pageContext.humanPageNumber}`
-        }
       />
       <Container fullWidth noPadding>
         <Intro
