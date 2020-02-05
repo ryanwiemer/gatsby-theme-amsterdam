@@ -1,6 +1,7 @@
 ---
 title: About
 description: Learn about Gatsby Theme Amsterdam
+cover: flag.png
 ---
 
 ![](flag.png)
