@@ -21,6 +21,10 @@ module.exports = {
         slug: '/docs/',
       },
       {
+        name: 'CMS',
+        slug: '/cms/',
+      },
+      {
         name: 'FAQ',
         slug: '/faq/',
       },

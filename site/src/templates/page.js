@@ -17,9 +17,21 @@ const Title = styled.h1`
 `
 
 const PageTemplate = ({ data }) => {
+  let ogImage
+
+  try {
+    ogImage = data.page.cover.childImageSharp.ogimg.src
+  } catch (error) {
+    ogImage = null
+  }
+
   return (
     <>
-      <SEO title={data.page.title} description={data.page.description} />
+      <SEO
+        title={data.page.title}
+        description={data.page.description}
+        image={ogImage}
+      />
       <Container>
         <Title>{data.page.title}</Title>
         <MDX content={data.page.body} />
@@ -37,6 +49,13 @@ export const pageQuery = graphql`
       title
       description
       slug
+      cover {
+        childImageSharp {
+          ogimg: resize(width: 1000) {
+            src
+          }
+        }
+      }
     }
   }
 `
