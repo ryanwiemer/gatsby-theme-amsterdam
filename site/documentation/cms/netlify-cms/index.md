@@ -70,7 +70,7 @@ collections:
         widget: 'markdown'
 ```
 
-4. Start your development server via `yarn develop` and navigate to [http://localhost:8000/admin/#/](http://localhost:8000/admin/#/) in order to authenticate and start enjoying Netlify CMS. 😀
+4. Navigate to [http://localhost:8000/admin/](http://localhost:8000/admin/) if you are developing locally or [https://www.example.com/admin/](https://www.example.com/admin/) in order to authenticate and start enjoying Netlify CMS. 😀
 
 ---
 
