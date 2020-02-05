@@ -3,23 +3,7 @@ title: About
 description: Learn about Gatsby Theme Amsterdam
 ---
 
-<p>
-  <img
-    src="https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg"
-    alt="Flag of the Netherlands"
-  />
-  <span style="display: inline-block; color:#686461; padding:.5rem 0 0 0;">
-    Official flag of the Netherlands (source:
-    <a
-      href="https://en.wikipedia.org/wiki/Netherlands"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      Wikipedia
-    </a>
-    )
-  </span>
-</p>
+![](flag.png)
 
 **Gatsby Theme Amsterdam** was designed to be a minimal
 and clean theme geared towards photographers, artists and other
