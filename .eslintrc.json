@@ -2,6 +2,9 @@
   "extends": "gatsby-standard",
   "rules": {
     "no-unsafe-finally": "off",
-    "allowAllCaps": true
+    "react/jsx-pascal-case": [
+      1,
+      { "allowAllCaps": true, "allowNamespace": true }
+    ]
   }
 }
