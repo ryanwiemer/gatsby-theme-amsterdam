@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import TagList from './TagList'
 import DateIcon from '../icons/DateIcon'
 import Placeholder from './Placeholder'
@@ -13,7 +13,7 @@ const ImageContainer = styled.div`
   padding: 0 1.5rem;
 `
 
-const Cover = styled(Img)`
+const Cover = styled(GatsbyImage)`
   margin: 0 auto;
   width: 100%;
 `
@@ -60,12 +60,8 @@ const Hero = props => {
       <ImageContainer>
         {props.image && (
           <Cover
-            sizes={{
-              ...props.image.childImageSharp.fluid,
-              aspectRatio: 5 / 3,
-            }}
-            alt={props.image.title}
-            title={props.image.title}
+            image={props.image.childImageSharp.gatsbyImageData}
+            alt={props.title}
           />
         )}
         {props.image === null ? <Placeholder aspectRatio={5 / 3} /> : ''}

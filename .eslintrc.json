@@ -1,6 +1,7 @@
 {
   "extends": "gatsby-standard",
   "rules": {
-    "no-unsafe-finally": "off"
+    "no-unsafe-finally": "off",
+    "allowAllCaps": true
   }
 }

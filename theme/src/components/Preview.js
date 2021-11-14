@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import styled from '@emotion/styled'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { useColorMode } from 'theme-ui'
 
 const Wrapper = styled.div`
@@ -120,8 +120,9 @@ const Preview = props => {
                 </div>
               </TextContainer>
               {props.previous.cover && (
-                <Img
-                  fluid={props.previous.cover.childImageSharp.fluid}
+                <GatsbyImage
+                  image={props.previous.cover.childImageSharp.gatsbyImageData}
+                  alt={props.previous.title}
                   style={{
                     position: 'absolute',
                     left: 0,
@@ -147,8 +148,9 @@ const Preview = props => {
                 </div>
               </TextContainer>
               {props.next.cover && (
-                <Img
-                  fluid={props.next.cover.childImageSharp.fluid}
+                <GatsbyImage
+                  alt={props.next.title}
+                  image={props.next.cover.childImageSharp.gatsbyImageData}
                   style={{
                     position: 'absolute',
                     left: 0,

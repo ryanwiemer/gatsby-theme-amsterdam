@@ -47,6 +47,7 @@ module.exports = options => {
           ],
         },
       },
+      `gatsby-plugin-image`,
       `gatsby-plugin-theme-ui`,
       `gatsby-plugin-emotion`,
       `gatsby-plugin-react-helmet`,

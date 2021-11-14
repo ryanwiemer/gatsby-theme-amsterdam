@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import styled from '@emotion/styled'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import Placeholder from './Placeholder'
 const _ = require(`lodash`)
 
@@ -22,7 +22,7 @@ const List = styled.ul`
   }
 `
 
-const Cover = styled(Img)`
+const Cover = styled(GatsbyImage)`
   transition: opacity 0.4s;
   img {
     transition: transform 0.6s !important;
@@ -137,14 +137,11 @@ const ListGrid = props => {
             <Link to={post.slug}>
               {post.cover && (
                 <Cover
-                  sizes={{
-                    ...post.cover.childImageSharp.fluid,
-                    aspectRatio: 2 / 1,
-                  }}
-                  alt={post.cover.childImageSharp.title}
+                  image={post.cover.childImageSharp.gatsbyImageData}
+                  alt={post.title}
                 />
               )}
-              {post.cover === null ? <Placeholder aspectRatio={2 / 1} /> : ''}
+              {post.cover === null ? <Placeholder aspectRatio={5 / 3} /> : ''}
             </Link>
           </ImageContainer>
           <TextContainer>
