@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react'
 import styled from '@emotion/styled'
-import { Global } from '@emotion/core'
+import { Global } from '@emotion/react'
 import { globalStyles } from '../styles/globalStyles.js'
 import Menu from './Menu'
 import Footer from './Footer'

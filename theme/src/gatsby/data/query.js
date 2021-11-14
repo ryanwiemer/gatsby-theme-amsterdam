@@ -9,14 +9,11 @@ module.exports.data = {
           slug
           cover {
             childImageSharp {
-              fluid(maxWidth: 1000) {
-                aspectRatio
-                src
-                srcSet
-                srcWebp
-                srcSetWebp
-                sizes
-              }
+              gatsbyImageData(
+                width: 1000
+                placeholder: BLURRED
+                aspectRatio: 1.66
+              )
             }
           }
         }

@@ -5,18 +5,19 @@
     "site"
   ],
   "scripts": {
+    "dev": "yarn workspace site develop",
     "develop": "yarn workspace site develop",
     "build": "yarn workspace site build",
     "clean": "yarn workspace site clean",
     "serve": "yarn workspace site serve"
   },
   "devDependencies": {
-    "eslint": "6.8.0",
-    "eslint-config-gatsby-standard": "^2.2.0",
-    "prettier": "^1.19.1",
-    "stylelint": "13.0.0",
-    "stylelint-config-prettier": "^8.0.1",
-    "stylelint-config-standard": "^19.0.0",
+    "eslint": "8.2.0",
+    "eslint-config-gatsby-standard": "^3.0.2",
+    "prettier": "^2.4.1",
+    "stylelint": "14.0.1",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^23.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.9.0"
   }

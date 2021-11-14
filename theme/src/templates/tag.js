@@ -56,9 +56,11 @@ export const tagQuery = graphql`
           date(formatString: "MMMM DD, YYYY")
           cover {
             childImageSharp {
-              fluid(maxWidth: 1000) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
+              gatsbyImageData(
+                width: 1000
+                placeholder: BLURRED
+                aspectRatio: 1.66
+              )
               ogimg: resize(width: 1000) {
                 src
               }
